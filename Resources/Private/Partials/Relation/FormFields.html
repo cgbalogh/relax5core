@@ -1,0 +1,50 @@
+{namespace r5f=CGB\Relax5validator\ViewHelpers}
+
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" data-namespace-typo3-fluid="true">
+
+<div class="rlx5-modalform-stretcher" style="height: 0; min-width: 400px;"></div>  
+
+<f:comment>
+  <label for="relationId">
+      <f:translate key="tx_relax5core_domain_model_relation.relation_id" />
+  </label>
+  <f:form.textfield property="relationId" /><br />
+</f:comment>
+
+<div style="white-space: nowrap; text-align: center;">
+  <f:if condition="{relation.person}">
+    {relation.targetPerson.lastName} {relation.targetPerson.firstName} <f:translate key="tx_relax5core_domain_model_relation.is" /><br />
+    <r5f:form.select 
+      property="type" 
+      options="{typeSelect}" 
+      size="1" 
+      id="maritalState" 
+      class="" 
+      validatorContext="UpdateRelation" 
+    /><br />
+    <f:translate key="tx_relax5core_domain_model_relation.of" /> {relation.person.lastName} {relation.person.firstName} 
+  </f:if>
+</div>  
+
+<div class="rlx5-divider"></div>
+
+<label for="description">
+	<f:translate key="tx_relax5core_domain_model_relation.description" />
+</label>
+<f:form.textfield property="description" /><br />
+
+<f:if condition="{relation.person}">
+  <label for="print">
+      <f:translate key="tx_relax5core_domain_model_relation.print" />
+  </label>
+  <f:form.checkbox property="print" value="1" /><br />
+</f:if>
+  
+<f:if condition="{relation.company}">
+  <label for="share">
+      <f:translate key="tx_relax5core_domain_model_relation.share" />
+  </label>
+  <f:form.textfield property="share" /><br />
+</f:if>
+
+</html>

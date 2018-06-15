@@ -1,0 +1,26 @@
+#
+# append tx_crmrelax5ems_domain_model_event
+#
+TRUNCATE `###TARGET_DB###`.`tx_relax5event_domain_model_event`;
+INSERT INTO `###TARGET_DB###`.`tx_relax5event_domain_model_event`
+    (
+    `uid`, `pid`, `name`, `date`, `location_text`, `max_participants`, `crdate`, `tstamp`,`deleted`, `hidden`
+    )
+SELECT 
+    `uid`, '###TARGET_PID###' AS `pid`, `name`, `date`, `location`AS `location_text`, `max_participants`, `crdate`, `tstamp`, `deleted`, `hidden`
+FROM `###SOURCE_DB###`.`tx_crmrelax5ems_domain_model_event`;
+
+#
+# append tx_crmrelax5ems_domain_model_entry
+#
+TRUNCATE `###TARGET_DB###`.`tx_relax5event_domain_model_entry`;
+INSERT INTO `###TARGET_DB###`.`tx_relax5event_domain_model_entry`
+    (
+    `uid`, `pid`, `registered`, `participants`, `phone`, `email`, `reminder`, `event`, `person`, `crdate`, `tstamp`,`deleted`, `hidden`
+    )
+SELECT 
+    `uid`, '###TARGET_PID###' AS `pid`, `registered`, `participants`, `phone`, `email`, `reminder`, `event`, `person`, `crdate`, `tstamp`,`deleted`, `hidden`
+FROM `###SOURCE_DB###`.`tx_crmrelax5ems_domain_model_entry`;
+
+
+

@@ -1,0 +1,39 @@
+{namespace rlx5=CGB\Relax5core\ViewHelpers}
+
+<div class="showData">
+      <table>
+		<thead>
+			<tr>
+				<th>Art</th>
+				<th>Datum/Zeit</th>
+				<th>Betreff</th>
+				<th>Details</th>
+				<th style="width:60px;">Action</th>
+			</tr>
+		</thead>
+		<tbody>
+			<f:for each="{documents}" as="document" >
+				<tr class="tx_crmrelax5_row{zebraClass} tx_crmrelax5_today<rlx5:today date='{document.date}' />">
+					<td>
+						<span style="display:none">{document.type}</span>
+						<f:image src="EXT:crm_relax5/Resources/Public/FeIcons/document_type_{document.type}.png" alt=""/>
+					</td>
+					<td><span style="display:none">{document.date -> f:format.date(format: 'Y-m-d-H-i-s')}</span>{document.date -> f:format.date(format: 'd.m.Y H:i:s')}</td>
+					<td>						
+						<span reference="documentTitle{document.uid}">{document.title}</span>
+					</td>
+					<td class="tx_crmrelax5_celldetails">
+						<span reference="appointmentDetails{appointment.uid}">
+							<span class="tooltip" title="{appointment.details}">{appointment.details -> f:format.crop(maxCharacters: 60, respectWordBoundaries: true)}</span>
+						</span>
+					</td>
+					<td style="white-space: nowrap;">
+						<f:image src="EXT:crm_relax5/Resources/Public/FeIcons/edit.png" alt="{f:translate(key:'tx_crmrelax5_domain_model_appointment.edit_appointment')}" title="{f:translate(key:'tx_crmrelax5_domain_model_appointment.edit_appointment')}" />
+						<f:image src="EXT:crm_relax5/Resources/Public/FeIcons/delete.png" alt="{f:translate(key:'tx_crmrelax5_domain_model_person.appointment_appointment')}" title="{f:translate(key:'tx_crmrelax5_domain_model_appointment.delete_appointment')}" />
+					</td>
+				</tr>
+			</f:for>
+		</tbody>
+	</table>
+</div>
+

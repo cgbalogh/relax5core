@@ -1,0 +1,243 @@
+{namespace r5f=CGB\Relax5validator\ViewHelpers}
+
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" data-namespace-typo3-fluid="true">
+  
+  <div class="rlx5-modalform-stretcher" style="height: 0; min-width: 500px;"></div>  
+
+  <f:render partial="General/ShowInfo" arguments="{item:appointment, itemtype:'appointment'}" />
+  
+  <div class="rlx5-collapser">
+    &nbsp;<span class="texticon-inner-icon ion ion-chevron-down"></span>&nbsp;
+  </div>
+  <div class="rlx5-info rlx5-clearfix rlx5-collapsible rlx5-collapsed" style="border-bottom: 3px solid #99b2d3; margin-bottom: 8px;">
+    <span>&nbsp;</span>
+
+    <span>
+      <f:form.select property="owner" options="{ownerSelect}" optionLabelField="username" optionValueField="uid" size="1" style="width: 100%;" />
+    </span>
+
+    <span>
+      <f:form.select property="usergroup" options="{usergroupSelect}" optionLabelField="title" optionValueField="uid" size="1" style="width: 100%;" />
+    </span>
+
+    <span style="white-space: nowrap;" class="rlx5-rightsarray">
+      <f:form.checkbox value="1" title="Owner read" /><f:form.checkbox value="1"  title="Owner write" /><f:form.checkbox value="1"  title="Owner delete" />
+  <br class="rlx5-smallonly" /><f:form.checkbox value="1"  title="Group read" /><f:form.checkbox value="1"  title="Group write" /><f:form.checkbox value="1"  title="Group delete" />
+  <br class="rlx5-smallonly" /><f:form.checkbox value="1"  title="Everybody read" /><f:form.checkbox value="1"  title="Everybody write" /><f:form.checkbox value="1"  title="Everybody delete" />
+      <f:form.hidden property="permissions" id="rlx5-permissions" />
+    </span>
+  </div>
+  
+  <label for="subject">
+      <f:translate key="LLL:EXT:relax5core/Resources/Private/Language/locallang.xlf:tx_relax5core_domain_model_appointment.subject" />
+  </label>
+  <r5f:form.textfield 
+    property="subject" 
+    value="{appointment.subject}"
+    validatorContext="UpdateAppointment" 
+  /><br />
+      
+  <span class="rlx5-span-as-label">
+    <label for="date" class="rlx5-min">
+        <f:translate key="LLL:EXT:relax5core/Resources/Private/Language/locallang.xlf:tx_relax5core_domain_model_appointment.date" />
+    </label>
+    | 
+    <label for="duration" class="rlx5-min">
+        <f:translate key="LLL:EXT:relax5core/Resources/Private/Language/locallang.xlf:tx_relax5core_domain_model_appointment.duration" />
+    </label>
+  </span>
+  
+  <r5f:form.textfield 
+    property="date" 
+    value="{appointment.date->f:format.date(format: '{f:translate(key: \'LLL:EXT:relax5core/Resources/Private/Language/locallang.xlf:tx_relax5core_general.datetime_format\')}')}" 
+    validatorContext="UpdateAppointment" 
+    class="datetimepicker rlx5-40"
+  />
+  
+  <r5f:form.select 
+    property="duration" 
+    options="{durationSelect}" 
+    size="1" 
+    id="duration" 
+    class="rlx5-20" 
+    validatorContext="UpdateAppointment" 
+  /><br />
+
+  <label for="appointmentType">
+      <f:translate key="LLL:EXT:relax5core/Resources/Private/Language/locallang.xlf:tx_relax5core_domain_model_appointment.type" />
+  </label>
+  <r5f:form.select 
+    property="appointmentType" 
+    options="{appointmentTypeSelect}" 
+    value="{appointment.appointmentType}"
+    size="1" 
+    id="appointmentType" 
+    class="dd rlx5-40"
+    validatorContext="UpdateAppointment" 
+    additionalAttributes="{dd: 'typo3conf/ext/relax5core/Resources/Public/Icons/appointment_type_###ID###.png'}"
+  />
+  
+  <div class="clearfix"></div>
+  
+  <label for="appointmentStatus">
+      <f:translate key="LLL:EXT:relax5core/Resources/Private/Language/locallang.xlf:tx_relax5core_domain_model_appointment.status" />
+  </label>
+  <r5f:form.select 
+    property="appointmentStatus" 
+    options="{appointmentStatusSelect}" 
+    value="{appointment.appointmentStatus}"
+    size="1" 
+    id="appointmentStatus" 
+    class="dd" 
+    validatorContext="UpdateAppointment" 
+    additionalAttributes="{dd: 'typo3conf/ext/relax5core/Resources/Public/Icons/appointment_status_###ID###.png'}"
+  />
+
+  <div class="clearfix"></div>
+  
+  <label for="priority">
+      <f:translate key="LLL:EXT:relax5core/Resources/Private/Language/locallang.xlf:tx_relax5core_domain_model_appointment.priority" />
+  </label>
+  <r5f:form.select 
+    property="priority" 
+    options="{appointmentPrioritySelect}" 
+    size="1" 
+    id="priority" 
+    class="dd"     
+    validatorContext="UpdateAppointment" 
+    additionalAttributes="{dd: 'typo3conf/ext/relax5core/Resources/Public/Icons/appointment_priority_###ID###.png'}"
+  />
+  
+  <div class="clearfix"></div>
+  
+  <label for="address">
+      <f:translate key="LLL:EXT:relax5core/Resources/Private/Language/locallang.xlf:tx_relax5core_domain_model_appointment.address" />
+  </label>
+  <span class="rlx5-span-as-input" data-firstaddress="{appointment.person.addresses.0.addressCompound}" style="padding: 0;">
+    <f:form.textfield property="address" value="{appointment.address}" id="address" style="width: 90%;"/>
+    <f:if condition="{appointment.person.addresses.0.uid}">
+      <f:image 
+        src="EXT:core/Resources/Public/Icons/T3Icons/actions/actions-edit-undo.svg" 
+        alt="" 
+        class="ui-button button rlx5-button" 
+        onclick="$('#address').val($('[data-firstaddress]').data('firstaddress'));"
+        style="float: right;"
+      />
+    </f:if>
+  </span>
+  <br />
+  
+  <label for="contact">
+      <f:translate key="LLL:EXT:relax5core/Resources/Private/Language/locallang.xlf:tx_relax5core_domain_model_appointment.contact" />
+  </label>
+  <span class="rlx5-span-as-input" data-firstcontact="{appointment.person.contacts.0.contact}" style="padding: 0;">
+    <f:form.textfield property="contact" value="{appointment.contact}" id="contact" style="width: 90%;"/>
+    <f:if condition="{appointment.person.contacts.0.uid}">
+      <f:image 
+        src="EXT:core/Resources/Public/Icons/T3Icons/actions/actions-edit-undo.svg" 
+        alt="" 
+        class="ui-button button rlx5-button" 
+        onclick="$('#contact').val($('[data-firstcontact]').data('firstcontact'));"
+        style="float: right;"
+      />
+    </f:if>
+  </span>
+  <br />
+  
+  <label for="name">
+      <f:translate key="LLL:EXT:relax5core/Resources/Private/Language/locallang.xlf:tx_relax5core_domain_model_appointment.name" />
+  </label>
+  <span class="rlx5-span-as-input" data-name="{appointment.person.nameCompound}" style="padding: 0;">
+    <f:form.textfield property="name" value="{appointment.name}" id="name" style="width: 90%;"/>
+    <f:if condition="{appointment.person}">
+      <f:image 
+        src="EXT:core/Resources/Public/Icons/T3Icons/actions/actions-edit-undo.svg" 
+        alt="" 
+        class="ui-button button rlx5-button" 
+        onclick="$('#name').val($('[data-name]').data('name'));"
+        style="float: right;"
+      />
+    </f:if>
+  </span>
+  <br />
+  
+  
+  <label for="details" class="rlx5-top">
+      <f:translate key="LLL:EXT:relax5core/Resources/Private/Language/locallang.xlf:tx_relax5core_domain_model_appointment.details" />
+  </label>
+  <f:form.textarea property="details" cols="40" rows="15" class="rlx5-jte" /><br />
+  
+
+  <f:if condition="{appointment.uid}">
+    <f:if condition="{appointment.msolid}">
+      <f:then>
+        <label for="msolid" class="rlx5-top">
+          <f:translate key="LLL:EXT:relax5core/Resources/Private/Language/locallang.xlf:tx_relax5core_domain_model_appointment.msolid" />
+          <f:image src="EXT:relax5core/Resources/Public/Icons/ms-exchange-icon-disabled.png" id="appointment_{appointment.uid}_exchange_remove" />
+        </label>
+        <f:form.textfield property="msolid" readonly="readonly"/><br />
+      </f:then>
+      <f:else>
+        <label for="sync" class="rlx5-top">
+          Outlook/Exchange
+        </label>
+        <span class="rlx5-span-as-input">
+          <f:form.checkbox 
+            property="forceSync"
+            value="1"
+          />
+          <f:translate key="LLL:EXT:relax5core/Resources/Private/Language/locallang.xlf:tx_relax5core_domain_model_appointment.sync" /><br />
+        </span>
+      </f:else>
+    </f:if>
+    
+  </f:if>
+  
+  <f:if condition="{appointment.attendees}">
+    <label class="rlx5-top">
+        <f:translate key="LLL:EXT:relax5core/Resources/Private/Language/locallang.xlf:tx_relax5core_domain_model_appointment.attendees" />
+    </label>
+    <span class="rlx5-span-as-input">
+      <f:for each="{appointment.attendees}" as="attendee" iteration="iterator">
+        {attendee.lastName} {attendee.firstName} ({attendee.username})
+        <f:if condition="!{iterator.isLast}">,</f:if>
+      </f:for>  
+    </span>
+  </f:if>
+  
+  
+  <f:comment>
+    <label for="result">
+        <f:translate key="LLL:EXT:relax5core/Resources/Private/Language/locallang.xlf:tx_relax5core_domain_model_appointment.result" />
+    </label>
+    <f:form.textfield property="result" /><br />
+
+    <label for="contactState">
+        <f:translate key="LLL:EXT:relax5core/Resources/Private/Language/locallang.xlf:tx_relax5core_domain_model_appointment.contact_state" />
+    </label>
+    <f:form.textfield property="contactState" /><br />
+
+    <label for="task">
+        <f:translate key="LLL:EXT:relax5core/Resources/Private/Language/locallang.xlf:tx_relax5core_domain_model_appointment.task" />
+    </label>
+    <f:form.textfield property="task" /><br />
+  </f:comment>
+  
+  <!-- works only within modal dialog window -->
+  <script type="text/javascript">
+    <f:format.cdata>
+      $(document).ready(function() {
+        activateCollapser('.rlx5-collapser', '.rlx5-form', true);
+        activateJte('.rlx5-jte', '.rlx5-form');
+        activateComputeRights();
+        showErrors();
+        
+        activateDatepicker();
+        activateDatetimepicker();
+        activateImgDD();
+      });
+    </f:format.cdata>
+  </script>  
+  
+</html>
+

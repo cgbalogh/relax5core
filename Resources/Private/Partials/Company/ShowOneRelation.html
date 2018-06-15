@@ -1,0 +1,69 @@
+<f:if condition="{company.uid}">
+  <div 
+    id="relation_{relation.uid}"
+    class="rlx5-coredata-single" 
+    uid="{relation.uid}"
+    title="
+{f:translate(key: 'tx_relax5core_domain_model_relation.is')} {f:translate(key: 'tx_relax5core_domain_model_relation.type.{relation.type}.c')} {f:translate(key: 'tx_relax5core_domain_model_relation.of')} {parent.name} {parent.shortName}
+{f:translate(key: 'tx_relax5core_domain_model_company.owner')}: {company.owner.firstName} {company.owner.lastName}
+    " 
+  >
+    <div class="">
+      <a href="{f:uri.action(pageUid:settings.companyShowPid, extensionName: 'Relax5core', controller: 'Company', action: 'show', arguments: {company:company})}" class="tx_simulatefeWrapperUncollapse">
+        <span reference="company_{company.uid}_name">{company.name}</span>
+        <span reference="company_{company.uid}_shortName">{company.shortName}</span>
+      </a>
+    </div>
+    <div class="rlx5-buttons">
+      <a:actionicon 
+        class="modalDialog rlx5-button rlx5-edit"
+        title="{f:translate(key:'tx_relax5core_domain_model_relation')} {relation.uid}" 
+        domainModelObject="Relation" 
+        intendedAction="editorshow"
+        permissions="{parent.permissions}" 
+        user="{parent.owner}" 
+        group="{parent.usergroup}"
+        pageType="{f:cObject(typoscriptObjectPath:'lib.relax5core.ajax')}"
+        extensionName="Relax5core"
+        pluginName="Ajax" 
+        controller="Relation"
+        arguments="{relation: relation}"
+      />
+      
+      <a:actionicon 
+        class="modalConfirm rlx5-button rlx5-delete" 
+        title="{f:translate(key:'tx_relax5core_domain_model_relation')} {relation.uid}" 
+        domainModelObject="Company" 
+        intendedAction="remove"
+        child="Relation"
+        permissions="{parent.permissions}" 
+        user="{parent.owner}" 
+        group="{parent.usergroup}"
+        pageType="{f:cObject(typoscriptObjectPath:'lib.relax5core.ajax')}"
+        extensionName="Relax5core"
+        pluginName="Ajax" 
+        controller="Company"
+        arguments="{parent:parent, company:company, relation: relation}"
+        additionalAttributes="{
+          text: '<b>{company.name} {company.shortName}:</b> {f:translate(key:\"tx_relax5core_domain_model_relation.confirm_remove\")}'
+        }"
+      />
+
+      <a:actionicon 
+        class="modalDialog rlx5-button rlx5-edit"
+        title="{company.name} {company.shortName}" 
+        domainModelObject="Company" 
+        intendedAction="editorshow"
+        permissions="{company.permissions}" 
+        user="{company.owner}" 
+        group="{company.usergroup}"
+        pageType="{f:cObject(typoscriptObjectPath:'lib.relax5core.ajax')}"
+        extensionName="Relax5core"
+        pluginName="Ajax" 
+        controller="Company"
+        arguments="{company: company}"
+      />
+      
+    </div>
+  </div>
+</f:if>

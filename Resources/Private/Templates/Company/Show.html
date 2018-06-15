@@ -1,0 +1,45 @@
+{namespace rlx5=CGB\Relax5core\ViewHelpers}
+{namespace v=FluidTYPO3\Vhs\ViewHelpers}
+{namespace a=CGB\Accessmanager\ViewHelpers}
+{namespace h=Helhum\TyposcriptRendering\ViewHelpers}
+
+<f:layout name="Default" />
+
+<f:section name="main">
+  
+  <f:if condition="{link} && {company}">
+    <f:then>
+      <v:variable.set name="person" value="{link.person}" />
+    </f:then>
+    <f:else>
+      <v:variable.set name="link" value="{company.links.0}" />
+      <v:variable.set name="person" value="{link.person}" />
+    </f:else>
+  </f:if>
+  <v:variable.set name="focus" value="company" />
+  
+  <f:alias map="{pageType: '{f:cObject(typoscriptObjectPath:\'lib.relax5core.ajax\')}'}">
+    <span class="_loadDetails" loaddetails="{f:uri.action(pageType:pageType, extensionName: 'Relax5core', pluginName: 'Ajax', controller: 'Source', action: 'loadDetails')}"></span>
+  </f:alias>
+  
+  <fieldset class="rlx5-envelope-fieldset">
+    <legend class="rlx5-focuscompany">
+      <span reference="name_{company.uid}">{company.name}</span>
+      <span reference="shortName_{company.uid}">{company.shortName}</span>
+
+      <f:if condition="{link.uid}">
+        <!-- {f:uri.action(pageUid: settings.personShowPid, extensionName: 'Relax5core', pluginName: 'Person', controller: 'Company', action: 'show', arguments: {person:person, link:link})} -->
+        <a class="rlx5-changefocus" href="{f:uri.action(pageUid: settings.personShowPid, extensionName: 'Relax5core', pluginName: 'Person', controller: 'Person', action: 'show', arguments: {person:person, link:link})}">
+          <f:translate key="LLL:EXT:relax5core/Resources/Private/Language/locallang_fe.xlf:tx_relax5core_general.current_record" />
+          <b>{person.lastName} {person.firstName}</b>
+        </a>
+      </f:if>
+    </legend>
+
+    <f:render partial="General/ShowData" arguments="{_all}" />
+			
+  </fieldset>
+
+  <p class="footnote">docref: EXT:relax5core/Resources/Private/Company/Show.html v8.6 &#169; DI Christoph Balogh e.U.</p>
+  
+</f:section>

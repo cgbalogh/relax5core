@@ -1,0 +1,49 @@
+<f:if condition="{person.uid}">
+  <div class="rlx5-coredata-single">
+    <div class="">
+      <f:image 
+          id="genderImg_{person.uid}"
+          src="EXT:relax5core/Resources/Public/Icons/gender_{person.gender}.png" 
+          alt="" 
+          title="{f:translate(key:'tx_relax5core_domain_model_person.gender_{person.gender}')}" 
+          style="vertical-align: middle;" 
+      />
+      <f:if condition="{relation}">
+        <f:then>
+          <a href="{f:uri.action(extensionName: 'Relax5core', controller: 'Person', action: 'show', arguments: {person:person})}" class="tx_simulatefeWrapperUncollapse">
+            <span reference="lastName_{person.uid}">{person.lastName}</span>
+            <span reference="firstName_{person.uid}">{person.firstName}</span>
+            <span reference="middleName_{person.uid}">{person.middleName}</span>
+            (<span reference="title_{person.uid}">{person.title}</span>)
+          </a>
+        </f:then>
+        <f:else>
+          <span reference="lastName_{person.uid}">{person.lastName}</span>
+          <span reference="firstName_{person.uid}">{person.firstName}</span>
+          <span reference="middleName_{person.uid}">{person.middleName}</span>
+          (<span reference="title_{person.uid}">{person.title}</span>)
+        </f:else>
+      </f:if>
+    </div>
+    <div class="rlx5-buttons">
+      <f:if condition="{relation}">
+        <f:image 
+          class="rlx5-button rlx5-edit"
+          src="EXT:core/Resources/Public/Icons/T3Icons/actions/actions-swap.svg" 
+          alt="{alt}" title="{title}" 
+        />
+      </f:if>
+      <f:image 
+        class="rlx5-button rlx5-edit"
+        src="EXT:core/Resources/Public/Icons/T3Icons/actions/actions-open.svg" 
+        alt="{alt}" title="{title}" 
+      />
+      <f:image 
+        class="rlx5-button rlx5-delete" 
+        src="EXT:core/Resources/Public/Icons/T3Icons/actions/actions-delete.svg" 
+        alt="{alt}" title="{title}" 
+      />
+      
+    </div>
+  </div>
+</f:if>

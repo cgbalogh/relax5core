@@ -1,0 +1,49 @@
+<!-- docref BEGIN: EXT:relax5core/Resources/Private/Partials/Company/ShowRelations.html v8.6 -->
+<!-- rev: 2017-05-07 -->
+
+<f:if condition="{item}">
+  <div class="rlx5-item-company-relations rlx5-company rlx5-core-data-box {f:if(condition: '{item}',then:'rlx5-ispopulated',else:'rlx5-isempty')}">
+    <div id="relationList_company" class="rlx5-coredata-block">
+      <h3 class="rlx5-collapser">
+        <span class="texticon-inner-icon ion ion-chevron-up"></span>
+        <f:translate key="tx_relax5core_domain_model_company.relations" /> (<f:count subject="{company.relations}" />)
+        <div class="rlx5-buttons">
+          <!-- TODO: dimensions of child window settable in plugin -->
+
+          <f:link.page 
+            class="ui-button selectWindow"
+            target="_new" 
+            pageUid="{f:cObject(typoscriptObjectPath:'lib.relax5core.selectCompanyRelation')}" 
+          >
+            <f:image src="EXT:core/Resources/Public/Icons/T3Icons/apps/apps-pagetree-page-shortcut-external.svg" alt="" class="rlx5-button" />
+          </f:link.page>
+
+          <a:actionicon 
+            id="addCompanyRelation" 
+            style="display: none"
+            domainModelObject="Company" 
+            intendedAction="add"
+            action="addRelation"
+            child="Relation"
+            permissions="{company.permissions}" 
+            user="{company.owner}" 
+            group="{company.usergroup}"
+            pageType="{f:cObject(typoscriptObjectPath:'lib.relax5core.ajax')}"
+            extensionName="Relax5core"
+            pluginName="Ajax" 
+            controller="Company"
+            additionalAttributes="{prefix: 'tx_relax5core_ajax', company: company.uid, onsuccess: 'window.opener.location.reload();window.close();'}"
+          />
+        </div>
+      </h3>
+
+      <div class="rlx5-collapsible sortable" uri="{f:uri.action(pageType: 112234, pluginName: 'Ajax', controller: 'Company', action: 'resortRelation')}">
+        <f:for each="{company.relations}" as="relation">
+          <f:render partial="Company/ShowOneRelation" arguments="{company:relation.targetCompany, parent:company, relation:relation, settings:settings}" />        
+        </f:for>	
+      </div>
+    </div>
+  </div>
+</f:if>
+
+<!-- docref END: EXT:relax5core/Resources/Private/Partials/Company/ShowRelations.html v8.6 -->

@@ -1,0 +1,60 @@
+<f:if condition="{link}">
+  <div class="rlx5-item-link-header rlx5-link rlx5-core-data-box {f:if(condition: '{link}',then:'rlx5-ispopulated',else:'rlx5-isempty')}">
+    <div class="rlx5-coredata-single">
+      <div class="">
+        <div class="" title="<f:translate key='tx_relax5core_domain_model_link.role' />" >
+          <span reference="link_{link.uid}_role">{link.role}</span>
+        </div>
+        <div class="" title="<f:translate key='tx_relax5core_domain_model_link.role_title' />" >
+          <span reference="link_{link.uid}_roleTitle">{link.roleTitle}</span>
+        </div>
+        <div class="" title="<f:translate key='tx_relax5core_domain_model_link.division' />" >
+          <span reference="link_{link.uid}_division">{link.division}</span>
+        </div>
+      </div>
+
+      <div class="rlx5-buttons">
+        <a:actionicon 
+          uri="{h:uri.ajaxAction(
+            extensionName: 'Relax5core',
+            controller: 'Link',
+            pluginName: 'Core',
+            action: 'edit',
+            arguments: '{link:link}'
+          )}"
+          alturi="{h:uri.ajaxAction(
+            extensionName: 'Relax5core',
+            controller: 'Link',
+            pluginName: 'Core',
+            action: 'show',
+            arguments: '{link:link}'
+          )}"
+          class="modalDialog rlx5-button rlx5-edit"
+          title="{link.person.lastName} {link.person.firstName} - {link.company.shortName}" 
+          domainModelObject="Link" 
+          intendedAction="editorshow"
+          permissions="{link.permissions}" 
+          user="{person.owner}" 
+          group="{link.person.usergroup}"
+        />
+
+        <a:actionicon 
+          uri="{h:uri.ajaxAction(
+            extensionName: 'Relax5core',
+            controller: 'Link',
+            pluginName: 'Core',
+            action: 'delete',
+            arguments: '{link:link}'
+          )}"
+          title="{link.person.lastName} {link.person.firstName} - {link.company.shortName}" 
+          intendedAction="delete"
+          domainModelObject="Link" 
+          permissions="{link.permissions}" 
+          user="{link.owner}" 
+          group="{link.person.usergroup}"
+        />
+
+      </div>
+    </div>
+  </div>			
+</f:if>

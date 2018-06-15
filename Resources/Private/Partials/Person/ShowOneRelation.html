@@ -1,0 +1,119 @@
+<f:if condition="{person.uid}">
+  <div class="rlx5-relation-wrap" personuid="{person.uid}">
+    <div 
+      id="relation_{relation.uid}"
+      class="rlx5-coredata-single" 
+      uid="{relation.uid}"
+      sortref="relation"
+      title="
+  {f:translate(key: 'tx_relax5core_domain_model_relation.is')} {f:translate(key: 'tx_relax5core_domain_model_relation.type.{relation.type}.{relation.targetPerson.gender}')} {f:translate(key: 'tx_relax5core_domain_model_relation.of')} {parent.lastName} {parent.firstName}
+  {f:translate(key: 'tx_relax5core_domain_model_person.owner')}: {person.owner.firstName} {person.owner.lastName}
+      " 
+    >
+      <div class="">
+        <f:switch expression="{person.gender}">
+          <f:case value="1"><span class="ion ion-male rlx5-gender"></span></f:case>
+          <f:case value="2"><span class="ion ion-female rlx5-gender"></span></f:case>
+          <f:case default="TRUE"><span class="ion ion-ios-help-empty rlx5-gender"></span></f:case>
+        </f:switch>
+
+        <f:comment>
+          <f:image 
+              id="genderImg_{person.uid}"
+              src="EXT:relax5core/Resources/Public/Icons/gender_{person.gender}.png" 
+              alt="" 
+              title="{f:translate(key:'tx_relax5core_domain_model_person.gender_{person.gender}')}" 
+              style="vertical-align: middle;" 
+          />
+        </f:comment>  
+        <a href="{f:uri.action(pageUid:settings.personShowPid, extensionName: 'Relax5core', controller: 'Person', action: 'show', arguments: {person:person})}" class="tx_simulatefeWrapperUncollapse">
+          <span reference="person_{person.uid}_lastName">{person.lastName}</span>
+          <span reference="person_{person.uid}_firstName">{person.firstName}</span>
+          <span reference="person_{person.uid}_middleName">{person.middleName}</span>
+          (<span reference="person_{person.uid}_title">{person.title}</span>)
+        </a>
+      </div>
+
+      <div class="rlx5-buttons">
+        <a:actionicon 
+          uri="{h:uri.ajaxAction(
+            extensionName: 'Relax5core',
+            controller: 'Relation',
+            pluginName: 'Core',
+            action: 'edit',
+            arguments: '{relation: relation}'
+          )}"
+          alturi="{h:uri.ajaxAction(
+            extensionName: 'Relax5core',
+            controller: 'Relation',
+            pluginName: 'Core',
+            action: 'show',
+            arguments: '{relation: relation}'
+          )}"
+
+          class="modalDialog rlx5-button rlx5-edit"
+          title="{f:translate(key:'tx_relax5core_domain_model_relation')} {relation.uid}"  
+          domainModelObject="CGB\\Relax5core\\Domain\\Model\\Relation" 
+          intendedAction="editorshow"
+          permissions="{parent.permissions}" 
+          user="{parent.owner}" 
+          group="{parent.usergroup}"
+        />
+
+        <a:actionicon 
+          uri="{h:uri.ajaxAction(
+            extensionName: 'Relax5core',
+            controller: 'Person',
+            pluginName: 'Core',
+            action: 'removeRelation',
+            arguments: '{parent:parent, person:person, relation: relation}'
+          )}"
+
+          class="modalConfirm rlx5-button rlx5-delete" 
+          title="{f:translate(key:'tx_relax5core_domain_model_relation')} {relation.uid}" 
+          domainModelObject="Person" 
+          intendedAction="remove"
+          child="Relation"
+          forceIcon="deleteIcon"
+          permissions="{parent.permissions}" 
+          user="{parent.owner}" 
+          group="{parent.usergroup}"
+          additionalAttributes="{
+            text: '<b>{person.lastName} {person.firstName}:</b> {f:translate(key:\"tx_relax5core_domain_model_relation.confirm_remove\")}'
+          }"
+        />
+
+        <a:actionicon 
+          uri="{h:uri.ajaxAction(
+            extensionName: 'Relax5core',
+            controller: 'Person',
+            pluginName: 'Core',
+            action: 'edit',
+            arguments: '{person: person}'
+          )}"
+          alturi="{h:uri.ajaxAction(
+            extensionName: 'Relax5core',
+            controller: 'Person',
+            pluginName: 'Core',
+            action: 'show',
+            arguments: '{person: person}'
+          )}"
+
+          class="modalDialog rlx5-button rlx5-edit"
+          title="{person.lastName} {person.firstName}" 
+          domainModelObject="Person" 
+          intendedAction="editorshow"
+          permissions="{person.permissions}" 
+          user="{person.owner}" 
+          group="{person.usergroup}"
+        />
+
+      </div>
+    </div>
+    <f:if condition="{showcontacts} && {f:count(subject: person.contacts)}>0">
+      <div class="rlx5-relation-childs">
+        <f:render partial="Contact/ShowContacts" arguments="{item:person}" />
+      </div>
+    </f:if>
+  </div>
+</f:if>

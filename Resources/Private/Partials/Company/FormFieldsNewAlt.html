@@ -1,0 +1,354 @@
+{namespace r5f=CGB\Relax5validator\ViewHelpers}
+{namespace h=Helhum\TyposcriptRendering\ViewHelpers}
+
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" data-namespace-typo3-fluid="true">
+
+  <f:section name="Core">
+    <div class="rlx5-modalform-stretcher" style="height: 0; min-width: 400px; max-width: 600px;"></div>  
+
+    <f:render partial="General/ShowInfo" arguments="{item:company, itemtype:'company'}" />
+
+    <div class="rlx5-collapser">
+      &nbsp;<span class="texticon-inner-icon ion ion-chevron-down"></span>&nbsp;
+    </div>
+    <div class="rlx5-info rlx5-clearfix rlx5-collapsible rlx5-collapsed" style="border-bottom: 3px solid #99b2d3; margin-bottom: 8px;">
+      <span>&nbsp;</span>
+
+      <span>
+        <f:form.select property="owner" options="{ownerSelect}" optionLabelField="username" optionValueField="uid" size="1" style="width: 100%;" value="{feUserUid}" />
+      </span>
+
+      <span>
+        <f:form.select property="usergroup" options="{usergroupSelect}" optionLabelField="title" optionValueField="uid" size="1" style="width: 100%;" />
+      </span>
+
+      <span style="white-space: nowrap;" class="rlx5-rightsarray">
+        <f:form.checkbox value="1" title="Owner read" /><f:form.checkbox value="1"  title="Owner write" /><f:form.checkbox value="1"  title="Owner delete" />
+    <br class="rlx5-smallonly" /><f:form.checkbox value="1"  title="Group read" /><f:form.checkbox value="1"  title="Group write" /><f:form.checkbox value="1"  title="Group delete" />
+    <br class="rlx5-smallonly" /><f:form.checkbox value="1"  title="Everybody read" /><f:form.checkbox value="1"  title="Everybody write" /><f:form.checkbox value="1"  title="Everybody delete" />
+        <f:form.hidden property="permissions" id="rlx5-permissions" />
+      </span>
+    </div>
+
+    <span class="rlx5-span-as-label">
+      <label for="name" class="rlx5-min">
+        <f:translate key="tx_relax5core_domain_model_company.name" />
+      </label> 
+      | 
+      <label for="shortName" class="rlx5-min">
+        <f:translate key="tx_relax5core_domain_model_company.short_name" />
+      </label>
+    </span>
+
+    <r5f:form.textfield id="name" property="name" class="rlx5-40" validatorContext="CreateCompany" />
+
+    <r5f:form.textfield id="shortName" property="shortName" class="rlx5-20" validatorContext="CreateCompany" />
+    <br />
+
+      <!-- 1: country | zip | city -->
+      <span class="rlx5-span-as-label">
+        <label for="country" class="rlx5-min">
+          <f:translate key="tx_relax5core_domain_model_address.country" />
+        </label> 
+        | 
+        <label for="zip" class="rlx5-min">
+          <f:translate key="tx_relax5core_domain_model_address.zip" />
+        </label>
+        |
+        <label for="city" class="rlx5-min">
+          <f:translate key="tx_relax5core_domain_model_address.city" />
+        </label>
+      </span>
+
+      <r5f:form.textfield 
+        property="addresses.0.country" 
+        id="country" 
+        class="rlx5-10 geocode-on-blur" 
+        validatorContext="CreateCompany" 
+        value="A" 
+        additionalAttributes="{
+          data-autocomplete-id:'country'
+        }"
+      />
+
+      <r5f:form.textfield 
+        property="addresses.0.zip" 
+        id="zip" 
+        class="rlx5-10 geocode-on-blur" 
+        validatorContext="CreateCompany" 
+        additionalAttributes="{
+          data-autocomplete: 1, 
+          data-autocomplete-id: 'zip',
+          data-autocomplete-condition: 'countryCode equals country;zip like TERM',
+          data-autocomplete-repository: 'CGB\Relax5core\Domain\Repository\ZipCatalogueRepository',
+          data-autocomplete-findmethod: 'findByZip',
+          data-autocomplete-select: '#city=city;#state=state',
+          data-autocomplete-focus: '#address',
+          data-autocomplete-uri: '{h:uri.ajaxAction(extensionName: \\'Relax5core\\',controller: \\'Address\\',pluginName: \\'Core\\', action: \\'autocomplete\\')}'
+        }"
+      />
+
+      <r5f:form.textfield 
+        property="addresses.0.city" 
+        id="city" 
+        class="rlx5-40 geocode-on-blur" 
+        validatorContext="CreateCompany" 
+        additionalAttributes="{
+          data-autocomplete: 1, 
+          data-autocomplete-id: 'city',
+          data-autocomplete-condition: 'countryCode equals country;city like TERM',
+          data-autocomplete-repository: 'CGB\Relax5core\Domain\Repository\ZipCatalogueRepository',
+          data-autocomplete-findmethod: 'findByCity',
+          data-autocomplete-select: '#state=state;#zip=zip',
+          data-autocomplete-focus: '#address',
+          data-autocomplete-uri: '{h:uri.ajaxAction(extensionName: \\'Relax5core\\',controller: \\'Address\\',pluginName: \\'Core\\', action: \\'autocomplete\\')}'
+        }"
+      />
+
+      <br />
+
+      <!-- 2: address | number | number_additions -->
+      <span class="rlx5-span-as-label">
+        <label for="address" class="rlx5-min">
+          <f:translate key="tx_relax5core_domain_model_address.address" />
+        </label>
+        | 
+        <label for="number" class="rlx5-min">
+          <f:translate key="tx_relax5core_domain_model_address.number" />
+        </label>
+        | 
+        <label for="numberAdditions" class="rlx5-min">
+          <f:translate key="tx_relax5core_domain_model_address.number_additions" />
+        </label>
+      </span>
+
+      <r5f:form.textfield 
+        property="addresses.0.address" 
+        id="address" 
+        class="rlx5-40 geocode-on-blur" 
+        validatorContext="CreateCompany" 
+        additionalAttributes="{
+          data-autocomplete: 1, 
+          data-autocomplete-id:'address'
+          data-autocomplete-condition: 'countryCode equals country;zip equals zip;address like TERM',
+          data-autocomplete-repository: 'CGB\Relax5core\Domain\Repository\AddressCatalogueRepository',
+          data-autocomplete-findmethod: 'findByCountryAndZip',
+          data-autocomplete-select: '#address=label',
+          data-autocomplete-focus: '#number',
+          data-autocomplete-uri: '{h:uri.ajaxAction(extensionName: \\'Relax5core\\',controller: \\'Address\\',pluginName: \\'Core\\', action: \\'autocomplete\\')}'
+        }"
+      />
+
+      <r5f:form.textfield property="addresses.0.number" id="number" class="rlx5-10 geocode-on-blur" validatorContext="CreateCompany" />
+      <r5f:form.textfield property="addresses.0.numberAdditions" id="numberAdditions" class="rlx5-10" validatorContext="CreateCompany" /><br />
+
+      <f:form.hidden property="addresses.0.allowMail" value="1" />	
+      <f:form.hidden property="addresses.0.lat" value="1" id="lat" />	
+      <f:form.hidden property="addresses.0.lon" value="1" id="lon" />	
+
+    <!-- 9: map -->
+    <div id="map" class="googlemap" style="width: 100%; height: 300px; border: 1px solid #a9a9a9; padding: 2px; margin-bottom: .5em; "></div>
+
+    <!-- 2: contact type telephone or fax -->
+    <span class="rlx5-span-as-label">
+      <label for="countrycode" class="rlx5-min">
+        <f:translate key="tx_relax5core_domain_model_contact.countrycode" />
+      </label> 
+      | 
+      <label for="areacode" class="rlx5-min">
+        <f:translate key="tx_relax5core_domain_model_contact.areacode" />
+      </label>
+      |
+      <label for="numberPhone" class="rlx5-min">
+        <f:translate key="tx_relax5core_domain_model_contact.number" />
+      </label>
+      |
+      <label for="extension" class="rlx5-min">
+        <f:translate key="tx_relax5core_domain_model_contact.extension" />
+      </label>
+    </span>
+
+    <r5f:form.textfield property="contacts.0.countrycode" id="countrycode" class="rlx5-10" validatorContext="CreateCompany" value="43"/>	
+    <r5f:form.textfield property="contacts.0.areacode" id="areacode" class="rlx5-10" validatorContext="CreateCompany"/>	
+    <r5f:form.textfield property="contacts.0.number" id="numberPhone" class="rlx5-25" validatorContext="CreateCompany"/>	
+    <f:comment></f:comment>
+    <r5f:form.textfield property="contacts.0.extension" id="extension" style="width: 70px;" validatorContext="CreateCompany"/>	
+
+    <br />
+
+    <f:form.hidden property="contacts.0.type" value="12" />	
+
+
+    <label for="email">
+      <f:translate key="tx_relax5core_domain_model_contact.type.3" />
+    </label>
+    <r5f:form.textfield property="contacts.1.contact" id="email" validatorContext="CreateCompany" /><br />
+    <f:form.hidden property="contacts.1.type" value="14" />
+
+    <div class="rlx5-divider"></div>
+
+    <div class="rlx5-collapser" style="position: absolute; ">
+      &nbsp;<span class="texticon-inner-icon ion ion-chevron-down"></span>&nbsp;
+    </div>
+
+    <div class="rlx5-collapsible rlx5-collapsed">
+      <label for="addressLabel" class="rlx5-top">
+          <f:translate key="tx_relax5core_domain_model_company.address_label" />
+      </label>
+      <f:form.textarea property="addressLabel" cols="40" rows="15" /><br />
+    </div>  
+
+    <label for="allowMail">
+        <f:translate key="tx_relax5core_domain_model_company.allow_mail" />
+    </label>
+    <f:form.checkbox id="allowMail" property="allowMail" value="1" /><br />
+
+    <div class="rlx5-divider"></div>
+
+    <label for="status">
+        <f:translate key="tx_relax5core_domain_model_company.status" />
+    </label>
+    <r5f:form.select property="status" options="{statusSelect}" optionLabelField="name" optionValueField="uid" size="1" validatorContext="CreateCompany" /><br />
+
+    <label for="source">
+        <f:translate key="tx_relax5core_domain_model_company.source" />
+    </label>
+    <r5f:form.select 
+      id="company_source_select"
+      property="source" 
+      options="{sourceSelect}" 
+      optionLabelField="name" 
+      optionValueField="uid" 
+      size="1" 
+      validatorContext="CreateCompany"
+      additionalAttributes="{parent:'newCompany'}"
+    /><br />
+
+    <label for="sourcedetail">
+        <f:translate key="tx_relax5core_domain_model_company.sourcedetail" />
+    </label>
+    <span id="company_sourcedetail_select_wrap">
+      <r5f:form.select 
+        id="company_sourcedetail_select"
+        property="sourcedetail" 
+        options="{sourcedetailSelect}" 
+        optionLabelField="name" 
+        optionValueField="uid" 
+        size="1" 
+        validatorContext="CreateCompany"
+      />
+    </span>
+
+    <span class="_loadDetails" loaddetails="{h:uri.ajaxAction(extensionName: 'Relax5core', pluginName: 'Core', controller: 'Source', action: 'loadDetails')}"></span>
+
+    <!-- works only within modal dialog window -->
+    <script type="text/javascript">
+      <f:format.cdata>
+        $(document).ready(function() {
+          activateCollapser('.rlx5-collapser', '.rlx5-form', true);
+          activateLoadDetails (
+            '#company_source_select', 
+            '', 
+            '#company_sourcedetail_select_wrap', 
+            $('._loadDetails').attr('loaddetails')
+          );
+          // invoke load details in case we returned to the form and source already set
+          //$( '#company_source_select', '').change();
+          activateMap();
+          showErrors();
+          $('#company_source_select').change();
+          activateAutocomplete();
+        });
+      </f:format.cdata>
+    </script>
+  </f:section>
+
+
+  <f:section name="Aux">
+    <fieldset class="rlx5-aux">
+      <legend>
+        Companyenbeziehung hinzufügen
+      </legend>
+      
+      <span class="rlx5-span-as-label">
+        <label for="lastName" class="rlx5-min">
+          <f:translate key="tx_relax5core_domain_model_company.last_name" />
+        </label> 
+        | 
+        <label for="firstName" class="rlx5-min">
+          <f:translate key="tx_relax5core_domain_model_company.first_name" />
+        </label>
+        |
+        <label for="middleName" class="rlx5-min">
+          <f:translate key="tx_relax5core_domain_model_company.middle_name" />
+        </label>
+      </span>
+
+      <r5f:form.textfield 
+        id="lastName" 
+        property="lastName" 
+        class="rlx5-20" 
+        validatorContext="CreateCompanyAux" 
+        additionalAttributes="{
+          onfocus:'if ($(this).val() == \'\') { $(this).val($(\'#last_name\', window.opener.document).html());}'
+        }"
+      />
+
+      <r5f:form.textfield 
+        id="firstName" 
+        property="firstName" 
+        class="rlx5-20" 
+        validatorContext="CreateCompanyAux" 
+          
+        additionalAttributes="{
+          onfocus:'if ($(\'#lastName\').val() == \'\') { $(\'#lastName\').val($(\'#last_name\', window.opener.document).html());}',
+          data-autocomplete: 1, 
+          data-autocomplete-id:'firstName'
+          data-autocomplete-condition: 'name like TERM',
+          data-autocomplete-repository: 'CGB\Relax5core\Domain\Repository\NameCatalogueRepository',
+          data-autocomplete-findmethod: 'findByName',
+          data-autocomplete-select: '#gender=gender',
+          data-autocomplete-uri: '{h:uri.ajaxAction(extensionName: \\'Relax5core\\',controller: \\'Address\\',pluginName: \\'Core\\', action: \\'autocomplete\\')}'
+        }"
+      />
+
+      <r5f:form.textfield id="middleName" property="middleName" class="rlx5-20" validatorContext="CreateCompanyAux" /><br />
+
+      <span class="rlx5-span-as-label" class="rlx5-min">
+        <label for="title">
+          <f:translate key="tx_relax5core_domain_model_company.title" />
+        </label>
+        |
+        <label for="salutation" class="rlx5-min">
+          <f:translate key="tx_relax5core_domain_model_company.salutation" />
+        </label>
+      </span>
+
+      <r5f:form.textfield id="title" property="title" class="rlx5-30" validatorContext="CreateCompanyAux" />
+      <r5f:form.textfield id="salutation" property="salutation" class="rlx5-30" validatorContext="CreateCompanyAux" /><br />
+
+      <label for="gender">
+          <f:translate key="tx_relax5core_domain_model_company.gender" />
+      </label>
+        <span>
+          <label for="gender_1" class="rlx5-styledradio" title="<f:translate key='tx_relax5core_domain_model_company.gender_1' />">
+            <f:form.radio property="gender" value="1" id="gender_1" />
+            <span class="ion ion-male"></span>
+          </label><label for="gender_2" class="rlx5-styledradio" title="<f:translate key='tx_relax5core_domain_model_company.gender_2' />">
+            <f:form.radio property="gender" value="2" id="gender_2" />
+            <span class="ion ion-female"></span>
+          </label>
+        </span>
+      <br />
+
+      <f:form.hidden name="target" value="{f:cObject(typoscriptObjectPath: 'lib.gpvar', data: 'target')}" />
+      
+      <label>
+      </label>
+      <f:form.submit value="Company hinzufügen und verknüpfen" /><br />
+      
+    </fieldset>
+  </f:section>
+
+  
+</html>

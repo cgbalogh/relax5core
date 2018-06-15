@@ -1,0 +1,51 @@
+<!-- docref BEGIN: EXT:relax5core/Resources/Private/Partials/Address/ShowAddresses.html v8.6 -->
+<!-- rev: 2017-04-30 -->
+
+<f:if condition="{item}">
+  <div class="rlx5-item-{item.itemtype}-addresses rlx5-{item.itemtype} rlx5-core-data-box {f:if(condition: '{item}',then:'rlx5-ispopulated',else:'rlx5-isempty')}">
+    <div id="addressList{item.itemtype}" class="rlx5-coredata-block">
+      <h3 class="rlx5-collapser">
+        <span class="texticon-inner-icon ion ion-chevron-up"></span>
+        <f:translate key="LLL:EXT:relax5core/Resources/Private/Language/locallang.xlf:tx_relax5core_domain_model_person.addresses" /> (<f:count subject="{item.addresses}" />)
+        <div class="rlx5-buttons"><a:actionicon 
+            uri="{h:uri.ajaxAction(
+              extensionName: 'Relax5core',
+              controller: 'Address',
+              pluginName: 'Core',
+              action: 'new',
+              arguments: '{newAddress:newAddress, itemtype:\\'{item.itemtype}\\', item:item}'
+            )}"
+            
+            class="modalDialog rlx5-button rlx5-edit"
+            title="{f:translate(key:'LLL:EXT:relax5core/Resources/Private/Language/locallang.xlf:tx_relax5core_domain_model_address')}" 
+            domainModelObject="{item.itemtype}" 
+            intendedAction="edit"
+            action="new"
+            forceIcon="addIcon"
+            permissions="{item.permissions}" 
+            user="{item.owner}" 
+            group="{item.usergroup}"
+            pageType="{f:cObject(typoscriptObjectPath:'lib.relax5core.ajax')}"
+            extensionName="Relax5core"
+            pluginName="Ajax" 
+            controller="Address"
+            mapArgumentName="item->{item.itemtype}"
+            arguments="{newAddress:newAddress, item:item}"
+            additionalAttributes="{onsave: 'window.location.reload()'}"
+          /></div>
+      </h3>
+      
+      <div class="rlx5-collapsible <f:if condition="{a:permission(domainModelObject:'{item.itemtype}',intendedAction:'write',permissions:'{item.permissions}',user:'{item.owner}',group:'{item.usergroup}')}">sortable</f:if>" 
+           uri="{h:uri.ajaxAction(extensionName: 'Relax5core', controller: 'Address', pluginName: 'Core', action: 'resort')}" 
+        >
+        <f:for each="{item.addresses}" as="address">
+          <div id="address_{address.uid}" class="rlx5-address" uid="{address.uid}">
+            <f:render partial="Address/ShowOneAddress" arguments="{address:address}" />
+          </div>
+        </f:for>
+      </div>
+    </div>
+  </div>
+</f:if>
+
+<!-- docref END: EXT:relax5core/Resources/Private/Partials/Address/ShowAddresses.html v8.6 -->

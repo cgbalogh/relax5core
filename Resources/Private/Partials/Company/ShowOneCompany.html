@@ -1,0 +1,38 @@
+<f:if condition="{company.uid}">
+  <div class="rlx5-coredata-single">
+    <div class="">
+      <f:if condition="{relation}">
+        <f:then>
+          <a href="{f:uri.action(pageUid:settings.companyShowPid, extensionName: 'Relax5core', controller: 'Company', action: 'show', arguments: {company:company,settings:settings})}">
+            <span reference="name_{company.uid}">{company.name}</span>
+            <span reference="shortName_{company.uid}">{company.shortName}</span>
+          </a>
+        </f:then>
+        <f:else>
+            <span reference="name_{company.uid}">{company.name}</span>
+            <span reference="shortName_{company.uid}">{company.shortName}</span>
+        </f:else>
+      </f:if>
+    </div>
+    <div class="rlx5-buttons">
+      <f:if condition="{relation}">
+        <f:image 
+          class="rlx5-button rlx5-edit"
+          src="EXT:core/Resources/Public/Icons/T3Icons/actions/actions-swap.svg" 
+          alt="{alt}" title="{title}" 
+        />
+      </f:if>
+      <f:image 
+        class="rlx5-button rlx5-edit"
+        src="EXT:core/Resources/Public/Icons/T3Icons/actions/actions-open.svg" 
+        alt="{alt}" title="{title}" 
+      />
+      <f:image 
+        class="rlx5-button rlx5-delete" 
+        src="EXT:core/Resources/Public/Icons/T3Icons/actions/actions-delete.svg" 
+        alt="{alt}" title="{title}" 
+      />
+      
+    </div>
+  </div>
+</f:if>

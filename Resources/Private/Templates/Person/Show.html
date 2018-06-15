@@ -1,0 +1,44 @@
+{namespace rlx5=CGB\Relax5core\ViewHelpers}
+{namespace v=FluidTYPO3\Vhs\ViewHelpers}
+{namespace a=CGB\Accessmanager\ViewHelpers}
+{namespace h=Helhum\TyposcriptRendering\ViewHelpers}
+
+<f:layout name="Default" />
+
+<f:section name="main">
+  <f:if condition="{link} && {person}">
+    <f:then>
+      <v:variable.set name="company" value="{link.company}" />
+    </f:then>
+    <f:else>
+      <v:variable.set name="link" value="{person.links.0}" />
+      <v:variable.set name="company" value="{link.company}" />
+    </f:else>
+  </f:if>
+  <v:variable.set name="focus" value="person" />  
+  
+  <span class="_focusobjectid" uid="{person.uid}" focus="person" />
+  <span data-newrecord="{newrecord}" data-addproject="{addproject}" />
+  
+  <fieldset class="rlx5-envelope-fieldset">
+    <legend id="rlx5-datatop" class="rlx5-focusperson">
+      <span reference="person_{person.uid}_lastName">{person.lastName}</span>
+      <span reference="person_{person.uid}_firstName">{person.firstName}</span>
+      <span reference="person_{person.uid}_title">({person.title})</span>
+        
+      <f:if condition="{link.uid}">
+        <!-- {f:uri.action(pageUid: settings.companyShowPid, extensionName: 'Relax5core', pluginName: 'Company', controller: 'Company', action: 'show', arguments: {company:company, link:link})} -->
+        <a class="rlx5-changefocus" href="{f:uri.action(pageUid: settings.companyShowPid, extensionName: 'Relax5core', pluginName: 'Company', controller: 'Company', action: 'show', arguments: {company:company, link:link})}">
+          <f:translate key="LLL:EXT:relax5core/Resources/Private/Language/locallang_fe.xlf:tx_relax5core_general.change_focus_to_company" />
+          <b>{company.shortName}</b>
+        </a>
+      </f:if>
+    </legend>
+
+    <f:render partial="General/ShowData" arguments="{_all}" />
+    
+  </fieldset>
+
+  <p class="footnote">docref: EXT:relax5core/Resources/Private/Templates/Person/Show.html v8.7</p>
+  
+</f:section>

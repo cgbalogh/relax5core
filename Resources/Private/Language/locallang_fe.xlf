@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+	<file source-language="en" datatype="plaintext" original="messages" date="2017-04-26T21:53:26Z" product-name="relax5core">
+		<header/>
+		<body>
+			<trans-unit id="tx_relax5core_general.current_record">
+				<source>Current Record</source>
+			</trans-unit>
+			<trans-unit id="tx_relax5core_general.print_view">
+				<source>Print View</source>
+			</trans-unit>
+			<trans-unit id="tx_relax5core_general.change_focus_to_company">
+				<source>Change Focus to Company:</source>
+			</trans-unit>
+			<trans-unit id="tx_relax5core_general.change_focus_to_person">
+				<source>Change Focus to Person:</source>
+			</trans-unit>
+		</body>
+	</file>
+</xliff>

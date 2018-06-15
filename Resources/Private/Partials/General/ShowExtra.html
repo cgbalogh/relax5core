@@ -1,0 +1,98 @@
+<f:if condition="{item}">
+  <div class="rlx5-item-{item.itemtype}-extra rlx5-{item.itemtype} rlx5-core-data-box {f:if(condition: '{item}',then:'rlx5-ispopulated',else:'rlx5-isempty')}">
+    <div id="extra{itemtype}" class="rlx5-coredata-block">
+      <h3 class="rlx5-collapser">
+        <span class="texticon-inner-icon ion ion-chevron-up"></span>
+        <f:translate key="LLL:EXT:relax5core/Resources/Private/Language/locallang.xlf:tx_relax5core_domain_model_{item.itemtype}.extra" />
+        <div class="rlx5-buttons"><f:if condition="{item.itemtype}=='person'"><a:actionicon 
+              uri="{h:uri.ajaxAction(
+                extensionName: 'Relax5core',
+                controller: 'Person',
+                pluginName: 'Core',
+                action: 'edit',
+                arguments: '{person:item, section:\'extra\'}'
+              )}"
+
+              class="modalDialog rlx5-button rlx5-edit"
+              title="{f:translate(key:'LLL:EXT:relax5core/Resources/Private/Language/locallang.xlf:tx_relax5core_domain_model_extra')}" 
+              domainModelObject="Person" 
+              intendedAction="edit"
+              action="edit"
+              permissions="{item.permissions}" 
+              user="{item.owner}" 
+              group="{item.usergroup}"
+              mapArgumentName="item->{item.itemtype}"
+            /></f:if><f:if condition="{item.itemtype}=='company'"><a:actionicon 
+              uri="{h:uri.ajaxAction(
+                extensionName: 'Relax5core',
+                controller: 'Company',
+                pluginName: 'Core',
+                action: 'edit',
+                arguments: '{company:item, section:\'extra\'}'
+              )}"
+
+              class="modalDialog rlx5-button rlx5-edit"
+              title="{f:translate(key:'LLL:EXT:relax5core/Resources/Private/Language/locallang.xlf:tx_relax5core_domain_model_extra')}" 
+              domainModelObject="Company" 
+              intendedAction="edit"
+              action="edit"
+              permissions="{item.permissions}" 
+              user="{item.owner}" 
+              group="{item.usergroup}"
+              mapArgumentName="item->{item.itemtype}"
+            /></f:if><f:if condition="{item.itemtype}=='link'"><a:actionicon 
+              uri="{h:uri.ajaxAction(
+                extensionName: 'Relax5core',
+                controller: 'Link',
+                pluginName: 'Core',
+                action: 'edit',
+                arguments: '{link:item, section:\'extra\'}'
+              )}"
+
+              class="modalDialog rlx5-button rlx5-edit"
+              title="{f:translate(key:'LLL:EXT:relax5core/Resources/Private/Language/locallang.xlf:tx_relax5core_domain_model_extra')}" 
+              domainModelObject="Link" 
+              intendedAction="edit"
+              action="edit"
+              permissions="{item.person.permissions}|{item.company.permissions}" 
+              user="{item.person.owner.uid}|{item.company.owner.uid}" 
+              group="{item.person.usergroup.uid}|{item.company.usergroup.uid}"
+              mapArgumentName="item->{item.itemtype}"
+            /></f:if></div>
+      </h3>
+      <div class="rlx5-collapsible">
+        <table style="width: 100%;">
+          <tr>
+            <td style="width: 30%;"><b><f:translate key="LLL:EXT:relax5core/Resources/Private/Language/locallang.xlf:tx_relax5core_domain_model_{item.itemtype}.source" /></b></td>
+            <td>{item.source.name}&nbsp;</td>
+          </tr>
+          <tr>
+            <td><b><f:translate key="LLL:EXT:relax5core/Resources/Private/Language/locallang.xlf:tx_relax5core_domain_model_{item.itemtype}.sourcedetail" /></b></td>
+            <td>{item.sourcedetail.name}&nbsp;</td>
+          </tr>
+          <f:if condition="{item.image.uid}">
+            <tr>
+              <td><b><f:translate key="LLL:EXT:relax5core/Resources/Private/Language/locallang.xlf:tx_relax5core_domain_model_person.image" /></b></td>
+              <td><f:image src="{item.image.uid}" alt="" treatIdAsReference="TRUE" style="width: 8em; height: auto;"/></td>
+            </tr>
+          </f:if>
+          <tr>
+            <td><b><f:translate key="LLL:EXT:relax5core/Resources/Private/Language/locallang.xlf:tx_relax5core_domain_model_categories" /></b></td>
+            <td>
+              <ul class="rlx5-categories">
+                <f:for each="{item.categoriesSorted}" as="category">
+                  <li>{category.category}</li>
+                </f:for>
+              </ul>
+            </td>
+          </tr>
+          <tr>
+            <td><b><f:translate key="LLL:EXT:relax5core/Resources/Private/Language/locallang.xlf:tx_relax5core_domain_model_{item.itemtype}.comments" /></b></td>
+            <td><f:format.html>{item.comments}</f:format.html></td>
+          </tr>
+          
+        </table>
+      </div>
+    </div>
+  </div>
+</f:if>

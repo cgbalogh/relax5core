@@ -1,0 +1,90 @@
+<f:if condition="{item}">
+  <div class="rlx5-item-{item.itemtype}-links rlx5-{item.itemtype} rlx5-core-data-box {f:if(condition: '{item}',then:'rlx5-ispopulated',else:'rlx5-isempty')}">
+    <div id="linkList{itemtype}" class="rlx5-coredata-block">
+      <h3 class="rlx5-collapser">
+        <span class="texticon-inner-icon ion ion-chevron-up"></span>
+        <f:switch expression="{item.itemtype}">
+          <f:case value='person'>
+            <f:translate key="LLL:EXT:relax5core/Resources/Private/Language/locallang.xlf:tx_relax5core_domain_model_link.companies" /> (<f:count subject="{item.links}" />)
+          </f:case>
+          <f:case value='company'>
+            <f:translate key="LLL:EXT:relax5core/Resources/Private/Language/locallang.xlf:tx_relax5core_domain_model_link.persons" /> (<f:count subject="{item.links}" />)
+          </f:case>
+        </f:switch>
+        
+        <div class="rlx5-buttons">
+          <!-- TODO: dimensions of child window settable in plugin -->
+
+          <f:if condition="{item.itemtype}=='person'">
+            <f:link.page 
+              class="ui-button selectWindow"
+              target="_new" 
+              pageUid="{settings.selectCompanyLink}" 
+            >
+              <f:image src="EXT:core/Resources/Public/Icons/T3Icons/apps/apps-pagetree-page-shortcut-external.svg" alt="" class="rlx5-button" />
+            </f:link.page>
+
+            <a:actionicon 
+              uri="{h:uri.ajaxAction(
+                extensionName: 'Relax5core',
+                controller: 'Link',
+                pluginName: 'Core',
+                action: 'create',
+                arguments: '{prefix: \\'tx_relax5core_core\\', person: item.uid, onsuccess: \\'window.opener.location.reload();window.close();\\'}'
+              )}"
+              
+              id="addCompanyLink" 
+              style="display: none"
+              domainModelObject="Person" 
+              intendedAction="add"
+              permissions="{item.permissions}" 
+              user="{item.owner}" 
+              group="{item.usergroup}"
+              pageType="{f:cObject(typoscriptObjectPath:'lib.relax5core.ajax')}"
+              additionalAttributes="{prefix: 'tx_relax5core_core', person: item.uid, onsuccess: 'window.opener.location.reload();window.close();'}"
+            />
+          </f:if>
+
+          <f:if condition="{item.itemtype}=='company'">
+            <f:link.page 
+              class="ui-button selectWindow"
+              target="_new" 
+              pageUid="{settings.selectPersonLink}" 
+            >
+              <f:image src="EXT:core/Resources/Public/Icons/T3Icons/apps/apps-pagetree-page-shortcut-external.svg" alt="" class="rlx5-button" />
+            </f:link.page>
+            
+            <a:actionicon 
+              uri="{h:uri.ajaxAction(
+                extensionName: 'Relax5core',
+                controller: 'Link',
+                pluginName: 'Core',
+                action: 'create',
+                arguments: '{prefix: \\'tx_relax5core_core\\' ,company: item.uid, onsuccess: \\'window.opener.location.reload();window.close();\\'}'
+              )}"
+
+              id="addPersonLink" 
+              style="display: none"
+              domainModelObject="Company" 
+              intendedAction="add"
+              permissions="{item.permissions}" 
+              user="{item.owner}" 
+              group="{item.usergroup}"
+              pageType="{f:cObject(typoscriptObjectPath:'lib.relax5core.ajax')}"
+              additionalAttributes="{prefix: 'tx_relax5core_core', company: item.uid, onsuccess: 'window.opener.location.reload();window.close();'}"
+            />
+          </f:if>
+        </div>
+      </h3>
+      <div class="rlx5-collapsible sortable" 
+        uri="{h:uri.ajaxAction(extensionName: 'Relax5core', controller: 'Link', pluginName: 'Core', action: 'resort', arguments: '{itemtype: item.itemtype}')}"
+      >
+        <f:for each="{item.links}" as="linkitem">
+          <div id="link_{linkitem.uid}" uid="{linkitem.uid}">
+            <f:render partial="Link/ShowOneLink" arguments="{item:item, link:linkitem, focus:focus}" />
+          </div>
+        </f:for>
+      </div>
+    </div>
+  </div>
+</f:if>

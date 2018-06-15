@@ -1,0 +1,74 @@
+<!-- docref BEGIN: EXT:relax5core/Resources/Private/Partials/General/ShowData.html v8.7 -->
+<!-- rev: 2017-10-21 -->
+
+<div class="rlx5-core-data-box-outer rlx5-datagrid-container">
+  <f:render partial="General/ShowInfo" arguments="{item:person, itemtype:'person'}" />
+  <f:render partial="Person/ShowHeader" arguments="{person:person}" />    
+  <f:render partial="Person/ShowRelations" arguments="{_all}" />
+  <f:render partial="Address/ShowAddresses" arguments="{item:person}" />
+  <f:render partial="Contact/ShowContacts" arguments="{item:person}" />
+  <f:render partial="Link/ShowLinks" arguments="{item:person, focus:focus}" />
+  <f:render partial="General/ShowExtra" arguments="{item:person, focus:focus}" />
+  
+  
+  <f:render partial="General/ShowInfo" arguments="{item:link, itemtype:'link'}" />
+  <f:render partial="Link/Show" arguments="{link:link}" />  
+  <f:render partial="Address/ShowAddresses" arguments="{item:link}" />  
+  <f:render partial="Contact/ShowContacts" arguments="{item:link}" />
+  <!-- -->
+  <!-- -->
+  <f:render partial="General/ShowExtra" arguments="{item:link, focus:focus}" />
+  
+  <f:render partial="General/ShowInfo" arguments="{item:company, itemtype:'company'}" />
+  <f:render partial="Company/ShowHeader" arguments="{company:company}" />    
+  <f:render partial="Company/ShowRelations" arguments="{_all}" />
+  <f:render partial="Address/ShowAddresses" arguments="{item:company}" />
+  <f:render partial="Contact/ShowContacts" arguments="{item:company}" />
+  <f:render partial="Link/ShowLinks" arguments="{item:company, focus:focus}" />
+  <f:render partial="General/ShowExtra" arguments="{item:company, focus:focus}" />
+  
+  <f:if condition="{focus}=='person'">
+    <f:render partial="Appointment/List" arguments="{item:person, focus:focus}" />
+    <span data-pagetitle="{person.uid}: {person.lastName} {person.firstName}"></span>
+  </f:if>
+    
+  <f:if condition="{focus}=='company'">
+    <f:render partial="Appointment/List" arguments="{item:company, focus:focus}" />
+    <span data-pagetitle="{company.uid}: {company.shortName} {company.name}"></span>
+  </f:if>
+
+
+  <div class="rlx5-projects rlx5-project rlx5-core-data-box ">
+    <div id="projectList" class="rlx5-coredata-block">
+      
+      <h3 class="rlx5-collapser">
+        <span class="texticon-inner-icon ion ion-chevron-up"></span>
+        <f:translate key="LLL:EXT:relax5project/Resources/Private/Language/locallang.xlf:tx_relax5project_domain_model_projects" />
+      </h3>
+
+      <div id="rlx5-project-container" class="rlx5-collapsible">
+        
+      </div>
+    </div>
+  </div>
+
+
+  
+  
+  <f:comment>
+    <f:if condition="{focus}=='person'">
+      <f:render partial="General/Help" />
+    </f:if>
+  </f:comment>
+  
+</div>
+
+<f:comment>
+  <f:render partial="Link/Show" arguments="{item:link}" />
+  <f:render partial="Company/ShowOneCompany" arguments="{company:company}" />
+  
+  <f:render partial="Person/ShowAdditionalInfo" arguments="{item:person}" />
+  <f:render partial="Company/ShowAdditionalInfo" arguments="{item:company}" />
+</f:comment>
+
+<!-- docref END: EXT:relax5core/Resources/Private/Partials/General/ShowData.html v8.7 -->

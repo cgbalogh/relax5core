@@ -1,0 +1,76 @@
+{namespace v=FluidTYPO3\Vhs\ViewHelpers}
+
+<f:switch expression="{item.itemtype}">
+  <f:case value='person'>
+    <v:variable.set name="linktext" value="{link.company.name}" />
+  </f:case>
+  <f:case value='company'>
+    <v:variable.set name="linktext" value="{link.person.lastName} {link.person.firstName}" />
+  </f:case>
+</f:switch>
+
+<div class="rlx5-coredata-single">
+  <div class="">
+    <f:switch expression="{focus}">
+      <f:case value="person">
+        <a href="{f:uri.action(extensionName: 'Relax5core', controller: 'Person', action: 'show', arguments: {person:link.person, link:link})}">
+          {linktext}  
+        </a>
+      </f:case>
+      <f:case value="company">
+        <a href="{f:uri.action(extensionName: 'Relax5core', controller: 'Company', action: 'show', arguments: {company:link.company, link:link})}">
+          {linktext} 
+        </a>
+      </f:case>
+    </f:switch>
+  </div>
+  <div class="rlx5-buttons">
+      <a:actionicon 
+        uri="{h:uri.ajaxAction(
+          extensionName: 'Relax5core',
+          controller: 'Link',
+          pluginName: 'Core',
+          action: 'edit',
+          arguments: '{link: link}'
+        )}"
+        alturi="{h:uri.ajaxAction(
+          extensionName: 'Relax5core',
+          controller: 'Link',
+          pluginName: 'Core',
+          action: 'show',
+          arguments: '{link: link}'
+        )}"
+        
+        class="modalDialog rlx5-button rlx5-edit"
+        title="{f:translate(key:'tx_relax5core_domain_model_link')} {link.uid}" 
+        domainModelObject="Link" 
+        intendedAction="editorshow"
+        permissions="{link.permissions}" 
+        user="{link.owner}" 
+        group="{link.usergroup}"
+      />
+      
+      <a:actionicon 
+        uri="{h:uri.ajaxAction(
+          extensionName: 'Relax5core',
+          controller: 'Link',
+          pluginName: 'Core',
+          action: 'delete',
+          arguments: '{link: link}'
+        )}"
+        
+        class="modalConfirm rlx5-button rlx5-delete" 
+        title="{f:translate(key:'tx_relax5core_domain_model_relation')} {relation.uid}" 
+        domainModelObject="Link" 
+        intendedAction="remove"
+        child="Link"
+        permissions="{link.permissions}" 
+        user="{link.owner}" 
+        group="{link.usergroup}"
+        arguments="{link: link}"
+        additionalAttributes="{
+        text: '<b>{link.person.lastName} {link.person.firstName} <-> {link.company.name}:</b> {f:translate(key:\"tx_relax5core_domain_model_link.confirm_remove\")}'
+        }"
+      />
+  </div>
+</div>

@@ -1,0 +1,36 @@
+<!-- docref BEGIN: EXT:relax5core/Resources/Private/Partials/General/ShowInfo.html v8.6 -->
+<!-- rev: 2017-04-30 -->
+
+<div class="rlx5-item-{itemtype}-info rlx5-{itemtype} rlx5-core-data-box {f:if(condition: '{item}',then:'rlx5-ispopulated',else:'rlx5-isempty')}">
+  <div class="rlx5-info rlx5-clearfix">
+    <span class="droppable" title="">
+      <f:if condition="{item.uid}">
+        <f:then>
+          {item.uid}&nbsp;
+        </f:then>
+        <f:else>
+          &nbsp;
+        </f:else>
+      </f:if>
+      
+      
+    </span>
+    
+    <span 
+      class="" 
+      reference="{itemtype}_{item.uid}_owner" 
+      title="
+<f:translate key='LLL:EXT:relax5core/Resources/Private/Language/locallang.xlf:tx_relax5core_domain_model_{itemtype}.owner' />: {item.owner.firstName} {item.owner.lastName}
+<f:translate key='LLL:EXT:relax5core/Resources/Private/Language/locallang.xlf:tx_relax5core_domain_model_{itemtype}.usergroup' />: {item.usergroup.title}
+<f:translate key='LLL:EXT:relax5core/Resources/Private/Language/locallang.xlf:tx_relax5core_domain_model_{itemtype}.permissions' />: {item.permissions->f:format.padding(padLength:3,padString:'0', padType: 'left')}
+      "
+    >
+      {item.owner.username}&nbsp;
+    </span>
+    
+    <span class="" title="<f:translate key='LLL:EXT:relax5core/Resources/Private/Language/locallang.xlf:tx_relax5core_general.crdate' />">{item.crdate -> f:format.date(format: '{f:translate(key: \'LLL:EXT:relax5core/Resources/Private/Language/locallang.xml:tx_relax5core_general.date_format\')}')}&nbsp;</span>
+    <span class="" title="<f:translate key='LLL:EXT:relax5core/Resources/Private/Language/locallang.xlf:tx_relax5core_general.tstamp' />" reference="{itemtype}Tstamp_{item.uid}" >{item.tstamp -> f:format.date(format: '{f:translate(key: \'LLL:EXT:relax5core/Resources/Private/Language/locallang.xml:tx_relax5core_general.date_format\')}')}&nbsp;</span>
+  </div>
+</div>
+
+<!-- docref END: EXT:relax5core/Resources/Private/Partials/General/ShowInfo.html v8.6 -->

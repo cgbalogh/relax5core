@@ -1,0 +1,617 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+	<file source-language="en" datatype="plaintext" original="messages" date="2018-05-27T10:58:22Z" product-name="relax5core">
+		<header/>
+		<body>
+			<trans-unit id="tx_relax5core_domain_model_person">
+				<source>Person</source>
+			</trans-unit>
+			<trans-unit id="tx_relax5core_domain_model_person.last_name">
+				<source>Last Name</source>
+			</trans-unit>
+			<trans-unit id="tx_relax5core_domain_model_person.first_name">
+				<source>First Name</source>
+			</trans-unit>
+			<trans-unit id="tx_relax5core_domain_model_person.middle_name">
+				<source>Middle Name</source>
+			</trans-unit>
+			<trans-unit id="tx_relax5core_domain_model_person.title">
+				<source>Title</source>
+			</trans-unit>
+			<trans-unit id="tx_relax5core_domain_model_person.gender">
+				<source>Gender</source>
+			</trans-unit>
+			<trans-unit id="tx_relax5core_domain_model_person.date_of_birth">
+				<source>Date Of Birth</source>
+			</trans-unit>
+			<trans-unit id="tx_relax5core_domain_model_person.marital_state">
+				<source>Marital State</source>
+			</trans-unit>
+			<trans-unit id="tx_relax5core_domain_model_person.image">
+				<source>Image</source>
+			</trans-unit>
+			<trans-unit id="tx_relax5core_domain_model_person.salutation">
+				<source>Salutation</source>
+			</trans-unit>
+			<trans-unit id="tx_relax5core_domain_model_person.comments">
+				<source>Comments</source>
+			</trans-unit>
+			<trans-unit id="tx_relax5core_domain_model_person.allow_mail">
+				<source>Allow Mail</source>
+			</trans-unit>
+			<trans-unit id="tx_relax5core_domain_model_person.address_label">
+				<source>Address Label</source>
+			</trans-unit>
+			<trans-unit id="tx_relax5core_domain_model_person.permissions">
+				<source>Permissions</source>
+			</trans-unit>
+			<trans-unit id="tx_relax5core_domain_model_person.status">
+				<source>Status</source>
+			</trans-unit>
+			<trans-unit id="tx_relax5core_domain_model_person.owner">
+				<source>Owner</source>
+			</trans-unit>
+			<trans-unit id="tx_relax5core_domain_model_person.usergroup">
+				<source>Usergroup</source>
+			</trans-unit>
+			<trans-unit id="tx_relax5core_domain_model_person.source">
+				<source>Source</source>
+			</trans-unit>
+			<trans-unit id="tx_relax5core_domain_model_person.sourcedetail">
+				<source>Sourcedetail</source>
+			</trans-unit>
+			<trans-unit id="tx_relax5core_domain_model_person.relations">
+				<source>Relations</source>
+			</trans-unit>
+			<trans-unit id="tx_relax5core_domain_model_person.addresses">
+				<source>Addresses</source>
+			</trans-unit>
+			<trans-unit id="tx_relax5core_domain_model_person.contacts">
+				<source>Contacts</source>
+			</trans-unit>
+			<trans-unit id="tx_relax5core_domain_model_person.documents">
+				<source>Documents</source>
+			</trans-unit>
+			<trans-unit id="tx_relax5core_domain_model_person.links">
+				<source>Links</source>
+			</trans-unit>
+			<trans-unit id="tx_relax5core_domain_model_person.appointments">
+				<source>Appointments</source>
+			</trans-unit>
+			<trans-unit id="tx_relax5core_domain_model_person.categories">
+				<source>Categories</source>
+			</trans-unit>
+			<trans-unit id="tx_relax5core_domain_model_owner">
+				<source>Owner</source>
+			</trans-unit>
+			<trans-unit id="tx_relax5core_domain_model_owner.pwd_change_date">
+				<source>Pwd Change Date</source>
+			</trans-unit>
+			<trans-unit id="tx_relax5core_domain_model_owner.settings">
+				<source>Settings</source>
+			</trans-unit>
+			<trans-unit id="tx_relax5core_domain_model_owner.void">
+				<source>Void</source>
+			</trans-unit>
+			<trans-unit id="tx_relax5core_domain_model_owner.position">
+				<source>Position</source>
+			</trans-unit>
+			<trans-unit id="tx_relax5core_domain_model_owner.team">
+				<source>Team</source>
+			</trans-unit>
+			<trans-unit id="tx_relax5core_domain_model_owner.pool">
+				<source>Pool</source>
+			</trans-unit>
+			<trans-unit id="fe_users.tx_extbase_type.Tx_Relax5core_Owner">
+				<source>relax5core Owner</source>
+			</trans-unit>
+			<trans-unit id="tx_relax5core_domain_model_address">
+				<source>Address</source>
+			</trans-unit>
+			<trans-unit id="tx_relax5core_domain_model_address.address">
+				<source>Address</source>
+			</trans-unit>
+			<trans-unit id="tx_relax5core_domain_model_address.number">
+				<source>Number</source>
+			</trans-unit>
+			<trans-unit id="tx_relax5core_domain_model_address.number_additions">
+				<source>Number Additions</source>
+			</trans-unit>
+			<trans-unit id="tx_relax5core_domain_model_address.zip">
+				<source>Zip</source>
+			</trans-unit>
+			<trans-unit id="tx_relax5core_domain_model_address.city">
+				<source>City</source>
+			</trans-unit>
+			<trans-unit id="tx_relax5core_domain_model_address.state">
+				<source>State</source>
+			</trans-unit>
+			<trans-unit id="tx_relax5core_domain_model_address.country">
+				<source>Country</source>
+			</trans-unit>
+			<trans-unit id="tx_relax5core_domain_model_address.lat">
+				<source>Lat</source>
+			</trans-unit>
+			<trans-unit id="tx_relax5core_domain_model_address.lon">
+				<source>Lon</source>
+			</trans-unit>
+			<trans-unit id="tx_relax5core_domain_model_address.geo_only">
+				<source>Geo Only</source>
+			</trans-unit>
+			<trans-unit id="tx_relax5core_domain_model_address.description">
+				<source>Description</source>
+			</trans-unit>
+			<trans-unit id="tx_relax5core_domain_model_address.allow_mail">
+				<source>Allow Mail</source>
+			</trans-unit>
+			<trans-unit id="tx_relax5core_domain_model_address.additional_info">
+				<source>Additional Info</source>
+			</trans-unit>
+			<trans-unit id="tx_relax5core_domain_model_address.verified">
+				<source>Verified</source>
+			</trans-unit>
+			<trans-unit id="tx_relax5core_domain_model_address.permissions">
+				<source>Permissions</source>
+			</trans-unit>
+			<trans-unit id="tx_relax5core_domain_model_address.zoom">
+				<source>Zoom</source>
+			</trans-unit>
+			<trans-unit id="tx_relax5core_domain_model_address.map_type">
+				<source>Map Type</source>
+			</trans-unit>
+			<trans-unit id="tx_relax5core_domain_model_address.type">
+				<source>Type</source>
+			</trans-unit>
+			<trans-unit id="tx_relax5core_domain_model_status">
+				<source>Status</source>
+			</trans-unit>
+			<trans-unit id="tx_relax5core_domain_model_status.name">
+				<source>Name</source>
+			</trans-unit>
+			<trans-unit id="tx_relax5core_domain_model_source">
+				<source>Source</source>
+			</trans-unit>
+			<trans-unit id="tx_relax5core_domain_model_source.name">
+				<source>Name</source>
+			</trans-unit>
+			<trans-unit id="tx_relax5core_domain_model_source.description">
+				<source>Description</source>
+			</trans-unit>
+			<trans-unit id="tx_relax5core_domain_model_source.sourcedetails">
+				<source>Sourcedetails</source>
+			</trans-unit>
+			<trans-unit id="tx_relax5core_domain_model_sourcedetail">
+				<source>Sourcedetail</source>
+			</trans-unit>
+			<trans-unit id="tx_relax5core_domain_model_sourcedetail.name">
+				<source>Name</source>
+			</trans-unit>
+			<trans-unit id="tx_relax5core_domain_model_sourcedetail.description">
+				<source>Description</source>
+			</trans-unit>
+			<trans-unit id="tx_relax5core_domain_model_contact">
+				<source>Contact</source>
+			</trans-unit>
+			<trans-unit id="tx_relax5core_domain_model_contact.contact">
+				<source>Contact</source>
+			</trans-unit>
+			<trans-unit id="tx_relax5core_domain_model_contact.deny">
+				<source>Deny</source>
+			</trans-unit>
+			<trans-unit id="tx_relax5core_domain_model_contact.description">
+				<source>Description</source>
+			</trans-unit>
+			<trans-unit id="tx_relax5core_domain_model_contact.permissions">
+				<source>Permissions</source>
+			</trans-unit>
+			<trans-unit id="tx_relax5core_domain_model_contact.priority">
+				<source>Priority</source>
+			</trans-unit>
+			<trans-unit id="tx_relax5core_domain_model_contact.type">
+				<source>Type</source>
+			</trans-unit>
+			<trans-unit id="tx_relax5core_domain_model_company">
+				<source>Company</source>
+			</trans-unit>
+			<trans-unit id="tx_relax5core_domain_model_company.name">
+				<source>Name</source>
+			</trans-unit>
+			<trans-unit id="tx_relax5core_domain_model_company.short_name">
+				<source>Short Name</source>
+			</trans-unit>
+			<trans-unit id="tx_relax5core_domain_model_company.legal_form">
+				<source>Legal Form</source>
+			</trans-unit>
+			<trans-unit id="tx_relax5core_domain_model_company.industry">
+				<source>Industry</source>
+			</trans-unit>
+			<trans-unit id="tx_relax5core_domain_model_company.employees">
+				<source>Employees</source>
+			</trans-unit>
+			<trans-unit id="tx_relax5core_domain_model_company.reg_id">
+				<source>Reg Id</source>
+			</trans-unit>
+			<trans-unit id="tx_relax5core_domain_model_company.reg_authority">
+				<source>Reg Authority</source>
+			</trans-unit>
+			<trans-unit id="tx_relax5core_domain_model_company.vat_id">
+				<source>Vat Id</source>
+			</trans-unit>
+			<trans-unit id="tx_relax5core_domain_model_company.comments">
+				<source>Comments</source>
+			</trans-unit>
+			<trans-unit id="tx_relax5core_domain_model_company.allow_mail">
+				<source>Allow Mail</source>
+			</trans-unit>
+			<trans-unit id="tx_relax5core_domain_model_company.address_label">
+				<source>Address Label</source>
+			</trans-unit>
+			<trans-unit id="tx_relax5core_domain_model_company.permissions">
+				<source>Permissions</source>
+			</trans-unit>
+			<trans-unit id="tx_relax5core_domain_model_company.status">
+				<source>Status</source>
+			</trans-unit>
+			<trans-unit id="tx_relax5core_domain_model_company.owner">
+				<source>Owner</source>
+			</trans-unit>
+			<trans-unit id="tx_relax5core_domain_model_company.usergroup">
+				<source>Usergroup</source>
+			</trans-unit>
+			<trans-unit id="tx_relax5core_domain_model_company.source">
+				<source>Source</source>
+			</trans-unit>
+			<trans-unit id="tx_relax5core_domain_model_company.sourcedetail">
+				<source>Sourcedetail</source>
+			</trans-unit>
+			<trans-unit id="tx_relax5core_domain_model_company.relations">
+				<source>Relations</source>
+			</trans-unit>
+			<trans-unit id="tx_relax5core_domain_model_company.addresses">
+				<source>Addresses</source>
+			</trans-unit>
+			<trans-unit id="tx_relax5core_domain_model_company.contacts">
+				<source>Contacts</source>
+			</trans-unit>
+			<trans-unit id="tx_relax5core_domain_model_company.documents">
+				<source>Documents</source>
+			</trans-unit>
+			<trans-unit id="tx_relax5core_domain_model_company.links">
+				<source>Links</source>
+			</trans-unit>
+			<trans-unit id="tx_relax5core_domain_model_company.appointments">
+				<source>Appointments</source>
+			</trans-unit>
+			<trans-unit id="tx_relax5core_domain_model_company.categories">
+				<source>Categories</source>
+			</trans-unit>
+			<trans-unit id="tx_relax5core_domain_model_link">
+				<source>Link</source>
+			</trans-unit>
+			<trans-unit id="tx_relax5core_domain_model_link.division">
+				<source>Division</source>
+			</trans-unit>
+			<trans-unit id="tx_relax5core_domain_model_link.role">
+				<source>Role</source>
+			</trans-unit>
+			<trans-unit id="tx_relax5core_domain_model_link.role_title">
+				<source>Role Title</source>
+			</trans-unit>
+			<trans-unit id="tx_relax5core_domain_model_link.salutation">
+				<source>Salutation</source>
+			</trans-unit>
+			<trans-unit id="tx_relax5core_domain_model_link.allow_mail">
+				<source>Allow Mail</source>
+			</trans-unit>
+			<trans-unit id="tx_relax5core_domain_model_link.address_label">
+				<source>Address Label</source>
+			</trans-unit>
+			<trans-unit id="tx_relax5core_domain_model_link.person_sorting">
+				<source>Person Sorting</source>
+			</trans-unit>
+			<trans-unit id="tx_relax5core_domain_model_link.company_sorting">
+				<source>Company Sorting</source>
+			</trans-unit>
+			<trans-unit id="tx_relax5core_domain_model_link.person_priority">
+				<source>Person Priority</source>
+			</trans-unit>
+			<trans-unit id="tx_relax5core_domain_model_link.company_priority">
+				<source>Company Priority</source>
+			</trans-unit>
+			<trans-unit id="tx_relax5core_domain_model_link.description">
+				<source>Description</source>
+			</trans-unit>
+			<trans-unit id="tx_relax5core_domain_model_link.permissions">
+				<source>Permissions</source>
+			</trans-unit>
+			<trans-unit id="tx_relax5core_domain_model_link.owner">
+				<source>Owner</source>
+			</trans-unit>
+			<trans-unit id="tx_relax5core_domain_model_link.usergroup">
+				<source>Usergroup</source>
+			</trans-unit>
+			<trans-unit id="tx_relax5core_domain_model_link.addresses">
+				<source>Addresses</source>
+			</trans-unit>
+			<trans-unit id="tx_relax5core_domain_model_link.contacts">
+				<source>Contacts</source>
+			</trans-unit>
+			<trans-unit id="tx_relax5core_domain_model_link.categories">
+				<source>Categories</source>
+			</trans-unit>
+			<trans-unit id="tx_relax5core_domain_model_document">
+				<source>Document</source>
+			</trans-unit>
+			<trans-unit id="tx_relax5core_domain_model_document.title">
+				<source>Title</source>
+			</trans-unit>
+			<trans-unit id="tx_relax5core_domain_model_document.file">
+				<source>File</source>
+			</trans-unit>
+			<trans-unit id="tx_relax5core_domain_model_document.description">
+				<source>Description</source>
+			</trans-unit>
+			<trans-unit id="tx_relax5core_domain_model_document.permissions">
+				<source>Permissions</source>
+			</trans-unit>
+			<trans-unit id="tx_relax5core_domain_model_document.owner">
+				<source>Owner</source>
+			</trans-unit>
+			<trans-unit id="tx_relax5core_domain_model_document.usergroup">
+				<source>Usergroup</source>
+			</trans-unit>
+			<trans-unit id="tx_relax5core_domain_model_appointment">
+				<source>Appointment</source>
+			</trans-unit>
+			<trans-unit id="tx_relax5core_domain_model_appointment.date">
+				<source>Date</source>
+			</trans-unit>
+			<trans-unit id="tx_relax5core_domain_model_appointment.subject">
+				<source>Subject</source>
+			</trans-unit>
+			<trans-unit id="tx_relax5core_domain_model_appointment.duration">
+				<source>Duration</source>
+			</trans-unit>
+			<trans-unit id="tx_relax5core_domain_model_appointment.details">
+				<source>Details</source>
+			</trans-unit>
+			<trans-unit id="tx_relax5core_domain_model_appointment.appointment_type">
+				<source>Appointment Type</source>
+			</trans-unit>
+			<trans-unit id="tx_relax5core_domain_model_appointment.appointment_status">
+				<source>Appointment Status</source>
+			</trans-unit>
+			<trans-unit id="tx_relax5core_domain_model_appointment.priority">
+				<source>Priority</source>
+			</trans-unit>
+			<trans-unit id="tx_relax5core_domain_model_appointment.msolid">
+				<source>Msolid</source>
+			</trans-unit>
+			<trans-unit id="tx_relax5core_domain_model_appointment.permissions">
+				<source>Permissions</source>
+			</trans-unit>
+			<trans-unit id="tx_relax5core_domain_model_appointment.name">
+				<source>Name</source>
+			</trans-unit>
+			<trans-unit id="tx_relax5core_domain_model_appointment.address">
+				<source>Address</source>
+			</trans-unit>
+			<trans-unit id="tx_relax5core_domain_model_appointment.contact">
+				<source>Contact</source>
+			</trans-unit>
+			<trans-unit id="tx_relax5core_domain_model_appointment.result">
+				<source>Result</source>
+			</trans-unit>
+			<trans-unit id="tx_relax5core_domain_model_appointment.result_text">
+				<source>Result Text</source>
+			</trans-unit>
+			<trans-unit id="tx_relax5core_domain_model_appointment.next_action">
+				<source>Next Action</source>
+			</trans-unit>
+			<trans-unit id="tx_relax5core_domain_model_appointment.next_action_text">
+				<source>Next Action Text</source>
+			</trans-unit>
+			<trans-unit id="tx_relax5core_domain_model_appointment.contact_state">
+				<source>Contact State</source>
+			</trans-unit>
+			<trans-unit id="tx_relax5core_domain_model_appointment.task">
+				<source>Task</source>
+			</trans-unit>
+			<trans-unit id="tx_relax5core_domain_model_appointment.postponed_counter">
+				<source>Postponed Counter</source>
+			</trans-unit>
+			<trans-unit id="tx_relax5core_domain_model_appointment.subject_orig">
+				<source>Subject Orig</source>
+			</trans-unit>
+			<trans-unit id="tx_relax5core_domain_model_appointment.done">
+				<source>Done</source>
+			</trans-unit>
+			<trans-unit id="tx_relax5core_domain_model_appointment.owner">
+				<source>Owner</source>
+			</trans-unit>
+			<trans-unit id="tx_relax5core_domain_model_appointment.usergroup">
+				<source>Usergroup</source>
+			</trans-unit>
+			<trans-unit id="tx_relax5core_domain_model_appointment.creator">
+				<source>Creator</source>
+			</trans-unit>
+			<trans-unit id="tx_relax5core_domain_model_appointment.attendees">
+				<source>Attendees</source>
+			</trans-unit>
+			<trans-unit id="tx_relax5core_domain_model_type">
+				<source>Type</source>
+			</trans-unit>
+			<trans-unit id="tx_relax5core_domain_model_type.name">
+				<source>Name</source>
+			</trans-unit>
+			<trans-unit id="tx_relax5core_domain_model_type.scope">
+				<source>Scope</source>
+			</trans-unit>
+			<trans-unit id="tx_relax5core_domain_model_type.eval">
+				<source>Eval</source>
+			</trans-unit>
+			<trans-unit id="tx_relax5core_domain_model_type.image">
+				<source>Image</source>
+			</trans-unit>
+			<trans-unit id="tx_relax5core_domain_model_type.wrap">
+				<source>Wrap</source>
+			</trans-unit>
+			<trans-unit id="tx_relax5core_domain_model_zipcatalogue">
+				<source>Zip Catalogue</source>
+			</trans-unit>
+			<trans-unit id="tx_relax5core_domain_model_zipcatalogue.country_code">
+				<source>Country Code</source>
+			</trans-unit>
+			<trans-unit id="tx_relax5core_domain_model_zipcatalogue.zip">
+				<source>Zip</source>
+			</trans-unit>
+			<trans-unit id="tx_relax5core_domain_model_zipcatalogue.city">
+				<source>City</source>
+			</trans-unit>
+			<trans-unit id="tx_relax5core_domain_model_zipcatalogue.area_code">
+				<source>Area Code</source>
+			</trans-unit>
+			<trans-unit id="tx_relax5core_domain_model_zipcatalogue.state">
+				<source>State</source>
+			</trans-unit>
+			<trans-unit id="tx_relax5core_domain_model_zipcatalogue.verified">
+				<source>Verified</source>
+			</trans-unit>
+			<trans-unit id="tx_relax5core_domain_model_addresscatalogue">
+				<source>Address Catalogue</source>
+			</trans-unit>
+			<trans-unit id="tx_relax5core_domain_model_addresscatalogue.country_code">
+				<source>Country Code</source>
+			</trans-unit>
+			<trans-unit id="tx_relax5core_domain_model_addresscatalogue.street_code">
+				<source>Street Code</source>
+			</trans-unit>
+			<trans-unit id="tx_relax5core_domain_model_addresscatalogue.community_code">
+				<source>Community Code</source>
+			</trans-unit>
+			<trans-unit id="tx_relax5core_domain_model_addresscatalogue.community_name">
+				<source>Community Name</source>
+			</trans-unit>
+			<trans-unit id="tx_relax5core_domain_model_addresscatalogue.address">
+				<source>Address</source>
+			</trans-unit>
+			<trans-unit id="tx_relax5core_domain_model_addresscatalogue.zip">
+				<source>Zip</source>
+			</trans-unit>
+			<trans-unit id="tx_relax5core_domain_model_addresscatalogue.state">
+				<source>State</source>
+			</trans-unit>
+			<trans-unit id="tx_relax5core_domain_model_addresscatalogue.verified">
+				<source>Verified</source>
+			</trans-unit>
+			<trans-unit id="tx_relax5core_domain_model_namecatalogue">
+				<source>Name Catalogue</source>
+			</trans-unit>
+			<trans-unit id="tx_relax5core_domain_model_namecatalogue.name">
+				<source>Name</source>
+			</trans-unit>
+			<trans-unit id="tx_relax5core_domain_model_namecatalogue.gender">
+				<source>Gender</source>
+			</trans-unit>
+			<trans-unit id="tx_relax5core_domain_model_namecatalogue.verified">
+				<source>Verified</source>
+			</trans-unit>
+			<trans-unit id="tx_relax5core_domain_model_titlecatalogue">
+				<source>Title Catalogue</source>
+			</trans-unit>
+			<trans-unit id="tx_relax5core_domain_model_relation">
+				<source>Relation</source>
+			</trans-unit>
+			<trans-unit id="tx_relax5core_domain_model_relation.relation_id">
+				<source>Relation Id</source>
+			</trans-unit>
+			<trans-unit id="tx_relax5core_domain_model_relation.type">
+				<source>Type</source>
+			</trans-unit>
+			<trans-unit id="tx_relax5core_domain_model_relation.direction">
+				<source>Direction</source>
+			</trans-unit>
+			<trans-unit id="tx_relax5core_domain_model_relation.description">
+				<source>Description</source>
+			</trans-unit>
+			<trans-unit id="tx_relax5core_domain_model_relation.print">
+				<source>Print</source>
+			</trans-unit>
+			<trans-unit id="tx_relax5core_domain_model_relation.share">
+				<source>Share</source>
+			</trans-unit>
+			<trans-unit id="tx_relax5core_domain_model_relation.target_person">
+				<source>Target Person</source>
+			</trans-unit>
+			<trans-unit id="tx_relax5core_domain_model_relation.target_company">
+				<source>Target Company</source>
+			</trans-unit>
+			<trans-unit id="tx_relax5core_domain_model_relation.x_link">
+				<source>X Link</source>
+			</trans-unit>
+			<trans-unit id="tx_relax5core_domain_model_category">
+				<source>Category</source>
+			</trans-unit>
+			<trans-unit id="tx_relax5core_domain_model_category.category">
+				<source>Category</source>
+			</trans-unit>
+			<trans-unit id="tx_relax5core_domain_model_category.description">
+				<source>Description</source>
+			</trans-unit>
+			<trans-unit id="tx_relax5core_domain_model_person.selectors">
+				<source>Selectors</source>
+			</trans-unit>
+			<trans-unit id="tx_relax5core_domain_model_selector">
+				<source>Selector</source>
+			</trans-unit>
+			<trans-unit id="tx_relax5core_domain_model_selector.selector">
+				<source>Selector</source>
+			</trans-unit>
+			<trans-unit id="tx_relax5core_domain_model_selector.description">
+				<source>Description</source>
+			</trans-unit>
+			<trans-unit id="tx_relax5core_domain_model_appointment.type">
+				<source>Type</source>
+			</trans-unit>
+			<trans-unit id="tx_relax5core_domain_model_appointment.status">
+				<source>Status</source>
+			</trans-unit>
+			<trans-unit id="tx_relax5core_domain_model_appointment.occurence">
+				<source>Occurence</source>
+			</trans-unit>
+			<trans-unit id="sys_category.tx_extbase_type.Tx_Relax5core_Category">
+				<source>relax5core Category</source>
+			</trans-unit>
+			<trans-unit id="tx_relax5core_domain_model_relation.source_person">
+				<source>Source Person</source>
+			</trans-unit>
+			<trans-unit id="tx_relax5core_domain_model_address.priority">
+				<source>Priority</source>
+			</trans-unit>
+			<trans-unit id="tx_relax5core_domain_model_relation.person">
+				<source>Person</source>
+			</trans-unit>
+			<trans-unit id="tx_relax5core_domain_model_relation.company">
+				<source>Company</source>
+			</trans-unit>
+			<trans-unit id="tx_relax5core_domain_model_core">
+				<source>Relax5: Core Plugin</source>
+			</trans-unit>
+			<trans-unit id="tx_relax5core_domain_model_core.description">
+				<source>This is the Relax5core plugin. It will display the main data record for a single person ans/or company depending on the plugin settings and TS configuration.</source>
+			</trans-unit>
+			<trans-unit id="tx_relax5core_domain_model_ownerprefs">
+				<source>Relax5: Owner Profile Edit</source>
+			</trans-unit>
+			<trans-unit id="tx_relax5core_domain_model_ownerprefs.description">
+				<source>This plugin allows the logged Relax5 user (= owner) to set his or her preferences and general settings.</source>
+			</trans-unit>
+			<trans-unit id="tx_relax5core_domain_model_aux">
+				<source>Relax5: Create Relation Form</source>
+			</trans-unit>
+			<trans-unit id="tx_relax5core_domain_model_aux.description">
+				<source>This plugin inserts a form to add a person or company on the fly when establishing a relation or link.</source>
+			</trans-unit>
+		</body>
+	</file>
+</xliff>

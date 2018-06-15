@@ -1,0 +1,54 @@
+{namespace rlx5=CGB\Relax5core\ViewHelpers}
+
+<!-- Partials/Company/Show.html -->
+
+<div class="showData">
+	<f:if condition="{company.uid}">
+		<div id="showCompany{company.uid}">
+			<span class="icons">
+				<f:if condition="{company.canread}">
+					<f:image class="modalDialog"
+						src="EXT:crm_relax5/Resources/Public/FeIcons/edit{company.readonly}.png" 
+						alt="{f:translate(key:'tx_crmrelax5_domain_model_company.edit_company')}" 
+						title="{f:translate(key:'tx_crmrelax5_domain_model_company.edit_company')}" 
+						additionalAttributes="{
+							extbaseajax: '
+								action : \'ajaxEdit\', 
+								controller : \'Company\', 
+								company : {company.uid}', 
+							onshow: 'activateSource();',
+							onsave: '$(\'#companyWrap\').removeClass(\'tx_crmrelax5_allowMail_ tx_crmrelax5_allowMail_1\').addClass(\'tx_crmrelax5_allowMail_\' + d.allowMail{company.uid});',
+							savetext : 'Speichern', 
+							nosave : '{company.readonly}',
+							closetext : 'Abbrechen'
+						}" />
+				</f:if>
+				<f:if condition="{company.candelete}">
+					<f:image class="modalConfirm"
+						src="EXT:crm_relax5/Resources/Public/FeIcons/delete.png" 
+						alt="{f:translate(key:'tx_crmrelax5_domain_model_company.delete_company')}" 
+						title="{f:translate(key:'tx_crmrelax5_domain_model_company.delete_company')}" 
+						additionalAttributes="{
+							extbaseajax: '
+								action : \'ajaxDelete\', 
+								controller : \'Company\', 
+								company : {company.uid}', 
+							text: 'Wollen Sie diesen Datensatz löschen?',
+							confirm: 'Löschen',
+							cancel: 'Abbrechen'
+						}" />
+				</f:if>
+			</span>
+		
+			<div id="companyWrap" class="tx_crmrelax5_level1 tx_crmrelax5_allowMail_{company.allowMail}" style="padding: 0; margin: 0; border: none;">
+				<div class="tx_crmrelax5_level1">
+					<span reference="name{company.uid}">{company.name}</span>&nbsp;
+				</div>
+
+				<div class="tx_crmrelax5_level2">
+					<span reference="shortName{company.uid}">{company.shortName}</span>&nbsp;
+				</div>
+			</div>
+		</div>
+	</f:if>
+</div>			

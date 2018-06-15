@@ -1,0 +1,72 @@
+<!-- docref BEGIN: EXT:relax5core/Resources/Private/Partials/Person/ShowHeader.html v8.6 -->
+<!-- rev: 2017-04-30 -->
+
+<div class="rlx5-item-person-header rlx5-person rlx5-core-data-box {f:if(condition: '{person}',then:'rlx5-ispopulated',else:'rlx5-isempty')}">
+  <div class="rlx5-coredata-single">
+    <div class="">
+      <f:switch expression="{person.gender}">
+        <f:case value="1"><span class="ion ion-male rlx5-gender"></span></f:case>
+        <f:case value="2"><span class="ion ion-female rlx5-gender"></span></f:case>
+        <f:case default="TRUE"><span class="ion ion-ios-help-empty rlx5-gender"></span></f:case>
+      </f:switch>
+
+      <f:comment>
+        <f:image 
+            id="genderImg_{person.uid}"
+            src="EXT:relax5core/Resources/Public/Icons/gender_{person.gender}.png" 
+            alt="" 
+            title="{f:translate(key:'tx_relax5core_domain_model_person.gender_{person.gender}')}" 
+            style="vertical-align: middle;" 
+        />
+      </f:comment>
+      
+      <a href="{f:uri.action(pageUid:settings.personShowPid, extensionName: 'Relax5core', controller: 'Person', action: 'show', arguments: {person:person})}" class="tx_simulatefeWrapperUncollapse">
+        <span reference="person_{person.uid}_lastName" id="last_name">{person.lastName}</span>
+        <span reference="person_{person.uid}_firstName">{person.firstName}</span>
+        <span reference="person_{person.uid}_middleName">{person.middleName}</span>
+        (<span reference="person_{person.uid}_title">{person.title}</span>)
+      </a>
+    </div>
+
+    <div class="rlx5-buttons"><a:actionicon 
+        uri="{h:uri.ajaxAction(
+          extensionName: 'Relax5core',
+          controller: 'Person',
+          pluginName: 'Core',
+          action: 'edit',
+          arguments: '{person:person}'
+        )}"
+        alturi="{h:uri.ajaxAction(
+          extensionName: 'Relax5core',
+          controller: 'Person',
+          pluginName: 'Core',
+          action: 'show',
+          arguments: '{person:person}'
+        )}"
+        class="modalDialog rlx5-button rlx5-edit"
+        title="{person.lastName} {person.firstName}" 
+        domainModelObject="Person" 
+        intendedAction="editorshow"
+        permissions="{person.permissions}" 
+        user="{person.owner}" 
+        group="{person.usergroup}"
+      /><a:actionicon 
+        uri="{h:uri.ajaxAction(
+          extensionName: 'Relax5core',
+          controller: 'Person',
+          pluginName: 'Core',
+          action: 'delete',
+          arguments: '{person:person}'
+        )}"
+        class="modalConfirm rlx5-button rlx5-delete" 
+        title="{person.lastName} {person.firstName}" 
+        domainModelObject="Person" 
+        intendedAction="delete"
+        permissions="{person.permissions}" 
+        user="{person.owner}" 
+        group="{person.usergroup}"
+      /></div>
+  </div>
+</div>
+
+<!-- docref END: EXT:relax5core/Resources/Private/Partials/Person/ShowHeader.html v8.6 -->

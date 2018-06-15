@@ -1,0 +1,8 @@
+<div class="rlx5-item-{itemtype}-info rlx5-{itemtype} rlx5-core-data-box {f:if(condition: '{item}',then:'rlx5-ispopulated',else:'rlx5-isempty')}">
+  <div class="rlx5-info rlx5-clearfix">
+    <span class="droppable" title="">{item.uid}&nbsp;</span>
+    <span class="" reference="{itemtype}Owner_{item.uid}" title="<f:translate key='tx_relax5core_domain_model_{itemtype}.owner' />: {item.owner.firstName} {item.owner.lastName}">{item.owner.username}&nbsp;</span>
+    <span class="" title="<f:translate key='tx_relax5core_general.crdate' />">{item.crdate -> f:format.date(format: '{f:translate(key:"tx_relax5core_general.date_format")}')}&nbsp;</span>
+    <span class="" title="<f:translate key='tx_relax5core_general.tstamp' />" reference="{itemtype}Tstamp_{item.uid}" >{item.tstamp -> f:format.date(format: '{f:translate(key:"tx_relax5core_general.date_format")}')}&nbsp;</span>
+  </div>
+</div>

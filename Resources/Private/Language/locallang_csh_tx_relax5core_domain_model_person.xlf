@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+	<file source-language="en" datatype="plaintext" original="messages" date="2017-04-12T13:35:28Z" product-name="relax5core">
+		<header/>
+		<body>
+			<trans-unit id="last_name.description">
+				<source>Last Name</source>
+			</trans-unit>
+			<trans-unit id="middle_name.description">
+				<source>Middle Name</source>
+			</trans-unit>
+			<trans-unit id="first_name.description">
+				<source>First Name</source>
+			</trans-unit>
+			<trans-unit id="title.description">
+				<source>Title</source>
+			</trans-unit>
+			<trans-unit id="gender.description">
+				<source>gender</source>
+			</trans-unit>
+			<trans-unit id="date_of_birth.description">
+				<source>dateOfBirth</source>
+			</trans-unit>
+			<trans-unit id="marital_state.description">
+				<source>maritalState</source>
+			</trans-unit>
+			<trans-unit id="image.description">
+				<source>image</source>
+			</trans-unit>
+			<trans-unit id="salutation.description">
+				<source>salutation</source>
+			</trans-unit>
+			<trans-unit id="comments.description">
+				<source>comments</source>
+			</trans-unit>
+			<trans-unit id="allow_mail.description">
+				<source>allowMail</source>
+			</trans-unit>
+			<trans-unit id="address_label.description">
+				<source>addressLabel</source>
+			</trans-unit>
+			<trans-unit id="permissions.description">
+				<source>permissions</source>
+			</trans-unit>
+			<trans-unit id="appointments.description">
+				<source>Appointments</source>
+			</trans-unit>
+			<trans-unit id="documents.description">
+				<source>Documents</source>
+			</trans-unit>
+			<trans-unit id="source.description">
+				<source>Source</source>
+			</trans-unit>
+			<trans-unit id="source_category.description">
+				<source>Source Category</source>
+			</trans-unit>
+			<trans-unit id="addresses.description">
+				<source>Addresses</source>
+			</trans-unit>
+			<trans-unit id="contacts.description">
+				<source>Contacts</source>
+			</trans-unit>
+			<trans-unit id="categories.description">
+				<source>Categories</source>
+			</trans-unit>
+			<trans-unit id="relations.description">
+				<source>Relations</source>
+			</trans-unit>
+			<trans-unit id="status.description">
+				<source>Status</source>
+			</trans-unit>
+			<trans-unit id="owner.description">
+				<source>Owner</source>
+			</trans-unit>
+			<trans-unit id="usergroup.description">
+				<source>Usergroup</source>
+			</trans-unit>
+		</body>
+	</file>
+</xliff>

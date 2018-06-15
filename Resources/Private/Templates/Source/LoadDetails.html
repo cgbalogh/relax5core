@@ -1,0 +1,48 @@
+<f:switch expression="{parent}">
+
+  <f:case value="person">
+    <f:form.select 
+      id="person_sourcedetail_select"
+      name="tx_relax5core_core[person][sourcedetail]" 
+      options="{sourcedetailSelect}" 
+      optionLabelField="name" 
+      optionValueField="uid" 
+      size="1" 
+    />
+  </f:case>
+
+  <f:case value="newPerson">
+    <f:form.select 
+      id="person_sourcedetail_select"
+      name="tx_relax5core_core[newPerson][sourcedetail]" 
+      options="{sourcedetailSelect}" 
+      optionLabelField="name" 
+      optionValueField="uid" 
+      size="1" 
+    />
+  </f:case>
+
+  <f:case value="company">
+    <f:form.select 
+      id="company_sourcedetail_select"
+      name="tx_relax5core_core[company][sourcedetail]" 
+      options="{sourcedetailSelect}" 
+      optionLabelField="name" 
+      optionValueField="uid" 
+      size="1" 
+    />
+  </f:case>
+  
+  <f:case value="newCompany">
+    <f:form.select 
+      id="company_sourcedetail_select"
+      name="tx_relax5core_core[newCompany][sourcedetail]" 
+      options="{sourcedetailSelect}" 
+      optionLabelField="name" 
+      optionValueField="uid" 
+      size="1" 
+    />
+  </f:case>
+
+</f:switch>
+

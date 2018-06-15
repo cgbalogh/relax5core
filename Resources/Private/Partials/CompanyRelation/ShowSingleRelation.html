@@ -1,0 +1,67 @@
+<div class="showData">
+  <f:link.action 
+    id="personRelation{relation.uid}" 
+    action="show" 
+    arguments="{person : relation.target}" 
+    class="tx_crmrelax5_linktocompany tx_crmrelax5_linktorelation" 
+    additionalAttributes="{}"
+    title="{relation.target.firstName} {relation.target.lastName} <f:translate key='tx_crmrelax5_domain_model_relation.relation_type_{relation.type}_{relation.direction}_{relation.target.gender}' /> {person.firstName} {person.lastName}" 
+  >
+		
+  <span reference="lastName_{relation.target.uid}">{relation.target.lastName}</span>
+  <span reference="firstName_{relation.target.uid}">{relation.target.firstName}</span>
+
+		<span class="icons">
+				<f:if condition="{relation.target.canread}">
+					<f:image class="modalDialog"
+						src="EXT:relax5core/Resources/Public/Icons/actions-edit-link.svg" 
+						alt="{f:translate(key:'tx_crmrelax5_domain_model_person.edit_person')}" 
+						title="{f:translate(key:'tx_crmrelax5_domain_model_person.edit_person')}" 
+						onclick="return false;"
+						additionalAttributes="{
+							extbaseajax: '
+								action : \'ajaxEdit\', 
+								controller : \'Person\', 
+								person : {relation.target.uid}', 
+							onshow: 'activateName();activateDatepicker();activateSource();',
+							onsave: '$(\'#genderImg{relation.target.uid}\').attr(\'src\',d.genderImg{relation.target.uid});$(\'#personWrap\').removeClass(\'tx_crmrelax5_allowMail_ tx_crmrelax5_allowMail_1\').addClass(\'tx_crmrelax5_allowMail_\' + d.allowMail{relation.target.uid});',
+							savetext : 'Speichern', 
+							nosave : '{relation.target.readonly}',
+							closetext : 'Abbrechen'
+						}" />
+				</f:if>
+			<f:image class="modalDialog"
+				src="EXT:relax5core/Resources/Public/Icons/actions-edit-link.svg" 
+				alt="Beziehung bearbeiten" 
+				title="XXX Beziehung bearbeiten" 
+				onclick="return false;"
+                height="16"
+				additionalAttributes="{
+					extbaseajax: '
+						controller: \'Relation\',
+						action: \'ajaxEdit\',
+						person: {person.uid},
+						relation: {relation.uid}
+					',
+					savetext: 'Speichern',
+					closetext: 'Abbrechen'
+			}" />
+			<f:image class="modalConfirm"
+				src="EXT:core/Resources/Public/Icons/T3Icons/actions/actions-delete.svg" 
+				alt="Beziehung lösen" 
+				title="Beziehung lösen" 
+				onclick="return false;"
+				additionalAttributes="{
+					extbaseajax: '
+						controller: \'Relation\',
+						action: \'ajaxDelete\',
+						relation: {relation.uid}
+					',
+					text: 'Beziehung lösen?',
+					confirm: 'Lösen',
+					cancel: 'Abbrechen',
+					onconfirm: '$(\'#personRelation{relation.uid}\').fadeOut();'
+			}" />
+		</span>
+	</f:link.action>
+</div>

@@ -1,0 +1,49 @@
+<!-- docref BEGIN: EXT:relax5core/Resources/Private/Partials/Address/ShowContacts.html v8.6 -->
+<!-- rev: 2017-04-30 -->
+
+<f:if condition="{item}">
+  <div class="rlx5-item-{item.itemtype}-contacts rlx5-{item.itemtype} rlx5-core-data-box {f:if(condition: '{item}',then:'rlx5-ispopulated',else:'rlx5-isempty')}">
+    <div id="contactList{item.itemtype}" class="rlx5-coredata-block">
+      <h3 class="rlx5-collapser">
+        <span class="texticon-inner-icon ion ion-chevron-up"></span>
+        <f:translate key="LLL:EXT:relax5core/Resources/Private/Language/locallang.xlf:tx_relax5core_domain_model_person.contacts" /> (<f:count subject="{item.contacts}" />)
+        <div class="rlx5-buttons">
+          <a:actionicon 
+            uri="{h:uri.ajaxAction(
+              extensionName: 'Relax5core',
+              controller: 'Contact',
+              pluginName: 'Core',
+              action: 'new',
+              arguments: '{newContact:newContact, itemtype:\\'{item.itemtype}\\', item:item}'
+            )}"
+            
+            class="modalDialog rlx5-button rlx5-edit"
+            title="{f:translate(key:'LLL:EXT:relax5core/Resources/Private/Language/locallang.xlf:tx_relax5core_domain_model_contact')}" 
+            domainModelObject="{item.itemtype}" 
+            intendedAction="edit"
+            action="new"
+            forceIcon="addIcon"
+            permissions="{item.permissions}" 
+            user="{item.owner}" 
+            group="{item.usergroup}"
+            mapArgumentName="item->{item.itemtype}"
+            arguments="{newContact:newContact, item:item}"
+            additionalAttributes="{onsave: 'window.location.reload()'}"
+          />
+        </div>
+      </h3>
+      
+      <div class="rlx5-collapsible <f:if condition="{a:permission(domainModelObject:'{item.itemtype}',intendedAction:'write',permissions:'{item.permissions}',user:'{item.owner}',group:'{item.usergroup}')}">sortable</f:if>" 
+           uri="{h:uri.ajaxAction(extensionName: 'Relax5core', controller: 'Contact', pluginName: 'Core', action: 'resort')}" 
+        >
+        <f:for each="{item.contacts}" as="contact">
+          <div id="contact_{contact.uid}" class="rlx5-contact" uid="{contact.uid}">
+            <f:render partial="Contact/ShowOneContact" arguments="{contact:contact}" />
+          </div>
+        </f:for>
+      </div>
+    </div>	
+  </div>
+</f:if>
+
+<!-- docref END: EXT:relax5core/Resources/Private/Partials/Address/ShowContacts.html v8.6 -->

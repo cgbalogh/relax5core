@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+	<file source-language="en" datatype="plaintext" original="messages" date="2017-04-12T13:35:28Z" product-name="relax5core">
+		<header/>
+		<body>
+			<trans-unit id="country_code.description">
+				<source>Country Code</source>
+			</trans-unit>
+			<trans-unit id="address.description">
+				<source>Address</source>
+			</trans-unit>
+			<trans-unit id="zip.description">
+				<source>Zip</source>
+			</trans-unit>
+			<trans-unit id="state.description">
+				<source>State</source>
+			</trans-unit>
+			<trans-unit id="verified.description">
+				<source>verified</source>
+			</trans-unit>
+		</body>
+	</file>
+</xliff>

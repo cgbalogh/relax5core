@@ -1,0 +1,94 @@
+<!-- docref BEGIN: EXT:relax5core/Resources/Private/Partials/Owner/FormFields.html v8.7 -->
+<!-- rev: 2017-10-21 -->
+
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" data-namespace-typo3-fluid="true">
+
+  <label for="lastName">
+      <f:translate key="tx_relax5core_domain_model_person.last_name" />
+  </label>
+  <f:form.textfield 
+    property="lastName"  
+  /><br />
+  
+  <label for="firstName">
+      <f:translate key="tx_relax5core_domain_model_person.first_name" />
+  </label>
+  <f:form.textfield 
+    property="firstName"  
+  /><br />
+  
+  <label for="email">
+      <f:translate key="tx_relax5core_domain_model_person.email" />
+  </label>
+  <f:form.textfield 
+    property="email"  
+  /><br />
+
+  <label for="hideStatesWithoutActions">
+      <f:translate key="tx_relax5core_domain_model_owner.hide_states_without_actions" />
+  </label>
+  <f:form.checkbox 
+    name="settings[hideStatesWithoutActions]"  
+    value="1"
+    checked="{owner.settingsArray.hideStatesWithoutActions}"
+  /><br />
+  
+  <label for="hideAppointments">
+      <f:translate key="tx_relax5core_domain_model_owner.hide_appointments" />
+  </label>
+  <f:form.checkbox 
+    name="settings[hideAppointments]"  
+    value="1"
+    checked="{owner.settingsArray.hideAppointments}"
+  /><br />
+  
+  <!--
+  <label for="projectStateList">
+      <f:translate key="tx_relax5core_domain_model_owner.project_state_list" />
+  </label>
+  <f:form.textfield 
+    name="settings[projectStateList]"  
+    value="{owner.settingsArray.projectStateList}"
+  /><br />
+
+  <label for="projectStateList">
+      <f:translate key="tx_relax5core_domain_model_owner.project_state_listdeny" />
+  </label>
+  <f:form.textfield 
+    name="settings[projectStateListDeny]"  
+    value="{owner.settingsArray.projectStateListDeny}"
+  /><br />
+  -->
+  
+  <label for="pwdChangeDate">
+      <f:translate key="tx_relax5core_domain_model_owner.pwd_change_date" />
+  </label>
+  <f:form.textfield 
+    property="pwdChangeDate" 
+    value="{owner.pwdChangeDate->f:format.date(format: '{f:translate(key: \'tx_relax5core_general.date_format\')}')}" 
+    readonly="readonly"
+  />
+  <br />
+  
+  <label for="projectStateList">
+      <f:translate key="tx_relax5core_domain_model_owner.project_state_list" /> (Dashboard)
+  </label>
+  <br />
+  <span>
+    <f:for each="{states}" as="state">
+      <f:if condition="! {state.noShowDashboard}">
+        <label for="state{state.uid}">
+            {state.name}
+        </label>
+        <f:form.checkbox 
+          id="state{state.uid}"
+          name="settings[statelist][{state.uid}]"
+          value="1"
+          checked="{owner.settingsArray.statelist.{state.uid}}"
+        /><br />
+      </f:if>
+    </f:for>
+  </span>
+</html>
+
+<!-- docref END: EXT:relax5core/Resources/Private/Partials/Owner/FormFields.html v8.7 -->

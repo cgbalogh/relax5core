@@ -1,0 +1,118 @@
+{namespace r5f=CGB\Relax5validator\ViewHelpers}
+{namespace r5c=CGB\Relax5core\ViewHelpers}
+
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" data-namespace-typo3-fluid="true">
+
+<div class="rlx5-modalform-stretcher" style="height: 0; min-width: 500px;"></div>  
+  
+<f:render partial="General/ShowInfo" arguments="{item:link, itemtype:'link'}" />
+
+<div class="rlx5-collapser">
+  &nbsp;<span class="texticon-inner-icon ion ion-chevron-down"></span>&nbsp;
+</div>
+<div class="rlx5-info rlx5-clearfix rlx5-collapsible rlx5-collapsed" style="border-bottom: 3px solid #99b2d3; margin-bottom: 8px;">
+  <span>&nbsp;</span>
+  
+  <span>
+    {link.person.owner.username} | {link.company.owner.username}
+  </span>
+  
+  <span>
+    {link.person.usergroup.title} | {link.company.usergroup.title}
+  </span>
+  
+  <span style="white-space: nowrap;" class="rlx5-rightsarray">
+    <f:form.checkbox value="1" title="Owner read" disabled="disabled" /><f:form.checkbox value="1" title="Owner write" disabled="disabled" /><f:form.checkbox value="1"  title="Owner delete" disabled="disabled" />
+<br class="rlx5-smallonly" /><f:form.checkbox value="1" title="Group read" disabled="disabled" /><f:form.checkbox value="1" title="Group write" disabled="disabled" /><f:form.checkbox value="1"  title="Group delete" disabled="disabled" />
+<br class="rlx5-smallonly" /><f:form.checkbox value="1" title="Everybody read" disabled="disabled" /><f:form.checkbox value="1" title="Everybody write" disabled="disabled" /><f:form.checkbox value="1"  title="Everybody delete" disabled="disabled" />
+    <f:form.hidden property="permissions" id="rlx5-permissions" />
+  </span>
+</div>
+
+<label for="division">
+	<f:translate key="tx_relax5core_domain_model_link.division" />
+</label>
+<f:form.textfield property="division" /><br />
+
+<label for="role">
+	<f:translate key="tx_relax5core_domain_model_link.role" />
+</label>
+<f:form.textfield property="role" /><br />
+
+<label for="roleTitle">
+	<f:translate key="tx_relax5core_domain_model_link.role_title" />
+</label>
+<f:form.textfield property="roleTitle" /><br />
+
+<div class="rlx5-divider"></div>
+
+<div class="rlx5-collapser">
+  &nbsp;<span class="texticon-inner-icon ion ion-chevron-down"></span>&nbsp;
+</div>
+
+<div class="rlx5-collapsible rlx5-collapsed">
+  <label for="salutation">
+      <f:translate key="tx_relax5core_domain_model_link.salutation" />
+  </label>
+  <r5f:form.textfield id="salutation" property="salutation" /><br />
+
+  <label for="addressLabel" class="rlx5-top">
+      <f:translate key="tx_relax5core_domain_model_link.address_label" />
+  </label>
+  <f:form.textarea property="addressLabel" cols="40" rows="15" /><br />
+</div>  
+
+<label for="allowMail">
+	<f:translate key="tx_relax5core_domain_model_link.allow_mail" />
+</label>
+<f:form.checkbox id="allowMail" property="allowMail" value="1" /><br />
+
+<div class="rlx5-divider"></div>
+
+<label for="description">
+	<f:translate key="tx_relax5core_domain_model_link.description" />
+</label>
+<f:form.textfield property="description" /><br />
+
+<div class="rlx5-divider"></div>
+
+<div class="rlx5-category" style="border: 1px solid transparent; max-width: 500px;">
+    <f:for each="{categories}" as="category">
+      <span title="{category.description}" style="width: 10em; display: inline-block;">
+        <f:form.checkbox 
+          name="categories[{category.uid}]" 
+          id="category_{category.uid}"
+          checked="<r5c:HasCategory item='{link}' category='{category}' />"
+          value="1" 
+        />
+        <label for="category_{category.uid}" style="font-weight: normal; width: auto; max-width: none;">
+          {category.category}
+        </label>
+      </span>
+    </f:for>
+  </div>
+  
+<div class="rlx5-divider"></div>
+
+<f:render partial="AddInfo" arguments="{addInfo:addInfo}" optional="TRUE"/>
+
+<!-- works only within modal dialog window -->
+<script type="text/javascript">
+  <f:format.cdata>
+    $(document).ready(function() {
+      activateCollapser('.rlx5-collapser', '.rlx5-form', true);
+      activateLoadDetails (
+        '#link_source_select', 
+        '', 
+        '#link_sourcedetail_select_wrap', 
+        $('._loadDetails').attr('loaddetails')
+      );
+      activateJte('.rlx5-jte', '.rlx5-form');
+      activateComputeRights();
+      showErrors();
+    });
+  </f:format.cdata>
+</script>
+
+</html>
+

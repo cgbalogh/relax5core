@@ -1,0 +1,5 @@
+<div class="tx_crmrelax5_level3">
+	<f:for each="{person.relations}" as="relation">
+      <f:render partial="Person/Show" arguments="{person: relation.target, relation: relation}" />
+	</f:for>	
+</div>

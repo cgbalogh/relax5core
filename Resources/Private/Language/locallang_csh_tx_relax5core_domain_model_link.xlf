@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+	<file source-language="en" datatype="plaintext" original="messages" date="2017-04-12T13:35:28Z" product-name="relax5core">
+		<header/>
+		<body>
+			<trans-unit id="division.description">
+				<source>Division</source>
+			</trans-unit>
+			<trans-unit id="role.description">
+				<source>Role</source>
+			</trans-unit>
+			<trans-unit id="role_title.description">
+				<source>RoleTitle</source>
+			</trans-unit>
+			<trans-unit id="salutation.description">
+				<source>Salutation</source>
+			</trans-unit>
+			<trans-unit id="allow_mail.description">
+				<source>allowMail</source>
+			</trans-unit>
+			<trans-unit id="address_label.description">
+				<source>addressLabel</source>
+			</trans-unit>
+			<trans-unit id="permissions.description">
+				<source>Permissions</source>
+			</trans-unit>
+			<trans-unit id="person_sorting.description">
+				<source>Person Sorting</source>
+			</trans-unit>
+			<trans-unit id="company_sorting.description">
+				<source>Company Sorting</source>
+			</trans-unit>
+			<trans-unit id="person_priority.description">
+				<source>Person Priority</source>
+			</trans-unit>
+			<trans-unit id="company_priority.description">
+				<source>Company Priority</source>
+			</trans-unit>
+			<trans-unit id="description.description">
+				<source>description</source>
+			</trans-unit>
+			<trans-unit id="addresses.description">
+				<source>Addresses</source>
+			</trans-unit>
+			<trans-unit id="contacts.description">
+				<source>Contacts</source>
+			</trans-unit>
+			<trans-unit id="categories.description">
+				<source>Categories</source>
+			</trans-unit>
+			<trans-unit id="person.description">
+				<source>Person</source>
+			</trans-unit>
+			<trans-unit id="company.description">
+				<source>Company</source>
+			</trans-unit>
+			<trans-unit id="owner.description">
+				<source>Owner</source>
+			</trans-unit>
+			<trans-unit id="usergroup.description">
+				<source>Usergroup</source>
+			</trans-unit>
+		</body>
+	</file>
+</xliff>

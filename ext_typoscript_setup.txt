@@ -1,0 +1,338 @@
+
+config.tx_extbase {
+  persistence {
+    classes {
+
+      TYPO3\CMS\Extbase\Domain\Model\FrontendUser {
+        subclasses {
+          Tx_Relax5core_Owner = CGB\Relax5core\Domain\Model\Owner
+          
+        }
+      }
+      CGB\Relax5core\Domain\Model\Owner {
+        mapping {
+          tableName = fe_users
+          recordType = Tx_Relax5core_Owner
+        }
+      }
+
+    }
+  }
+}
+
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<T3FlexForms>
+    <data>
+        <sheet index="sheet2">
+            <language index="lDEF">
+                <field index="settings.datatables.vendorList">
+                    <value index="vDEF">CGB</value>
+                </field>
+                <field index="settings.datatables.domainObject">
+                    <value index="vDEF">CGB\Relax5core\Domain\Model\Appointment</value>
+                </field>
+                <field index="settings.datatables.action.ajaxPlugin">
+                    <value index="vDEF">Ajax</value>
+                </field>
+                <field index="settings.datatables.action.ajaxPageType">
+                    <value index="vDEF">112234</value>
+                </field>
+                <field index="settings.datatables.action.pageUid">
+                    <value index="vDEF"></value>
+                </field>
+                <field index="settings.datatables.action.editAction">
+                    <value index="vDEF">edit</value>
+                </field>
+                <field index="settings.datatables.action.editActionAjax">
+                    <value index="vDEF">0</value>
+                </field>
+                <field index="settings.datatables.action.showAction">
+                    <value index="vDEF">show</value>
+                </field>
+                <field index="settings.datatables.action.showActionAjax">
+                    <value index="vDEF">0</value>
+                </field>
+                <field index="settings.datatables.action.newAction">
+                    <value index="vDEF">new</value>
+                </field>
+                <field index="settings.datatables.action.newColumn">
+                    <value index="vDEF">-1</value>
+                </field>
+                <field index="settings.datatables.action.newActionAjax">
+                    <value index="vDEF">0</value>
+                </field>
+                <field index="settings.datatables.action.deleteAction">
+                    <value index="vDEF">delete</value>
+                </field>
+                <field index="settings.datatables.action.deleteActionAjax">
+                    <value index="vDEF">0</value>
+                </field>
+                <field index="settings.datatables.action.bulkDeleteAction">
+                    <value index="vDEF">delete</value>
+                </field>
+                <field index="settings.datatables.action.bulkDeleteActionAjax">
+                    <value index="vDEF">0</value>
+                </field>
+                <field index="settings.datatables.action.topalign">
+                    <value index="vDEF">0</value>
+                </field>
+                <field index="settings.datatables.usergroups">
+                    <value index="vDEF"></value>
+                </field>
+                <field index="settings.datatables.action.limitQueriesToMainRepository">
+                    <value index="vDEF">0</value>
+                </field>
+                <field index="settings.datatables.action.debug">
+                    <value index="vDEF">1</value>
+                </field>
+                <field index="settings.datatables.action.globalFilter">
+                    <value index="vDEF"></value>
+                </field>
+            </language>
+        </sheet>
+        <sheet index="sheet3">
+            <language index="lDEF">
+                <field index="settings.datatables.listView">
+                    <value index="vDEF">type,date,duration,subject,details,person.lastName#tx_relax5core_domain_model_person,person.firstName#tx_relax5core_domain_model_person,EDIT BUTTON,DELETE BUTTON,CHECKBOX</value>
+                </field>
+                <field index="settings.datatables.collapseProperties">
+                    <value index="vDEF"></value>
+                </field>
+                <field index="settings.datatables.config">
+                    <el index="el">
+                        <field index="593575ce5c512022770499">
+                            <value index="record">
+                                <el>
+                                    <field index="customtitle">
+                                        <value index="vDEF">date</value>
+                                    </field>
+                                    <field index="property">
+                                        <value index="vDEF">date</value>
+                                    </field>
+                                    <field index="align">
+                                        <value index="vDEF"></value>
+                                    </field>
+                                    <field index="showalways">
+                                        <value index="vDEF">0</value>
+                                    </field>
+                                    <field index="dontsort">
+                                        <value index="vDEF">0</value>
+                                    </field>
+                                    <field index="showfirstchildonly">
+                                        <value index="vDEF">0</value>
+                                    </field>
+                                    <field index="searchColumn">
+                                        <value index="vDEF">1</value>
+                                    </field>
+                                    <field index="cssclass">
+                                        <value index="vDEF"></value>
+                                    </field>
+                                    <field index="allowedusers">
+                                        <value index="vDEF"></value>
+                                    </field>
+                                    <field index="allowedgroups">
+                                        <value index="vDEF"></value>
+                                    </field>
+                                    <field index="images">
+                                        <value index="vDEF"></value>
+                                    </field>
+                                    <field index="mapping">
+                                        <value index="vDEF"></value>
+                                    </field>
+                                    <field index="link">
+                                        <value index="vDEF"></value>
+                                    </field>
+                                </el>
+                            </value>
+                            <value index="_TOGGLE">0</value>
+                        </field>
+                        <field index="5935735269812466954576">
+                            <value index="record">
+                                <el>
+                                    <field index="customtitle">
+                                        <value index="vDEF">subject</value>
+                                    </field>
+                                    <field index="property">
+                                        <value index="vDEF">subject</value>
+                                    </field>
+                                    <field index="align">
+                                        <value index="vDEF"></value>
+                                    </field>
+                                    <field index="showalways">
+                                        <value index="vDEF">0</value>
+                                    </field>
+                                    <field index="dontsort">
+                                        <value index="vDEF">0</value>
+                                    </field>
+                                    <field index="showfirstchildonly">
+                                        <value index="vDEF">0</value>
+                                    </field>
+                                    <field index="searchColumn">
+                                        <value index="vDEF">1</value>
+                                    </field>
+                                    <field index="cssclass">
+                                        <value index="vDEF"></value>
+                                    </field>
+                                    <field index="allowedusers">
+                                        <value index="vDEF"></value>
+                                    </field>
+                                    <field index="allowedgroups">
+                                        <value index="vDEF"></value>
+                                    </field>
+                                    <field index="images">
+                                        <value index="vDEF"></value>
+                                    </field>
+                                    <field index="mapping">
+                                        <value index="vDEF"></value>
+                                    </field>
+                                    <field index="link">
+                                        <value index="vDEF"></value>
+                                    </field>
+                                </el>
+                            </value>
+                            <value index="_TOGGLE">0</value>
+                        </field>
+                        <field index="593575e7ae28a374743264">
+                            <value index="record">
+                                <el>
+                                    <field index="customtitle">
+                                        <value index="vDEF">details</value>
+                                    </field>
+                                    <field index="property">
+                                        <value index="vDEF">details</value>
+                                    </field>
+                                    <field index="align">
+                                        <value index="vDEF"></value>
+                                    </field>
+                                    <field index="showalways">
+                                        <value index="vDEF">0</value>
+                                    </field>
+                                    <field index="dontsort">
+                                        <value index="vDEF">0</value>
+                                    </field>
+                                    <field index="showfirstchildonly">
+                                        <value index="vDEF">0</value>
+                                    </field>
+                                    <field index="searchColumn">
+                                        <value index="vDEF">1</value>
+                                    </field>
+                                    <field index="cssclass">
+                                        <value index="vDEF"></value>
+                                    </field>
+                                    <field index="allowedusers">
+                                        <value index="vDEF"></value>
+                                    </field>
+                                    <field index="allowedgroups">
+                                        <value index="vDEF"></value>
+                                    </field>
+                                    <field index="images">
+                                        <value index="vDEF"></value>
+                                    </field>
+                                    <field index="mapping">
+                                        <value index="vDEF"></value>
+                                    </field>
+                                    <field index="link">
+                                        <value index="vDEF"></value>
+                                    </field>
+                                </el>
+                            </value>
+                            <value index="_TOGGLE">0</value>
+                        </field>
+                        <field index="5935dbf73faa9713888118">
+                            <value index="record">
+                                <el>
+                                    <field index="customtitle">
+                                        <value index="vDEF">lastName</value>
+                                    </field>
+                                    <field index="property">
+                                        <value index="vDEF">person.lastName#tx_relax5core_domain_model_person</value>
+                                    </field>
+                                    <field index="align">
+                                        <value index="vDEF"></value>
+                                    </field>
+                                    <field index="showalways">
+                                        <value index="vDEF">0</value>
+                                    </field>
+                                    <field index="dontsort">
+                                        <value index="vDEF">0</value>
+                                    </field>
+                                    <field index="showfirstchildonly">
+                                        <value index="vDEF">0</value>
+                                    </field>
+                                    <field index="searchColumn">
+                                        <value index="vDEF">1</value>
+                                    </field>
+                                    <field index="cssclass">
+                                        <value index="vDEF"></value>
+                                    </field>
+                                    <field index="allowedusers">
+                                        <value index="vDEF"></value>
+                                    </field>
+                                    <field index="allowedgroups">
+                                        <value index="vDEF"></value>
+                                    </field>
+                                    <field index="images">
+                                        <value index="vDEF"></value>
+                                    </field>
+                                    <field index="mapping">
+                                        <value index="vDEF"></value>
+                                    </field>
+                                    <field index="link">
+                                        <value index="vDEF"></value>
+                                    </field>
+                                </el>
+                            </value>
+                            <value index="_TOGGLE">0</value>
+                        </field>
+                        <field index="5935dc114b4f9772348485">
+                            <value index="record">
+                                <el>
+                                    <field index="customtitle">
+                                        <value index="vDEF">firstName</value>
+                                    </field>
+                                    <field index="property">
+                                        <value index="vDEF">person.firstName#tx_relax5core_domain_model_person</value>
+                                    </field>
+                                    <field index="align">
+                                        <value index="vDEF"></value>
+                                    </field>
+                                    <field index="showalways">
+                                        <value index="vDEF">0</value>
+                                    </field>
+                                    <field index="dontsort">
+                                        <value index="vDEF">0</value>
+                                    </field>
+                                    <field index="showfirstchildonly">
+                                        <value index="vDEF">0</value>
+                                    </field>
+                                    <field index="searchColumn">
+                                        <value index="vDEF">1</value>
+                                    </field>
+                                    <field index="cssclass">
+                                        <value index="vDEF"></value>
+                                    </field>
+                                    <field index="allowedusers">
+                                        <value index="vDEF"></value>
+                                    </field>
+                                    <field index="allowedgroups">
+                                        <value index="vDEF"></value>
+                                    </field>
+                                    <field index="images">
+                                        <value index="vDEF"></value>
+                                    </field>
+                                    <field index="mapping">
+                                        <value index="vDEF"></value>
+                                    </field>
+                                    <field index="link">
+                                        <value index="vDEF"></value>
+                                    </field>
+                                </el>
+                            </value>
+                            <value index="_TOGGLE">0</value>
+                        </field>
+                    </el>
+                </field>
+            </language>
+        </sheet>
+    </data>
+</T3FlexForms>

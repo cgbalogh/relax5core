@@ -1,0 +1,90 @@
+{namespace r5f=CGB\Relax5validator\ViewHelpers}
+
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" data-namespace-typo3-fluid="true">
+  
+<div class="rlx5-modalform-stretcher" style="height: 0; min-width: 500px;"></div>  
+  
+<f:render partial="General/ShowInfo" arguments="{item:contact, itemtype:'person'}" />
+
+<f:for each="{typeSelect}" as="singleType">
+  <span typeuid="{singleType.uid}" eval="{singleType.eval}"></span>
+</f:for>
+
+<!-- 1: type -->
+<label for="type" class="tx_crmrelax5_labelleft">
+    <f:translate key="tx_relax5core_domain_model_contact.type" />
+</label>
+<r5f:form.select 
+  property="type" 
+  options="{typeSelect}" 
+  optionLabelField="name" 
+  optionValueField="uid" 
+  size="1" 
+  id="type" 
+  class="" 
+  validatorContext="UpdateContact" 
+/><br />
+
+<!-- 2: contact type telephone or fax -->
+<div class="rlx5-phonewrapper rlx5-contacttype rlx5-contacttype-1" style="display: none;">
+  <span class="rlx5-span-as-label">
+    <label for="countrycode" class="rlx5-min">
+      <f:translate key="tx_relax5core_domain_model_contact.countrycode" />
+    </label> 
+    | 
+    <label for="areacode" class="rlx5-min">
+      <f:translate key="tx_relax5core_domain_model_contact.areacode" />
+    </label>
+    |
+    <label for="number" class="rlx5-min">
+      <f:translate key="tx_relax5core_domain_model_contact.number" />
+    </label>
+    |
+    <label for="extension" class="rlx5-min">
+      <f:translate key="tx_relax5core_domain_model_contact.extension" />
+    </label>
+  </span>
+
+  <span class="rlx5-span-as-seamless-input">
+    <r5f:form.textfield property="countrycode" class="rlx5-10"/>	
+    <r5f:form.textfield property="areacode" class="rlx5-20"/>	
+    <r5f:form.textfield property="number" class="rlx5-50" validatorContext="UpdatePhone"/>	
+    <r5f:form.textfield property="extension" class="rlx5-15"/>	
+  </span>
+</div>
+
+<!-- 3: contact type telephone or fax -->
+<div class="rlx5-emailwrapper rlx5-contacttype rlx5-contacttype-2 rlx5-contacttype-3 rlx5-contacttype-4 rlx5-contacttype-5" style="display: none;">
+  <label for="contact">
+    <f:translate key="tx_relax5core_domain_model_contact.contact" />
+  </label>
+  <r5f:form.textfield property="contact" validatorContext="UpdateContact" /><br />
+</div>
+
+
+<!-- 4: description -->
+<label for="description">
+	<f:translate key="tx_relax5core_domain_model_contact.description" />
+</label>
+<f:form.textfield property="description" /><br />
+
+
+<label for="deny">
+	<f:translate key="tx_relax5core_domain_model_contact.deny" />
+</label>
+<f:form.textfield property="deny" /><br />
+
+<script>
+  $(document).ready(function() {
+    activateCollapser('.rlx5-collapser', '.rlx5-form', true);
+    $('#type').change(function(){
+      $('.rlx5-contacttype').fadeOut();
+      eval = $('[typeuid=' + $(this).val() + ']').attr('eval');
+      $('.rlx5-contacttype-' + eval).fadeIn();
+    });
+    $('#type').change();
+    showErrors();
+  });
+</script>
+
+</html>

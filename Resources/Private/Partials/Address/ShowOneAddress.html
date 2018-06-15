@@ -1,0 +1,62 @@
+<!-- docref BEGIN: EXT:relax5core/Resources/Private/Partials/Address/ShowOneAddresses.html v8.6 -->
+<!-- rev: 2017-04-30 -->
+
+<div class="rlx5-coredata-single rlx5-disable{address.allowMail}" id="address_{address.uid}">
+  <div class="">
+    <f:image src="{address.type.image.uid}" alt="" treatIdAsReference="TRUE" style="vertical-align: middle;" />
+    <span reference="address_{address.uid}_country">{address.country}</span>
+    <span reference="address_{address.uid}_zip">{address.zip}</span>
+    <span reference="address_{address.uid}_city">{address.city -> f:format.crop(maxCharacters: 15, respectWordBoundaries: false)}</span>, 
+    <span reference="address_{address.uid}_address">{address.address -> f:format.crop(maxCharacters: 15, respectWordBoundaries: false)}</span>
+    <span reference="address_{address.uid}_number">{address.number}</span>
+    <span reference="address_{address.uid}_muberAdditions">{address.numberAdditions}</span>
+  </div>
+  <div class="rlx5-buttons"><f:if condition="{address}"><a:actionicon 
+        uri="{h:uri.ajaxAction(
+          extensionName: 'Relax5core',
+          controller: 'Address',
+          pluginName: 'Core',
+          action: 'edit',
+          arguments: '{address: address}'
+        )}"
+        alturi="{h:uri.ajaxAction(
+          extensionName: 'Relax5core',
+          controller: 'Address',
+          pluginName: 'Core',
+          action: 'edit',
+          arguments: '{address: address}'
+        )}"
+
+        class="modalDialog rlx5-button rlx5-edit"
+        title="{address.address}" 
+        domainModelObject="CGB\\Relax5core\\Domain\\Model\\Address" 
+        intendedAction="editorshow"
+        permissions="{address.parent.permissions}" 
+        user="{address.parent.owner}" 
+        group="{address.parent.usergroup}"
+      /><a:actionicon 
+        uri="{h:uri.ajaxAction(
+          extensionName: 'Relax5core',
+          controller: 'Address',
+          pluginName: 'Core',
+          action: 'delete',
+          arguments: '{address: address}'
+        )}"
+
+        class="modalConfirm rlx5-button rlx5-delete" 
+        title="{f:translate(key:'tx_relax5core_domain_model_address')} {address.uid}" 
+        domainModelObject="{address.parent.itemtype}" 
+        intendedAction="edit"
+        action="delete"
+        forceIcon="deleteIcon"
+        permissions="{address.parent.permissions}" 
+        user="{address.parent.owner}" 
+        group="{address.parent.usergroup}"
+        additionalAttributes="{
+          text: '<b>{address.country} {address.zip} {address.address}:</b> {f:translate(key:\"tx_relax5core_domain_model_address.confirm_delete\")}'
+        }"
+
+      /></f:if></div>
+</div>
+
+<!-- docref END: EXT:relax5core/Resources/Private/Partials/Address/ShowOneAddresses.html v8.6 -->

@@ -1,0 +1,77 @@
+{namespace r5w=CGB\Relax5core\ViewHelpers}
+
+<!-- docref BEGIN: EXT:relax5core/Resources/Private/Partials/Contact/ShowOneContact.html v8.6 -->
+<!-- rev: 2017-04-30 -->
+
+<div class="rlx5-coredata-single"  id="contact_{contact.uid}">
+  <div class="">
+    <f:image src="{contact.type.image.uid}" alt="" treatIdAsReference="TRUE" style="vertical-align: middle;" />
+    <span reference="contact_{contact.uid}_contact">
+      <f:if condition="{contact.type.wrap}">
+        <f:then>
+          <f:format.raw>
+            <r5w:wrap contact="{contact.contact}" wrap="{contact.type.wrap}" />
+          </f:format.raw>
+        </f:then>
+        <f:else>
+          {contact.contact}
+        </f:else>
+      </f:if>
+    </span>
+    <span reference="contact_{contact.uid}_description">
+      {contact.description}
+    </span>
+  </div>
+  <div class="rlx5-buttons">
+    <a:actionicon 
+      uri="{h:uri.ajaxAction(
+        extensionName: 'Relax5core',
+        controller: 'Contact',
+        pluginName: 'Core',
+        action: 'edit',
+        arguments: '{contact: contact}'
+      )}"
+      alturi="{h:uri.ajaxAction(
+        extensionName: 'Relax5core',
+        controller: 'Contact',
+        pluginName: 'Core',
+        action: 'edit',
+        arguments: '{contact: contact}'
+      )}"
+      
+      class="modalDialog rlx5-button rlx5-edit"
+      title="{contact.contact}" 
+      domainModelObject="CGB\\Relax5core\\Domain\\Model\\Contact" 
+      intendedAction="editorshow"
+      permissions="{contact.parent.permissions}" 
+      user="{contact.parent.owner}" 
+      group="{contact.parent.usergroup}"
+    />
+
+    <a:actionicon 
+      uri="{h:uri.ajaxAction(
+        extensionName: 'Relax5core',
+        controller: 'Contact',
+        pluginName: 'Core',
+        action: 'delete',
+        arguments: '{contact: contact}'
+      )}"
+      
+      class="modalConfirm rlx5-button rlx5-delete" 
+      title="{f:translate(key:'tx_relax5core_domain_model_contact')} {contact.uid}" 
+      domainModelObject="{contact.parent.itemtype}" 
+      intendedAction="edit"
+      action="delete"
+      forceIcon="deleteIcon"
+      permissions="{contact.parent.permissions}" 
+      user="{contact.parent.owner}" 
+      group="{contact.parent.usergroup}"
+      additionalAttributes="{
+        text: '<b>{contact.country} {contact.zip} {contact.contact}:</b> {f:translate(key:\"tx_relax5core_domain_model_contact.confirm_delete\")}'
+      }"
+      
+    />
+  </div>
+</div>
+
+<!-- docref END: EXT:relax5core/Resources/Private/Partials/Contact/ShowOneContact.html v8.6 -->

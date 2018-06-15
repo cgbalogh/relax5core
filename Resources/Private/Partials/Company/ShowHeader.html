@@ -1,0 +1,53 @@
+<f:if condition="{company}">
+  <div class="rlx5-item-company-header rlx5-company rlx5-core-data-box {f:if(condition: '{company}',then:'rlx5-ispopulated',else:'rlx5-isempty')}">
+    <div class="rlx5-coredata-single">
+      <div class="" style="padding-right: 50px;">
+        <span reference="company_{company.uid}_name">{company.name}</span>
+        <span reference="company_{company.uid}_shortName">{company.shortName}</span>
+      </div>
+      <div class="rlx5-buttons">
+        <a:actionicon 
+          uri="{h:uri.ajaxAction(
+            extensionName: 'Relax5core',
+            controller: 'Company',
+            pluginName: 'Core',
+            action: 'edit',
+            arguments: '{company:company}'
+          )}"
+          alturi="{h:uri.ajaxAction(
+            extensionName: 'Relax5core',
+            controller: 'Company',
+            pluginName: 'Core',
+            action: 'show',
+            arguments: '{company:company}'
+          )}"
+          class="modalDialog rlx5-button rlx5-edit"
+          title="{company.shortName} {company.name}" 
+          domainModelObject="Company" 
+          intendedAction="editorshow"
+          permissions="{company.permissions}" 
+          user="{company.owner}" 
+          group="{company.usergroup}"
+        />
+
+        <a:actionicon 
+          uri="{h:uri.ajaxAction(
+            extensionName: 'Relax5core',
+            controller: 'Company',
+            pluginName: 'Core',
+            action: 'delete',
+            arguments: '{company:company}'
+          )}"
+          class="modalConfirm rlx5-button rlx5-delete" 
+          title="{company.shortName} {company.name}" 
+          domainModelObject="Company" 
+          intendedAction="delete"
+          permissions="{company.permissions}" 
+          user="{company.owner}" 
+          group="{company.usergroup}"
+        />
+
+      </div>
+    </div>
+  </div>
+</f:if>

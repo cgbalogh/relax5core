@@ -1,0 +1,164 @@
+{namespace r5f=CGB\Relax5validator\ViewHelpers}
+
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" data-namespace-typo3-fluid="true">
+
+<div class="rlx5-modalform-stretcher" style="height: 0; min-width: 500px;"></div>  
+  
+<f:render partial="General/ShowInfo" arguments="{item:person, itemtype:'person'}" />
+
+<div class="rlx5-collapser" style="position: absolute;">
+  &nbsp;<span class="texticon-inner-icon ion ion-chevron-down"></span>&nbsp;
+</div>
+<div class="rlx5-info rlx5-clearfix rlx5-collapsible rlx5-collapsed">
+  <span>Rights:</span>
+  <span><f:form.select property="owner" options="{ownerSelect}" optionLabelField="username" optionValueField="uid" size="1" /></span>
+  <span><f:form.select property="owner" options="{usergroupSelect}" optionLabelField="title" optionValueField="uid" size="1" /></span>
+  <span>rwx------</span>
+</div>
+
+<label for="lastName">
+	<f:translate key="tx_relax5core_domain_model_person.last_name" />
+</label>
+<r5f:form.textfield property="lastName" validatorContext="CreatePerson" /><br />
+
+<label for="firstName">
+	<f:translate key="tx_relax5core_domain_model_person.first_name" />
+</label>
+<r5f:form.textfield property="firstName" class="rlx5-clearfix" validatorContext="CreatePerson" /><br />
+
+<label for="middleName">
+	<f:translate key="tx_relax5core_domain_model_person.middle_name" />
+</label>
+<r5f:form.textfield property="middleName" validatorContext="CreatePerson" /><br />
+
+<label for="title">
+	<f:translate key="tx_relax5core_domain_model_person.title" />
+</label>
+<r5f:form.textfield property="title" class="rlx5-clearfix" validatorContext="CreatePerson" /><br />
+
+<label for="salutation">
+	<f:translate key="tx_relax5core_domain_model_person.salutation" />
+</label>
+<r5f:form.textfield property="salutation" class="rlx5-clearfix" validatorContext="CreatePerson" /><br />
+
+<label for="gender">
+	<f:translate key="tx_relax5core_domain_model_person.gender" />
+</label>
+  <span>
+    <label for="gender_1" class="rlx5-styledradio" title="<f:translate key='tx_relax5core_domain_model_person.gender_1' />">
+      <f:form.radio property="gender" value="1" id="gender_1" />
+      <span class="ion ion-male"></span>
+    </label><label for="gender_2" class="rlx5-styledradio" title="<f:translate key='tx_relax5core_domain_model_person.gender_2' />">
+      <f:form.radio property="gender" value="2" id="gender_2" />
+      <span class="ion ion-female"></span>
+    </label>
+  </span>
+<br />
+
+
+<label for="dateOfBirth">
+	<f:translate key="tx_relax5core_domain_model_person.date_of_birth" />
+</label>
+<r5f:form.textfield 
+  property="dateOfBirth" 
+  value="{person.dateOfBirth->f:format.date(format: '{f:translate(key: \'tx_relax5core_general.date_format\')}')}" validatorContext="CreatePerson" /><br />
+
+<div class="rlx5-divider"></div>
+
+<label for="maritalState">
+	<f:translate key="tx_relax5core_domain_model_person.marital_state" />
+</label>
+<r5f:form.select 
+  property="maritalState" 
+  options="{maritalStateSelect}" 
+  size="1" 
+  id="maritalState" 
+  class="" 
+  validatorContext="CreatePerson" 
+/><br />
+    
+<div class="rlx5-divider"></div>
+
+<div class="rlx5-collapser" style="position: absolute; ">
+  &nbsp;<span class="texticon-inner-icon ion ion-chevron-down"></span>&nbsp;
+</div>
+
+<div class="rlx5-collapsible rlx5-collapsed">
+  <label for="salutation">
+      <f:translate key="tx_relax5core_domain_model_person.salutation" />
+  </label>
+  <r5f:form.textfield id="salutation" property="salutation" /><br />
+
+  <label for="addressLabel" class="rlx5-top">
+      <f:translate key="tx_relax5core_domain_model_person.address_label" />
+  </label>
+  <f:form.textarea property="addressLabel" cols="40" rows="15" /><br />
+</div>  
+
+<label for="allowMail">
+	<f:translate key="tx_relax5core_domain_model_person.allow_mail" />
+</label>
+<f:form.checkbox id="allowMail" property="allowMail" value="1" /><br />
+
+<div class="rlx5-divider"></div>
+
+<label for="status">
+	<f:translate key="tx_relax5core_domain_model_person.status" />
+</label>
+<r5f:form.select property="status" options="{statusSelect}" optionLabelField="name" optionValueField="uid" size="1" validatorContext="CreatePerson" /><br />
+
+<label for="source">
+	<f:translate key="tx_relax5core_domain_model_person.source" />
+</label>
+<r5f:form.select 
+  id="person_source_select"
+  property="source" 
+  options="{sourceSelect}" 
+  optionLabelField="name" 
+  optionValueField="uid" 
+  size="1" 
+  validatorContext="CreatePerson"
+  additionalAttributes="{parent:'person'}"
+/><br />
+
+<label for="sourcedetail">
+	<f:translate key="tx_relax5core_domain_model_person.sourcedetail" />
+</label>
+<span id="person_sourcedetail_select_wrap">
+  <r5f:form.select 
+    id="person_sourcedetail_select"
+    property="sourcedetail" 
+    options="{sourcedetailSelect}" 
+    optionLabelField="name" 
+    optionValueField="uid" 
+    size="1" 
+    validatorContext="CreatePerson"
+  />
+</span>
+
+<f:alias map="{pageType: '{f:cObject(typoscriptObjectPath:\'lib.relax5core.ajax\')}'}">
+  <span class="_loadDetails" loaddetails="{f:uri.action(pageType:pageType, extensionName: 'Relax5core', pluginName: 'Ajax', controller: 'Source', action: 'loadDetails')}"></span>
+</f:alias>
+
+
+<!-- works only within modal dialog window -->
+<script type="text/javascript">
+  <f:format.cdata>
+    $(document).ready(function() {
+      activateCollapser('.rlx5-collapser', '.rlx5-form', true);
+      activateLoadDetails (
+        '#person_source_select', 
+        '', 
+        '#person_sourcedetail_select_wrap', 
+        $('._loadDetails').attr('loaddetails')
+      );
+      // invoke load details in case we returned to the form and source already set
+      //$( '#person_source_select', '').change();
+      activateJte('.rlx5-jte', '.rlx5-form');
+      activateComputeRights();
+      showErrors();
+    });
+  </f:format.cdata>
+</script>
+
+</html>

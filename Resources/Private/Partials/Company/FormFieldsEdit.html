@@ -1,0 +1,285 @@
+{namespace r5f=CGB\Relax5validator\ViewHelpers}
+{namespace r5c=CGB\Relax5core\ViewHelpers}
+
+<f:section name="main">
+  <html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" data-namespace-typo3-fluid="true">
+
+  <div class="rlx5-modalform-stretcher" style="height: 0; min-width: 500px;"></div>  
+
+  <f:render partial="General/ShowInfo" arguments="{item:company, itemtype:'company'}" />
+
+  <div class="rlx5-collapser">
+    &nbsp;<span class="texticon-inner-icon ion ion-chevron-down"></span>&nbsp;
+  </div>
+  <div class="rlx5-info rlx5-clearfix rlx5-collapsible rlx5-collapsed" style="border-bottom: 3px solid #f0b7c1; margin-bottom: 8px;">
+    <span>&nbsp;</span>
+
+    <span>
+      <f:form.select property="owner" options="{ownerSelect}" optionLabelField="username" optionValueField="uid" size="1" style="width: 100%;" />
+    </span>
+
+    <span>
+      <f:form.select property="usergroup" options="{usergroupSelect}" optionLabelField="title" optionValueField="uid" size="1" style="width: 100%;" />
+    </span>
+
+    <span style="white-space: nowrap;" class="rlx5-rightsarray">
+      <f:form.checkbox value="1" title="Owner read" /><f:form.checkbox value="1"  title="Owner write" /><f:form.checkbox value="1"  title="Owner delete" />
+  <br class="rlx5-smallonly" /><f:form.checkbox value="1"  title="Group read" /><f:form.checkbox value="1"  title="Group write" /><f:form.checkbox value="1"  title="Group delete" />
+  <br class="rlx5-smallonly" /><f:form.checkbox value="1"  title="Everybody read" /><f:form.checkbox value="1"  title="Everybody write" /><f:form.checkbox value="1"  title="Everybody delete" />
+      <f:form.hidden property="permissions" id="rlx5-permissions" />
+    </span>
+  </div>
+
+  <label for="name">
+      <f:translate key="tx_relax5core_domain_model_company.name" />
+  </label>
+  <r5f:form.textfield property="name" validatorContext="UpdateCompany" /><br />
+
+  <label for="shortName">
+      <f:translate key="tx_relax5core_domain_model_company.short_name" />
+  </label>
+  <r5f:form.textfield property="shortName" validatorContext="UpdateCompany" /><br />
+
+  <div class="rlx5-divider"></div>
+
+  <label for="legalForm">
+      <f:translate key="tx_relax5core_domain_model_company.legal_form" />
+  </label>
+  <r5f:form.select 
+    property="legalForm" 
+    options="{legalFormSelect}" 
+    size="1" 
+    id="leagalForm" 
+    class="" 
+    validatorContext="UpdateCompany" 
+  /><br />
+
+  <label for="industry">
+      <f:translate key="tx_relax5core_domain_model_company.industry" />
+  </label>
+  <r5f:form.select 
+    property="industry" 
+    options="{industrySelect}" 
+    size="1" 
+    id="industry" 
+    class="" 
+    validatorContext="UpdateCompany" 
+  /><br />
+
+  <div class="rlx5-divider"></div>
+
+  <div class="rlx5-collapser">
+    &nbsp;<span class="texticon-inner-icon ion ion-chevron-down"></span>&nbsp;
+  </div>
+
+  <div class="rlx5-collapsible rlx5-collapsed">
+    <label for="addressLabel" class="rlx5-top">
+        <f:translate key="tx_relax5core_domain_model_company.address_label" />
+    </label>
+    <f:form.textarea property="addressLabel" cols="40" rows="15" /><br />
+  </div>  
+
+  <label for="allowMail">
+      <f:translate key="tx_relax5core_domain_model_company.allow_mail" />
+  </label>
+  <f:form.checkbox id="allowMail" property="allowMail" value="1" /><br />
+
+  <div class="rlx5-divider"></div>
+
+  <label for="employees">
+      <f:translate key="tx_relax5core_domain_model_company.employees" />
+  </label>
+  <f:form.textfield property="employees" class="rlx5-20" style="text-align: right;" />
+  <label for="regId" class="rlx5-15-label">
+      <f:translate key="tx_relax5core_domain_model_company.reg_id" />
+  </label>
+
+  <f:form.textfield property="regId" class="rlx5-20" /><br />
+  <label for="regAuthority">
+      <f:translate key="tx_relax5core_domain_model_company.reg_authority" />
+  </label>
+  <f:form.textfield property="regAuthority" class="rlx5-20" />
+  <label for="vatId" class="rlx5-15-label">
+      <f:translate key="tx_relax5core_domain_model_company.vat_id" />
+  </label>
+  <f:form.textfield property="vatId" class="rlx5-20" /><br />
+
+  <div class="rlx5-divider"></div>
+
+  <label for="comments" class="rlx5-top">
+      <f:translate key="tx_relax5core_domain_model_company.comments" />
+  </label>
+  <r5f:form.textarea property="comments" cols="40" rows="15" class="rlx5-jte" validatorContext="UpdateCompany" /><br />
+
+  <label for="status">
+      <f:translate key="tx_relax5core_domain_model_company.status" />
+  </label>
+  <r5f:form.select property="status" options="{statusSelect}" optionLabelField="name" optionValueField="uid" size="1" validatorContext="UpdateCompany" /><br />
+
+  <label for="source">
+      <f:translate key="tx_relax5core_domain_model_company.source" />
+  </label>
+  <r5f:form.select 
+    id="company_source_select"
+    property="source" 
+    options="{sourceSelect}" 
+    optionLabelField="name" 
+    optionValueField="uid" 
+    size="1" 
+    validatorContext="UpdateCompany"
+    additionalAttributes="{parent:'company'}"
+  /><br />
+
+  <label for="sourcedetail">
+      <f:translate key="tx_relax5core_domain_model_company.sourcedetail" />
+  </label>
+  <span id="company_sourcedetail_select_wrap">
+    <r5f:form.select 
+      id="company_sourcedetail_select"
+      property="sourcedetail" 
+      options="{sourcedetailSelect}" 
+      optionLabelField="name" 
+      optionValueField="uid" 
+      size="1" 
+      validatorContext="UpdateCompany"
+    />
+  </span><br />
+
+  <f:render partial="AddInfo" arguments="{addInfo:addInfo}" optional="TRUE"/>
+
+  <!-- works only within modal dialog window -->
+  <script type="text/javascript">
+    <f:format.cdata>
+      $(document).ready(function() {
+        activateCollapser('.rlx5-collapser', '.rlx5-form', true);
+        activateLoadDetails (
+          '#company_source_select', 
+          '', 
+          '#company_sourcedetail_select_wrap', 
+          $('._loadDetails').attr('loaddetails')
+        );
+        activateJte('.rlx5-jte', '.rlx5-form');
+        activateComputeRights();
+        showErrors();
+      });
+    </f:format.cdata>
+  </script>
+
+  </html>
+</f:section>
+
+
+<f:section name="extra">  
+  
+  <html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" data-namespace-typo3-fluid="true">  
+    
+  <div class="rlx5-modalform-stretcher" style="height: 0; min-width: 500px;"></div>  
+
+  <f:render partial="General/ShowInfo" arguments="{item:company, itemtype:'company'}" />
+
+  <div class="rlx5-collapser">
+    &nbsp;<span class="texticon-inner-icon ion ion-chevron-down"></span>&nbsp;
+  </div>
+  <div class="rlx5-info rlx5-clearfix rlx5-collapsible rlx5-collapsed" style="border-bottom: 3px solid #99b2d3; margin-bottom: 8px;">
+    <span>&nbsp;</span>
+
+    <span>
+      <f:form.select property="owner" options="{ownerSelect}" optionLabelField="username" optionValueField="uid" size="1" style="width: 100%;" />
+    </span>
+
+    <span>
+      <f:form.select property="usergroup" options="{usergroupSelect}" optionLabelField="title" optionValueField="uid" size="1" style="width: 100%;" />
+    </span>
+
+    <span style="white-space: nowrap;" class="rlx5-rightsarray">
+      <f:form.checkbox value="1" title="Owner read" /><f:form.checkbox value="1"  title="Owner write" /><f:form.checkbox value="1"  title="Owner delete" />
+  <br class="rlx5-smallonly" /><f:form.checkbox value="1"  title="Group read" /><f:form.checkbox value="1"  title="Group write" /><f:form.checkbox value="1"  title="Group delete" />
+  <br class="rlx5-smallonly" /><f:form.checkbox value="1"  title="Everybody read" /><f:form.checkbox value="1"  title="Everybody write" /><f:form.checkbox value="1"  title="Everybody delete" />
+      <f:form.hidden property="permissions" id="rlx5-permissions" />
+    </span>
+  </div>
+  
+  <label for="source">
+      <f:translate key="tx_relax5core_domain_model_company.source" />
+  </label>
+  <r5f:form.select 
+    id="company_source_select"
+    property="source" 
+    options="{sourceSelect}" 
+    optionLabelField="name" 
+    optionValueField="uid" 
+    size="1" 
+    validatorContext="UpdateCompany"
+    additionalAttributes="{parent:'company'}"
+  /><br />
+
+  <label for="sourcedetail">
+      <f:translate key="tx_relax5core_domain_model_company.sourcedetail" />
+  </label>
+  <span id="company_sourcedetail_select_wrap">
+    <r5f:form.select 
+      id="company_sourcedetail_select"
+      property="sourcedetail" 
+      options="{sourcedetailSelect}" 
+      optionLabelField="name" 
+      optionValueField="uid" 
+      size="1" 
+      validatorContext="UpdateCompany"
+    />
+  </span><br />
+
+  <label for="image" class="rlx5-top">
+      <f:translate key="tx_relax5core_domain_model_company.image" />
+  </label>
+  <span class="rlx5-span-as-input">
+    <f:image src="{company.image.uid}" alt="" treatIdAsReference="TRUE" style="width: 8em; height: auto;"/>
+  </span><br />
+
+  <label for="comments" class="rlx5-top">
+      <f:translate key="tx_relax5core_domain_model_company.comments" />
+  </label>
+  <r5f:form.textarea property="comments" cols="40" rows="15" class="rlx5-jte" validatorContext="UpdateCompany" /><br />
+  
+  <div class="rlx5-divider"></div>
+
+  <div class="rlx5-category" style="border: 1px solid transparent; max-width: 500px;">
+    <f:for each="{categories}" as="category">
+      <span title="{category.description}" style="width: 10em; display: inline-block;">
+        <f:form.checkbox 
+          name="categories[{category.uid}]" 
+          id="category_{category.uid}"
+          checked="<r5c:HasCategory item='{company}' category='{category}' />"
+          value="1" 
+        />
+        <label for="category_{category.uid}" style="font-weight: normal; width: auto; max-width: none;">
+          {category.category}
+        </label>
+      </span>
+    </f:for>
+  </div>
+  
+  <div class="rlx5-divider"></div>
+  
+  <f:render partial="AddInfo" arguments="{addInfo:addInfo}" optional="TRUE"/>
+
+  <span class="_loadDetails" loaddetails="{h:uri.ajaxAction(extensionName: 'Relax5core', pluginName: 'Core', controller: 'Source', action: 'loadDetails')}"></span>
+  
+  <!-- works only within modal dialog window -->
+  <script type="text/javascript">
+    <f:format.cdata>
+      $(document).ready(function() {
+        activateCollapser('.rlx5-collapser', '.rlx5-form', true);
+        activateLoadDetails (
+          '#company_source_select', 
+          '', 
+          '#company_sourcedetail_select_wrap', 
+          $('._loadDetails').attr('loaddetails')
+        );
+        activateJte('.rlx5-jte', '.rlx5-form');
+        activateComputeRights();
+        showErrors();
+      });
+    </f:format.cdata>
+  </script>
+  </html>
+</f:section>  

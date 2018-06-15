@@ -1,0 +1,51 @@
+{namespace h=Helhum\TyposcriptRendering\ViewHelpers}
+
+<!-- docref BEGIN: EXT:relax5core/Resources/Private/Partials/Person/ShowRelations.html v8.6 -->
+<!-- rev: 2017-04-30 -->
+
+<div class="rlx5-item-person-relations rlx5-person rlx5-core-data-box {f:if(condition: '{item}',then:'rlx5-ispopulated',else:'rlx5-isempty')}">
+  <div id="relationList_person" class="rlx5-coredata-block">
+    <h3 class="rlx5-collapser">
+      <span class="texticon-inner-icon ion ion-chevron-up"></span>
+      <f:translate key="LLL:EXT:relax5core/Resources/Private/Language/locallang.xlf:tx_relax5core_domain_model_person.relations" /> (<f:count subject="{person.relations}" />)
+      <!-- TODO: dimensions of child window settable in plugin -->
+          <div class="rlx5-buttons"><f:if condition="{a:permission(domainModelObject:'Person',intendedAction:'write',permissions:'{person.permissions}',user:person.owner,group:person.usergroup)}"><f:link.page 
+          class="ui-button selectWindow"
+          target="_new" 
+          pageUid="{settings.selectPersonRelationPid}" 
+          additionalParams="{target:person}"
+        ><f:image src="EXT:core/Resources/Public/Icons/T3Icons/apps/apps-pagetree-page-shortcut-external.svg" alt="" class="rlx5-button" />
+        </f:link.page><a:actionicon 
+          uri="{h:uri.ajaxAction(
+            extensionName: 'Relax5core',
+            controller: 'Person',
+            pluginName: 'Core',
+            action: 'addRelation',
+            arguments: '{target: person}'
+          )}"
+          
+          id="addPersonRelation" 
+          style="display: none"
+          domainModelObject="Person" 
+          intendedAction="add"
+          child="Relation"
+          permissions="{person.permissions}" 
+          user="{person.owner}" 
+          group="{person.usergroup}"
+          additionalAttributes="{prefix: 'tx_relax5core_core', person: person.uid, onsuccess: 'window.opener.location.reload();window.close();'}"
+        /></f:if></div>
+    </h3>
+    
+    <div sortref="relation" class="rlx5-collapsible <f:if condition="{a:permission(domainModelObject:'person',intendedAction:'write',permissions:'{person.permissions}',user:'{person.owner}',group:'{person.usergroup}')}">sortable</f:if>" 
+         uri="{h:uri.ajaxAction(extensionName: 'Relax5core', controller: 'Person', pluginName: 'Core', action: 'resortRelation')}" 
+      >
+      
+      <f:for each="{person.relations}" as="relation">
+        <f:render partial="Person/ShowOneRelation" arguments="{person:relation.targetPerson, parent:person, relation:relation, settings:settings, showcontacts:showcontacts}" />
+      </f:for>	
+    </div>
+  </div>
+</div>
+
+
+<!-- docref END: EXT:relax5core/Resources/Private/Partials/Person/ShowRelations.html v8.6 -->

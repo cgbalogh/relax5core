@@ -1,0 +1,26 @@
+<div class="showData">
+	<div id="showCategory{category.uid}" category="{category.uid}">
+		<div class="catgory{itemtype}{category.uid} tx_crmrelax5_category" title="{category.description}">
+			{category.name}
+			<span class="icons">
+				<f:image class="modalConfirm"
+					src="EXT:crm_relax5/Resources/Public/FeIcons/unlink.png" 
+					alt="{f:translate(key:'tx_crmrelax5_domain_model_link.delete_link')}" 
+					title="{f:translate(key:'tx_crmrelax5_domain_model_link.delete_link')}" 
+					additionalAttributes="{
+						extbaseajax: '
+							controller: \'Category\',
+							action: \'ajaxRemove\',
+							itemtype : \'{itemtype}\', 
+							itemuid : \'{itemuid}\', 
+							category: {category.uid}
+						',
+						text: 'Wollen Sie diese Kategorie löschen?',
+						confirm: 'Löschen',
+						cancel: 'Abbrechen',
+						onconfirm: '$(\'.catgoryPerson{category.uid}\').fadeOut();'
+					}" />
+			</span>
+		</div>
+	</div>
+</div>

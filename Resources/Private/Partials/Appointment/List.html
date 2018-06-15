@@ -1,0 +1,40 @@
+<!-- docref BEGIN: EXT:relax5core/Resources/Private/Partials/Appointment/List.html v8.7 -->
+<!-- rev: 2017-10-21 -->
+
+<f:if condition="{item}">
+  <div class="rlx5-appointments rlx5-{item.itemtype} rlx5-core-data-box {f:if(condition: '{item}',then:'rlx5-ispopulated',else:'rlx5-isempty')}">
+    <div id="appointmentList{itemtype}" class="rlx5-coredata-block">
+      <h3 class="rlx5-collapser">
+        <span class="texticon-inner-icon ion ion-chevron-up"></span>
+        <f:translate key="tx_relax5core_domain_model_person.appointments" /> (<f:count subject="{item.appointments}" />)
+        <div class="rlx5-buttons"><a:actionicon 
+            class="modalDialog rlx5-button rlx5-edit"
+            title="{f:translate(key:'tx_relax5core_domain_model_address')}" 
+            domainModelObject="{item.itemtype}" 
+            intendedAction="edit"
+            action="new"
+            forceIcon="addIcon"
+            permissions="{item.permissions}" 
+            user="{item.owner}" 
+            group="{item.usergroup}"
+            pageType="{f:cObject(typoscriptObjectPath:'lib.relax5core.ajax')}"
+            extensionName="Relax5core"
+            pluginName="Ajax" 
+            controller="Address"
+            mapArgumentName="item->{item.itemtype}"
+            arguments="{newAddress:newAddress, item:item}"
+            additionalAttributes="{onsave: 'window.location.reload()'}"
+          /></div>
+      </h3>
+
+      <div class="rlx5-collapsible">
+        <v:variable.register.set name="dtfilter" value="{item.itemtype}:{item.uid}"></v:variable.register.set>
+        <v:content.render contentUids="{0: settings.appointmentListCE}" />
+      </div>
+      
+    </div>
+  </div>
+</f:if>
+
+
+<!-- docref END: EXT:relax5core/Resources/Private/Partials/Appointment/List.html v8.7 -->

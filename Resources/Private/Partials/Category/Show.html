@@ -1,0 +1,63 @@
+	<div id="categoryList{itemtype}">		
+<f:if condition="{item.uid}">
+		<f:for each="{item.categories}" as="category">
+			<div id="categoryBlock_{category.uid}" class="categoryBlock" category="{category.uid}">
+				<div class="showData">
+					<div id="showCategory{category.uid}" category="{category.uid}">
+						<div class="catgory{itemtype}{category.uid} tx_crmrelax5_category" title="{category.description}">
+							{category.name}
+							<span class="icons">
+								<f:image class="modalConfirm"
+									src="EXT:crm_relax5/Resources/Public/FeIcons/unlink.png" 
+									alt="{f:translate(key:'tx_crmrelax5_domain_model_link.delete_link')}" 
+									title="{f:translate(key:'tx_crmrelax5_domain_model_link.delete_link')}" 
+									additionalAttributes="{
+										extbaseajax: '
+											controller: \'Category\',
+											action: \'ajaxRemove\',
+											itemtype : \'{itemtype}\', 
+											itemuid : \'{item.uid}\', 
+											category: {category.uid}
+										',
+										text: 'Wollen Sie diese Kategorie löschen?',
+										confirm: 'Löschen',
+										cancel: 'Abbrechen',
+										onconfirm: '$(\'.catgory{itemtype}{category.uid}\').fadeOut();'
+									}" />
+							</span>
+						</div>
+					</div>
+				</div>
+			</div>
+		</f:for>
+
+	<div class="clearer"></div>
+	
+	<f:if condition="{item.canwrite}">
+		<div class="showData">
+			<div class="" alignment="none">
+				<div class="tx_crmrelax5_level1" alignment="none">
+					&nbsp;
+					<span class="icons">
+						<f:image class="modalDialog"
+							src="EXT:crm_relax5/Resources/Public/FeIcons/edit.png" 
+							alt="{f:translate(key:'tx_crmrelax5_domain_model_category.add_category')}" 
+							title="{f:translate(key:'tx_crmrelax5_domain_model_category.add_category')}" 
+							additionalAttributes="{
+								extbaseajax: '
+									action : \'ajaxSelect\', 
+									controller : \'Category\', 
+									itemtype : \'{itemtype}\', 
+									item : {item.uid}', 
+								savetext: 'Speichern',
+								closetext: 'Abbrechen',
+								onsave: '$(\'#categoryList{itemtype}\').html(d.showView);autoAjax();',
+								onshow: ''
+						}" />
+					</span>
+				</div>
+			</div>
+		</div>
+	</f:if>
+</f:if>
+	</div>
