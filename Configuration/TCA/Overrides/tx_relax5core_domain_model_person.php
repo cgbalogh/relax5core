@@ -71,7 +71,7 @@ $GLOBALS['TCA']['tx_relax5core_domain_model_person']['interface']['showRecordFie
         'sys_language_uid, l10n_parent, l10n_diffsource, crdate, tstamp, last_name, middle_name, first_name, title, gender, date_of_birth, marital_state, image, salutation, comments, allow_mail, address_label, permissions, status, owner, usergroup, source_category, source, relations, addresses, documents, contacts, links, categories';
 
 $GLOBALS['TCA']['tx_relax5core_domain_model_person']['types']['1']['showitem'] = 
-        'owner, usergroup, permissions, status, source, sourcedetail, sys_language_uid, l10n_parent, l10n_diffsource, crdate, tstamp, --div--;Core Data, last_name, middle_name, first_name, title, gender, date_of_birth, marital_state, image, salutation, comments, allow_mail, address_label, --div--;Relations, addresses, contacts, links, documents, --div--;Categories, categories';
+        'endtime, owner, usergroup, permissions, status, source, sourcedetail, sys_language_uid, l10n_parent, l10n_diffsource, crdate, tstamp, --div--;Core Data, last_name, middle_name, first_name, title, gender, date_of_birth, marital_state, image, salutation, comments, allow_mail, address_label, --div--;Relations, addresses, contacts, links, documents, --div--;Categories, categories';
 
 // $GLOBALS['TCA']['tx_relax5core_domain_model_person']['columns']['addresses']['config']['type'] = 'select';
 // $GLOBALS['TCA']['tx_relax5core_domain_model_person']['columns']['contacts']['config']['type'] = 'select';

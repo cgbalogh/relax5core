@@ -37,6 +37,9 @@ CREATE TABLE tx_relax5core_domain_model_person (
 	cruser_id int(11) unsigned DEFAULT '0' NOT NULL,
 	deleted smallint(5) unsigned DEFAULT '0' NOT NULL,
 
+	starttime int(11) unsigned DEFAULT '0' NOT NULL,
+	endtime int(11) unsigned DEFAULT '0' NOT NULL,
+
 	t3ver_oid int(11) DEFAULT '0' NOT NULL,
 	t3ver_id int(11) DEFAULT '0' NOT NULL,
 	t3ver_wsid int(11) DEFAULT '0' NOT NULL,
@@ -69,6 +72,7 @@ CREATE TABLE fe_users (
 	void smallint(5) unsigned DEFAULT '0' NOT NULL,
 	position varchar(255) DEFAULT '' NOT NULL,
 	team varchar(255) DEFAULT '' NOT NULL,
+	pool int(11) unsigned DEFAULT '0' NOT NULL,
 
 	tx_extbase_type varchar(255) DEFAULT '' NOT NULL,
 
@@ -486,7 +490,9 @@ CREATE TABLE tx_relax5core_domain_model_appointment (
 	address varchar(255) DEFAULT '' NOT NULL,
 	contact varchar(255) DEFAULT '' NOT NULL,
 	result int(11) DEFAULT '0' NOT NULL,
+	result_text varchar(255) DEFAULT '' NOT NULL,
 	next_action int(11) DEFAULT '0' NOT NULL,
+	next_action_text varchar(255) DEFAULT '' NOT NULL,
 	contact_state int(11) DEFAULT '0' NOT NULL,
 	task int(11) DEFAULT '0' NOT NULL,
 	postponed_counter int(11) DEFAULT '0' NOT NULL,
@@ -877,6 +883,20 @@ CREATE TABLE tx_relax5core_domain_model_appointment (
 # Table structure for table 'tx_relax5core_person_category_mm'
 #
 CREATE TABLE tx_relax5core_person_category_mm (
+	uid_local int(11) unsigned DEFAULT '0' NOT NULL,
+	uid_foreign int(11) unsigned DEFAULT '0' NOT NULL,
+	sorting int(11) unsigned DEFAULT '0' NOT NULL,
+	sorting_foreign int(11) unsigned DEFAULT '0' NOT NULL,
+
+	PRIMARY KEY (uid_local,uid_foreign),
+	KEY uid_local (uid_local),
+	KEY uid_foreign (uid_foreign)
+);
+
+#
+# Table structure for table 'tx_relax5core_owner_owner_mm'
+#
+CREATE TABLE tx_relax5core_owner_owner_mm (
 	uid_local int(11) unsigned DEFAULT '0' NOT NULL,
 	uid_foreign int(11) unsigned DEFAULT '0' NOT NULL,
 	sorting int(11) unsigned DEFAULT '0' NOT NULL,

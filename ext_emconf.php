@@ -21,7 +21,7 @@ $EM_CONF[$_EXTKEY] = [
     'uploadfolder' => '1',
     'createDirs' => '',
     'clearCacheOnLoad' => 0,
-    'version' => '8.7.2-rc80529',
+    'version' => '8.7.2-rc80823',
     'constraints' => [
         'depends' => [
             'typo3' => '7.6.0-8.9.99',
@@ -32,7 +32,10 @@ $EM_CONF[$_EXTKEY] = [
 ];
 
 /**
- * * 8.7.2-rc80529
+ * 8.7.2-rc80823
+ * allow addInfo on NewAlt.html Partial
+ * 
+ * 8.7.2-rc80529
  * cleanup of plugin wizard settings
  * 
  * 8.7.2-rc80524

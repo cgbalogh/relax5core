@@ -1,9 +1,14 @@
+<!-- docref BEGIN: EXT:relax5core/Resources/Private/Partials/Company/ShowHeader.html v8.7 -->
+<!-- rev: 2018-10-04 -->
+
 <f:if condition="{company}">
   <div class="rlx5-item-company-header rlx5-company rlx5-core-data-box {f:if(condition: '{company}',then:'rlx5-ispopulated',else:'rlx5-isempty')}">
     <div class="rlx5-coredata-single">
       <div class="" style="padding-right: 50px;">
-        <span reference="company_{company.uid}_name">{company.name}</span>
-        <span reference="company_{company.uid}_shortName">{company.shortName}</span>
+        <a href="{f:uri.action(pageUid:settings.companyShowPid, extensionName: 'Relax5core', controller: 'Company', action: 'show', arguments: {company:company})}" class="tx_simulatefeWrapperUncollapse">
+          <span reference="company_{company.uid}_name">{company.name}</span>
+          <span reference="company_{company.uid}_shortName">{company.shortName}</span>
+        </a>
       </div>
       <div class="rlx5-buttons">
         <a:actionicon 
@@ -51,3 +56,5 @@
     </div>
   </div>
 </f:if>
+
+<!-- docref END: EXT:relax5core/Resources/Private/Partials/Company/ShowHeader.html v8.7 -->

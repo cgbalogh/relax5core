@@ -35,7 +35,7 @@ class Relation extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * @var int
      */
     protected $sorting = 0;
-    
+
     /**
      * Relation ID
      *
@@ -316,29 +316,29 @@ class Relation extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     {
         return $this->company;
     }
-    
+
     /**
-     * 
      * @return int
      */
-    function getSorting() {
+    function getSorting()
+    {
         return $this->sorting;
     }
 
     /**
-     * 
      * @param type $sorting
      */
-    function setSorting($sorting) {
+    function setSorting($sorting)
+    {
         $this->sorting = $sorting;
     }
 
-    function invertType() {
-        if ( (abs($this->type) == 2) || (abs($this->type) == 4) ) {
-            return $this->type * (-1);
+    function invertType()
+    {
+        if (abs($this->type) == 2 || abs($this->type) == 4) {
+            return $this->type * -1;
         } else {
             return $this->type;
         }
     }
-    
 }

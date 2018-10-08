@@ -18,16 +18,38 @@ namespace CGB\Relax5core\Domain\Model;
 class AddressCatalogue extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
 {
     /**
-     * Country Code
+     * Contry Code
      *
      * @var string
      */
     protected $countryCode = '';
 
     /**
+     * Street Code
+     *
+     * @var string
+     */
+    protected $streetCode = '';
+
+    /**
+     * Community Code
+     *
+     * @var string
+     */
+    protected $communityCode = '';
+
+    /**
+     * Community Name
+     *
+     * @var string
+     */
+    protected $communityName = '';
+
+    /**
      * Address
      *
      * @var string
+     * @validate NotEmpty
      */
     protected $address = '';
 
@@ -46,7 +68,7 @@ class AddressCatalogue extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     protected $state = '';
 
     /**
-     * verified
+     * Verified
      *
      * @var bool
      */
@@ -71,6 +93,69 @@ class AddressCatalogue extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     public function setCountryCode($countryCode)
     {
         $this->countryCode = $countryCode;
+    }
+
+    /**
+     * Returns the streetCode
+     *
+     * @return string $streetCode
+     */
+    public function getStreetCode()
+    {
+        return $this->streetCode;
+    }
+
+    /**
+     * Sets the streetCode
+     *
+     * @param string $streetCode
+     * @return void
+     */
+    public function setStreetCode($streetCode)
+    {
+        $this->streetCode = $streetCode;
+    }
+
+    /**
+     * Returns the communityCode
+     *
+     * @return string $communityCode
+     */
+    public function getCommunityCode()
+    {
+        return $this->communityCode;
+    }
+
+    /**
+     * Sets the communityCode
+     *
+     * @param string $communityCode
+     * @return void
+     */
+    public function setCommunityCode($communityCode)
+    {
+        $this->communityCode = $communityCode;
+    }
+
+    /**
+     * Returns the communityName
+     *
+     * @return string $communityName
+     */
+    public function getCommunityName()
+    {
+        return $this->communityName;
+    }
+
+    /**
+     * Sets the communityName
+     *
+     * @param string $communityName
+     * @return void
+     */
+    public function setCommunityName($communityName)
+    {
+        $this->communityName = $communityName;
     }
 
     /**

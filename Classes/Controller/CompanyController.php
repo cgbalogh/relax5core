@@ -80,7 +80,7 @@ class CompanyController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControll
      * @inject
      */
     protected $categoryRepository = null;
-    
+
     /**
      * accessControlService
      *
@@ -176,7 +176,6 @@ class CompanyController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControll
         $persistenceManager->persistAll();
         $message = \TYPO3\CMS\Extbase\Utility\LocalizationUtility::translate('tx_relax5core_domain_model_company.record_created', 'relax5core');
         $this->addFlashMessage(sprintf($message, $newCompany->getUid()), '', \TYPO3\CMS\Core\Messaging\AbstractMessage::INFO);
-
         $pageUid = $this->settings['companyShowPid'];
         $uriBuilder = $this->uriBuilder;
         $uriBuilder->reset();
@@ -207,7 +206,6 @@ class CompanyController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControll
         if ($section == 'extra') {
             $categories = $this->categoryRepository->findAll();
         }
-
         $this->view->assignMultiple([
             'legalFormSelect' => \CGB\Relax5core\Service\DivService::makeSelectFromTCA('tx_relax5core_domain_model_company', 'legal_form', 'relax5core'),
             'industrySelect' => \CGB\Relax5core\Service\DivService::makeSelectFromTCA('tx_relax5core_domain_model_company', 'industry', 'relax5core'),
@@ -219,7 +217,7 @@ class CompanyController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControll
             'company' => $company,
             'section' => $section,
             'addInfo' => $this->addInfoService->loadAddInfo($company),
-            'categories' => $categories,
+            'categories' => $categories
         ]);
     }
 
@@ -237,21 +235,19 @@ class CompanyController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControll
             $this->addFlashMessage(\TYPO3\CMS\Extbase\Utility\LocalizationUtility::translate('tx_accessmanager_domain_model_policy.access_violation', 'accessmanager'), '', \TYPO3\CMS\Core\Messaging\AbstractMessage::ERROR);
             $this->forward('edit', 'Company', 'relax5core', $this->request->getArguments());
         }
-        
         if (is_array($categories)) {
             $existingCategories = $company->getCategories(true);
-            foreach($categories as $category => $chosen) {
+            foreach ($categories as $category => $chosen) {
                 $categoryObject = $this->categoryRepository->findByUid($category);
-                if ($chosen && ! $existingCategories->contains($categoryObject)) {
+                if ($chosen && !$existingCategories->contains($categoryObject)) {
                     // category missing, add
                     $company->addCategory($categoryObject);
-                } elseif (! $chosen && $existingCategories->contains($categoryObject)) {
+                } elseif (!$chosen && $existingCategories->contains($categoryObject)) {
                     // category exists but is not chosen, remove
                     $company->removeCategory($categoryObject);
                 }
             }
         }
-        
         $this->companyRepository->update($company);
         $this->addInfoService->storeAddInfo($company, $this->request);
         $result = \CGB\Relax5core\Service\DivService::objectToArray($company, 'name,shortName,comments', "company_{$company->getUid()}_");
@@ -277,10 +273,11 @@ class CompanyController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControll
      *
      * @param \CGB\Relax5core\Domain\Model\Company $company
      * @param \CGB\Relax5core\Domain\Model\Link $link
+     * @ignorevalidation $company
      * @return void
      */
     public function showAction(
-        \CGB\Relax5core\Domain\Model\Company $company,
+        \CGB\Relax5core\Domain\Model\Company $company = null,
         \CGB\Relax5core\Domain\Model\Link $link = null)
     {
         $this->view->assignMultiple([
@@ -337,6 +334,16 @@ class CompanyController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControll
      * @return void
      */
     public function resortRelationAction()
+    {
+
+    }
+
+    /**
+     * action createAux
+     *
+     * @return void
+     */
+    public function createAuxAction()
     {
 
     }

@@ -28,6 +28,14 @@ class Person extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     protected $tstamp = null;
 
     /**
+     * Selectors
+     *
+     * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\CGB\Relax5core\Domain\Model\Selector>
+     * @lazy
+     */
+    protected $selectors = null;
+
+    /**
      * Last Name
      *
      * @var string
@@ -221,14 +229,6 @@ class Person extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * @lazy
      */
     protected $categories = null;
-
-    /**
-     * Selectors
-     *
-     * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\CGB\Relax5core\Domain\Model\Selector>
-     * @lazy
-     */
-    protected $selectors = null;
 
     /**
      * Returns the lastName
@@ -647,7 +647,6 @@ class Person extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
         $this->links = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
         $this->appointments = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
         $this->categories = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
-        $this->selectors = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
     }
 
     /**
@@ -961,7 +960,6 @@ class Person extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     {
         // clean contacts
         $contacts = $this->getContacts();
-        
         $removeContactList = [];
         foreach ($contacts as $contact) {
             if ($contact->getNumberRaw() != '') {
@@ -973,7 +971,6 @@ class Person extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
             }
         }
         // remove empty contacts
-        
         foreach ($removeContactList as $contactToRemove) {
             $this->removeContact($contactToRemove);
         }
@@ -997,7 +994,7 @@ class Person extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     public function getCategoriesSorted()
     {
         $categories = [];
-        foreach($this->categories as $category) {
+        foreach ($this->categories as $category) {
             $categories[$category->getCategory()] = $category;
         }
         ksort($categories);
@@ -1057,18 +1054,20 @@ class Person extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     {
         $this->selectors = $selectors;
     }
-    
+
     /**
      * return string
      */
-    public function getNameCompound() {
+    public function getNameCompound()
+    {
         return $this->lastName . " {$this->firstName} ({$this->title})";
     }
 
     /**
      * @return string
      */
-    public function getFirstContact () {
+    public function getFirstContact()
+    {
         $this->contacts->rewind();
         $contact = $this->contacts->current();
         if ($contact instanceof \CGB\Relax5core\Domain\Model\Contact) {
@@ -1076,4 +1075,12 @@ class Person extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
         }
     }
     
+    /**
+     * 
+     * @param boolean $dummy
+     */
+    public function setGdprDelete($dummy = false) {
+      $this->lastName = substr($this->lastName, 0, 1) . '*****';
+      $this->firstName = substr($this->firstName, 0, 1) . '*****';
+    }
 }

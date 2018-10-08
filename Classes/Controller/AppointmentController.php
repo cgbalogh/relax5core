@@ -137,7 +137,6 @@ class AppointmentController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionCont
         }
         $this->appointmentRepository->update($appointment);
         // $this->addInfoService->storeAddInfo($appointment, $this->request);
-        // 
         if ($appointment->getMsolid() || $appointment->getForceSync()) {
             \CGB\Relax5core\Service\DivService::syncWithExchange($appointment);
         }

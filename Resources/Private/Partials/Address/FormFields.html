@@ -38,6 +38,7 @@
   id="country" 
   class="rlx5-inputmin rlx5-10 geocode-on-blur" 
   validatorContext="UpdateAddress" 
+  placeholder="{f:translate(key:'tx_relax5core_domain_model_address.country')}"
   style="text-transform: uppercase"
   additionalAttributes="{
     data-autocomplete-id:'country'
@@ -49,6 +50,7 @@
   id="zip" 
   class="rlx5-inputmin rlx5-20 geocode-on-blur" 
   validatorContext="UpdateAddress" 
+  placeholder="{f:translate(key:'tx_relax5core_domain_model_address.zip')}"
   additionalAttributes="{
     data-autocomplete: 1, 
     data-autocomplete-id: 'zip',
@@ -65,6 +67,7 @@
   id="city" 
   class="rlx5-inputmin rlx5-30 geocode-on-blur" 
   validatorContext="UpdateAddress" 
+  placeholder="{f:translate(key:'tx_relax5core_domain_model_address.city')}"
   additionalAttributes="{
     data-autocomplete: 1, 
     data-autocomplete-id: 'city',
@@ -97,6 +100,7 @@
   id="address" 
   class="rlx5-inputmin rlx5-40 geocode-on-blur" 
   validatorContext="UpdateAddress" 
+  placeholder="{f:translate(key:'tx_relax5core_domain_model_address.address')}"
   additionalAttributes="{
     data-autocomplete: 1, 
     data-autocomplete-id:'address'
@@ -112,19 +116,28 @@
   property="number" 
   id="number" 
   class="rlx5-inputmin rlx5-10 geocode-on-blur" 
-  validatorContext="UpdateAddress" />
+  validatorContext="UpdateAddress" 
+  placeholder="{f:translate(key:'tx_relax5core_domain_model_address.number')}"
+/>
 <r5f:form.textfield 
   property="numberAdditions" 
   id="numberAdditions" 
   class="rlx5-inputmin rlx5-10" 
-  validatorContext="UpdateAddress" />
+  validatorContext="UpdateAddress" 
+  placeholder="{f:translate(key:'tx_relax5core_domain_model_address.number_additions')}"
+/>
 <br />
 
 <!-- 3: state -->
 <label for="state">
     <f:translate key="LLL:EXT:relax5core/Resources/Private/Language/locallang.xlf:tx_relax5core_domain_model_address.state" />
 </label>
-<r5f:form.textfield property="state" id="state" validatorContext="UpdateAddress" /><br />
+<r5f:form.textfield 
+  property="state" 
+  id="state" 
+  validatorContext="UpdateAddress" 
+  placeholder="{f:translate(key:'tx_relax5core_domain_model_address.state')}"
+/><br />
 
 <!-- 5: type -->
 <label for="type" class="tx_crmrelax5_labelleft">

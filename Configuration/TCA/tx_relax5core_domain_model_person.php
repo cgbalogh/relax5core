@@ -12,6 +12,8 @@ return [
         'transOrigDiffSourceField' => 'l10n_diffsource',
         'delete' => 'deleted',
         'enablecolumns' => [
+            'starttime' => 'starttime',
+            'endtime' => 'endtime',
         ],
         'searchFields' => 'last_name,first_name,middle_name,title,gender,date_of_birth,marital_state,image,salutation,comments,allow_mail,address_label,permissions,status,owner,usergroup,source,sourcedetail,relations,addresses,contacts,documents,links,appointments,categories',
         'iconfile' => 'EXT:relax5core/Resources/Public/Icons/tx_relax5core_domain_model_person.gif'
@@ -20,7 +22,7 @@ return [
         'showRecordFieldList' => 'sys_language_uid, l10n_parent, l10n_diffsource, last_name, first_name, middle_name, title, gender, date_of_birth, marital_state, image, salutation, comments, allow_mail, address_label, permissions, status, owner, usergroup, source, sourcedetail, relations, addresses, contacts, documents, links, appointments, categories',
     ],
     'types' => [
-        '1' => ['showitem' => 'sys_language_uid, l10n_parent, l10n_diffsource, last_name, first_name, middle_name, title, gender, date_of_birth, marital_state, image, salutation, comments, allow_mail, address_label, permissions, status, owner, usergroup, source, sourcedetail, relations, addresses, contacts, documents, links, appointments, categories'],
+        '1' => ['showitem' => 'sys_language_uid, l10n_parent, l10n_diffsource, last_name, first_name, middle_name, title, gender, date_of_birth, marital_state, image, salutation, comments, allow_mail, address_label, permissions, status, owner, usergroup, source, sourcedetail, relations, addresses, contacts, documents, links, appointments, categories, --div--;LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:tabs.access, starttime, endtime'],
     ],
     'columns' => [
         'sys_language_uid' => [
@@ -65,6 +67,31 @@ return [
                 'type' => 'input',
                 'size' => 30,
                 'max' => 255,
+            ],
+        ],
+        'starttime' => [
+            'exclude' => true,
+            'l10n_mode' => 'mergeIfNotBlank',
+            'label' => 'LLL:EXT:lang/locallang_general.xlf:LGL.starttime',
+            'config' => [
+                'type' => 'input',
+                'size' => 13,
+                'eval' => 'datetime',
+                'default' => 0,
+            ],
+        ],
+        'endtime' => [
+            'exclude' => true,
+            'l10n_mode' => 'mergeIfNotBlank',
+            'label' => 'LLL:EXT:lang/locallang_general.xlf:LGL.endtime',
+            'config' => [
+                'type' => 'input',
+                'size' => 13,
+                'eval' => 'datetime',
+                'default' => 0,
+                'range' => [
+                    'upper' => mktime(0, 0, 0, 1, 1, 2038)
+                ],
             ],
         ],
 

@@ -33,7 +33,6 @@ class CompanyTest extends \TYPO3\CMS\Core\Tests\UnitTestCase
             '',
             $this->subject->getName()
         );
-
     }
 
     /**
@@ -48,7 +47,6 @@ class CompanyTest extends \TYPO3\CMS\Core\Tests\UnitTestCase
             'name',
             $this->subject
         );
-
     }
 
     /**
@@ -60,7 +58,6 @@ class CompanyTest extends \TYPO3\CMS\Core\Tests\UnitTestCase
             '',
             $this->subject->getShortName()
         );
-
     }
 
     /**
@@ -75,7 +72,6 @@ class CompanyTest extends \TYPO3\CMS\Core\Tests\UnitTestCase
             'shortName',
             $this->subject
         );
-
     }
 
     /**
@@ -83,6 +79,10 @@ class CompanyTest extends \TYPO3\CMS\Core\Tests\UnitTestCase
      */
     public function getLegalFormReturnsInitialValueForInt()
     {
+        self::assertSame(
+            0,
+            $this->subject->getLegalForm()
+        );
     }
 
     /**
@@ -90,47 +90,63 @@ class CompanyTest extends \TYPO3\CMS\Core\Tests\UnitTestCase
      */
     public function setLegalFormForIntSetsLegalForm()
     {
-    }
-
-    /**
-     * @test
-     */
-    public function getIndustryReturnsInitialValueForString()
-    {
-        self::assertSame(
-            '',
-            $this->subject->getIndustry()
-        );
-
-    }
-
-    /**
-     * @test
-     */
-    public function setIndustryForStringSetsIndustry()
-    {
-        $this->subject->setIndustry('Conceived at T3CON10');
+        $this->subject->setLegalForm(12);
 
         self::assertAttributeEquals(
-            'Conceived at T3CON10',
+            12,
+            'legalForm',
+            $this->subject
+        );
+    }
+
+    /**
+     * @test
+     */
+    public function getIndustryReturnsInitialValueForInt()
+    {
+        self::assertSame(
+            0,
+            $this->subject->getIndustry()
+        );
+    }
+
+    /**
+     * @test
+     */
+    public function setIndustryForIntSetsIndustry()
+    {
+        $this->subject->setIndustry(12);
+
+        self::assertAttributeEquals(
+            12,
             'industry',
             $this->subject
         );
-
     }
 
     /**
      * @test
      */
-    public function getEmplyeesReturnsInitialValueForInt()
+    public function getEmployeesReturnsInitialValueForInt()
     {
+        self::assertSame(
+            0,
+            $this->subject->getEmployees()
+        );
     }
 
     /**
      * @test
      */
-    public function setEmplyeesForIntSetsEmplyees()
+    public function setEmployeesForIntSetsEmployees()
     {
+        $this->subject->setEmployees(12);
+
+        self::assertAttributeEquals(
+            12,
+            'employees',
+            $this->subject
+        );
     }
 
     /**
@@ -142,7 +158,6 @@ class CompanyTest extends \TYPO3\CMS\Core\Tests\UnitTestCase
             '',
             $this->subject->getRegId()
         );
-
     }
 
     /**
@@ -157,7 +172,6 @@ class CompanyTest extends \TYPO3\CMS\Core\Tests\UnitTestCase
             'regId',
             $this->subject
         );
-
     }
 
     /**
@@ -169,7 +183,6 @@ class CompanyTest extends \TYPO3\CMS\Core\Tests\UnitTestCase
             '',
             $this->subject->getRegAuthority()
         );
-
     }
 
     /**
@@ -184,7 +197,6 @@ class CompanyTest extends \TYPO3\CMS\Core\Tests\UnitTestCase
             'regAuthority',
             $this->subject
         );
-
     }
 
     /**
@@ -196,7 +208,6 @@ class CompanyTest extends \TYPO3\CMS\Core\Tests\UnitTestCase
             '',
             $this->subject->getVatId()
         );
-
     }
 
     /**
@@ -211,7 +222,6 @@ class CompanyTest extends \TYPO3\CMS\Core\Tests\UnitTestCase
             'vatId',
             $this->subject
         );
-
     }
 
     /**
@@ -223,7 +233,6 @@ class CompanyTest extends \TYPO3\CMS\Core\Tests\UnitTestCase
             '',
             $this->subject->getComments()
         );
-
     }
 
     /**
@@ -238,7 +247,6 @@ class CompanyTest extends \TYPO3\CMS\Core\Tests\UnitTestCase
             'comments',
             $this->subject
         );
-
     }
 
     /**
@@ -250,7 +258,6 @@ class CompanyTest extends \TYPO3\CMS\Core\Tests\UnitTestCase
             false,
             $this->subject->getAllowMail()
         );
-
     }
 
     /**
@@ -265,7 +272,6 @@ class CompanyTest extends \TYPO3\CMS\Core\Tests\UnitTestCase
             'allowMail',
             $this->subject
         );
-
     }
 
     /**
@@ -277,7 +283,6 @@ class CompanyTest extends \TYPO3\CMS\Core\Tests\UnitTestCase
             '',
             $this->subject->getAddressLabel()
         );
-
     }
 
     /**
@@ -292,7 +297,6 @@ class CompanyTest extends \TYPO3\CMS\Core\Tests\UnitTestCase
             'addressLabel',
             $this->subject
         );
-
     }
 
     /**
@@ -300,6 +304,10 @@ class CompanyTest extends \TYPO3\CMS\Core\Tests\UnitTestCase
      */
     public function getPermissionsReturnsInitialValueForInt()
     {
+        self::assertSame(
+            0,
+            $this->subject->getPermissions()
+        );
     }
 
     /**
@@ -307,138 +315,79 @@ class CompanyTest extends \TYPO3\CMS\Core\Tests\UnitTestCase
      */
     public function setPermissionsForIntSetsPermissions()
     {
-    }
-
-    /**
-     * @test
-     */
-    public function getAppointmentsReturnsInitialValueForAppointment()
-    {
-        $newObjectStorage = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
-        self::assertEquals(
-            $newObjectStorage,
-            $this->subject->getAppointments()
-        );
-
-    }
-
-    /**
-     * @test
-     */
-    public function setAppointmentsForObjectStorageContainingAppointmentSetsAppointments()
-    {
-        $appointment = new \CGB\Relax5core\Domain\Model\Appointment();
-        $objectStorageHoldingExactlyOneAppointments = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
-        $objectStorageHoldingExactlyOneAppointments->attach($appointment);
-        $this->subject->setAppointments($objectStorageHoldingExactlyOneAppointments);
+        $this->subject->setPermissions(12);
 
         self::assertAttributeEquals(
-            $objectStorageHoldingExactlyOneAppointments,
-            'appointments',
+            12,
+            'permissions',
             $this->subject
         );
-
     }
 
     /**
      * @test
      */
-    public function addAppointmentToObjectStorageHoldingAppointments()
+    public function getStatusReturnsInitialValueForStatus()
     {
-        $appointment = new \CGB\Relax5core\Domain\Model\Appointment();
-        $appointmentsObjectStorageMock = $this->getMockBuilder(\TYPO3\CMS\Extbase\Persistence\ObjectStorage::class)
-            ->setMethods(['attach'])
-            ->disableOriginalConstructor()
-            ->getMock();
-
-        $appointmentsObjectStorageMock->expects(self::once())->method('attach')->with(self::equalTo($appointment));
-        $this->inject($this->subject, 'appointments', $appointmentsObjectStorageMock);
-
-        $this->subject->addAppointment($appointment);
-    }
-
-    /**
-     * @test
-     */
-    public function removeAppointmentFromObjectStorageHoldingAppointments()
-    {
-        $appointment = new \CGB\Relax5core\Domain\Model\Appointment();
-        $appointmentsObjectStorageMock = $this->getMockBuilder(\TYPO3\CMS\Extbase\Persistence\ObjectStorage::class)
-            ->setMethods(['detach'])
-            ->disableOriginalConstructor()
-            ->getMock();
-
-        $appointmentsObjectStorageMock->expects(self::once())->method('detach')->with(self::equalTo($appointment));
-        $this->inject($this->subject, 'appointments', $appointmentsObjectStorageMock);
-
-        $this->subject->removeAppointment($appointment);
-
-    }
-
-    /**
-     * @test
-     */
-    public function getDocumentsReturnsInitialValueForDocument()
-    {
-        $newObjectStorage = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
         self::assertEquals(
-            $newObjectStorage,
-            $this->subject->getDocuments()
+            null,
+            $this->subject->getStatus()
         );
-
     }
 
     /**
      * @test
      */
-    public function setDocumentsForObjectStorageContainingDocumentSetsDocuments()
+    public function setStatusForStatusSetsStatus()
     {
-        $document = new \CGB\Relax5core\Domain\Model\Document();
-        $objectStorageHoldingExactlyOneDocuments = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
-        $objectStorageHoldingExactlyOneDocuments->attach($document);
-        $this->subject->setDocuments($objectStorageHoldingExactlyOneDocuments);
+        $statusFixture = new \CGB\Relax5core\Domain\Model\Status();
+        $this->subject->setStatus($statusFixture);
 
         self::assertAttributeEquals(
-            $objectStorageHoldingExactlyOneDocuments,
-            'documents',
+            $statusFixture,
+            'status',
             $this->subject
         );
-
     }
 
     /**
      * @test
      */
-    public function addDocumentToObjectStorageHoldingDocuments()
+    public function getOwnerReturnsInitialValueForOwner()
     {
-        $document = new \CGB\Relax5core\Domain\Model\Document();
-        $documentsObjectStorageMock = $this->getMockBuilder(\TYPO3\CMS\Extbase\Persistence\ObjectStorage::class)
-            ->setMethods(['attach'])
-            ->disableOriginalConstructor()
-            ->getMock();
-
-        $documentsObjectStorageMock->expects(self::once())->method('attach')->with(self::equalTo($document));
-        $this->inject($this->subject, 'documents', $documentsObjectStorageMock);
-
-        $this->subject->addDocument($document);
+        self::assertEquals(
+            null,
+            $this->subject->getOwner()
+        );
     }
 
     /**
      * @test
      */
-    public function removeDocumentFromObjectStorageHoldingDocuments()
+    public function setOwnerForOwnerSetsOwner()
     {
-        $document = new \CGB\Relax5core\Domain\Model\Document();
-        $documentsObjectStorageMock = $this->getMockBuilder(\TYPO3\CMS\Extbase\Persistence\ObjectStorage::class)
-            ->setMethods(['detach'])
-            ->disableOriginalConstructor()
-            ->getMock();
+        $ownerFixture = new \CGB\Relax5core\Domain\Model\Owner();
+        $this->subject->setOwner($ownerFixture);
 
-        $documentsObjectStorageMock->expects(self::once())->method('detach')->with(self::equalTo($document));
-        $this->inject($this->subject, 'documents', $documentsObjectStorageMock);
+        self::assertAttributeEquals(
+            $ownerFixture,
+            'owner',
+            $this->subject
+        );
+    }
 
-        $this->subject->removeDocument($document);
+    /**
+     * @test
+     */
+    public function getUsergroupReturnsInitialValueForFrontendUserGroup()
+    {
+    }
 
+    /**
+     * @test
+     */
+    public function setUsergroupForFrontendUserGroupSetsUsergroup()
+    {
     }
 
     /**
@@ -450,7 +399,6 @@ class CompanyTest extends \TYPO3\CMS\Core\Tests\UnitTestCase
             null,
             $this->subject->getSource()
         );
-
     }
 
     /**
@@ -466,35 +414,95 @@ class CompanyTest extends \TYPO3\CMS\Core\Tests\UnitTestCase
             'source',
             $this->subject
         );
-
     }
 
     /**
      * @test
      */
-    public function getSourceCategoryReturnsInitialValueForSourceCategory()
+    public function getSourcedetailReturnsInitialValueForSourcedetail()
     {
         self::assertEquals(
             null,
-            $this->subject->getSourceCategory()
+            $this->subject->getSourcedetail()
         );
-
     }
 
     /**
      * @test
      */
-    public function setSourceCategoryForSourceCategorySetsSourceCategory()
+    public function setSourcedetailForSourcedetailSetsSourcedetail()
     {
-        $sourceCategoryFixture = new \CGB\Relax5core\Domain\Model\SourceCategory();
-        $this->subject->setSourceCategory($sourceCategoryFixture);
+        $sourcedetailFixture = new \CGB\Relax5core\Domain\Model\Sourcedetail();
+        $this->subject->setSourcedetail($sourcedetailFixture);
 
         self::assertAttributeEquals(
-            $sourceCategoryFixture,
-            'sourceCategory',
+            $sourcedetailFixture,
+            'sourcedetail',
             $this->subject
         );
+    }
 
+    /**
+     * @test
+     */
+    public function getRelationsReturnsInitialValueForRelation()
+    {
+        $newObjectStorage = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
+        self::assertEquals(
+            $newObjectStorage,
+            $this->subject->getRelations()
+        );
+    }
+
+    /**
+     * @test
+     */
+    public function setRelationsForObjectStorageContainingRelationSetsRelations()
+    {
+        $relation = new \CGB\Relax5core\Domain\Model\Relation();
+        $objectStorageHoldingExactlyOneRelations = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
+        $objectStorageHoldingExactlyOneRelations->attach($relation);
+        $this->subject->setRelations($objectStorageHoldingExactlyOneRelations);
+
+        self::assertAttributeEquals(
+            $objectStorageHoldingExactlyOneRelations,
+            'relations',
+            $this->subject
+        );
+    }
+
+    /**
+     * @test
+     */
+    public function addRelationToObjectStorageHoldingRelations()
+    {
+        $relation = new \CGB\Relax5core\Domain\Model\Relation();
+        $relationsObjectStorageMock = $this->getMockBuilder(\TYPO3\CMS\Extbase\Persistence\ObjectStorage::class)
+            ->setMethods(['attach'])
+            ->disableOriginalConstructor()
+            ->getMock();
+
+        $relationsObjectStorageMock->expects(self::once())->method('attach')->with(self::equalTo($relation));
+        $this->inject($this->subject, 'relations', $relationsObjectStorageMock);
+
+        $this->subject->addRelation($relation);
+    }
+
+    /**
+     * @test
+     */
+    public function removeRelationFromObjectStorageHoldingRelations()
+    {
+        $relation = new \CGB\Relax5core\Domain\Model\Relation();
+        $relationsObjectStorageMock = $this->getMockBuilder(\TYPO3\CMS\Extbase\Persistence\ObjectStorage::class)
+            ->setMethods(['detach'])
+            ->disableOriginalConstructor()
+            ->getMock();
+
+        $relationsObjectStorageMock->expects(self::once())->method('detach')->with(self::equalTo($relation));
+        $this->inject($this->subject, 'relations', $relationsObjectStorageMock);
+
+        $this->subject->removeRelation($relation);
     }
 
     /**
@@ -507,7 +515,6 @@ class CompanyTest extends \TYPO3\CMS\Core\Tests\UnitTestCase
             $newObjectStorage,
             $this->subject->getAddresses()
         );
-
     }
 
     /**
@@ -525,7 +532,6 @@ class CompanyTest extends \TYPO3\CMS\Core\Tests\UnitTestCase
             'addresses',
             $this->subject
         );
-
     }
 
     /**
@@ -560,7 +566,6 @@ class CompanyTest extends \TYPO3\CMS\Core\Tests\UnitTestCase
         $this->inject($this->subject, 'addresses', $addressesObjectStorageMock);
 
         $this->subject->removeAddress($address);
-
     }
 
     /**
@@ -573,7 +578,6 @@ class CompanyTest extends \TYPO3\CMS\Core\Tests\UnitTestCase
             $newObjectStorage,
             $this->subject->getContacts()
         );
-
     }
 
     /**
@@ -591,7 +595,6 @@ class CompanyTest extends \TYPO3\CMS\Core\Tests\UnitTestCase
             'contacts',
             $this->subject
         );
-
     }
 
     /**
@@ -626,7 +629,195 @@ class CompanyTest extends \TYPO3\CMS\Core\Tests\UnitTestCase
         $this->inject($this->subject, 'contacts', $contactsObjectStorageMock);
 
         $this->subject->removeContact($contact);
+    }
 
+    /**
+     * @test
+     */
+    public function getDocumentsReturnsInitialValueForDocument()
+    {
+        $newObjectStorage = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
+        self::assertEquals(
+            $newObjectStorage,
+            $this->subject->getDocuments()
+        );
+    }
+
+    /**
+     * @test
+     */
+    public function setDocumentsForObjectStorageContainingDocumentSetsDocuments()
+    {
+        $document = new \CGB\Relax5core\Domain\Model\Document();
+        $objectStorageHoldingExactlyOneDocuments = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
+        $objectStorageHoldingExactlyOneDocuments->attach($document);
+        $this->subject->setDocuments($objectStorageHoldingExactlyOneDocuments);
+
+        self::assertAttributeEquals(
+            $objectStorageHoldingExactlyOneDocuments,
+            'documents',
+            $this->subject
+        );
+    }
+
+    /**
+     * @test
+     */
+    public function addDocumentToObjectStorageHoldingDocuments()
+    {
+        $document = new \CGB\Relax5core\Domain\Model\Document();
+        $documentsObjectStorageMock = $this->getMockBuilder(\TYPO3\CMS\Extbase\Persistence\ObjectStorage::class)
+            ->setMethods(['attach'])
+            ->disableOriginalConstructor()
+            ->getMock();
+
+        $documentsObjectStorageMock->expects(self::once())->method('attach')->with(self::equalTo($document));
+        $this->inject($this->subject, 'documents', $documentsObjectStorageMock);
+
+        $this->subject->addDocument($document);
+    }
+
+    /**
+     * @test
+     */
+    public function removeDocumentFromObjectStorageHoldingDocuments()
+    {
+        $document = new \CGB\Relax5core\Domain\Model\Document();
+        $documentsObjectStorageMock = $this->getMockBuilder(\TYPO3\CMS\Extbase\Persistence\ObjectStorage::class)
+            ->setMethods(['detach'])
+            ->disableOriginalConstructor()
+            ->getMock();
+
+        $documentsObjectStorageMock->expects(self::once())->method('detach')->with(self::equalTo($document));
+        $this->inject($this->subject, 'documents', $documentsObjectStorageMock);
+
+        $this->subject->removeDocument($document);
+    }
+
+    /**
+     * @test
+     */
+    public function getLinksReturnsInitialValueForLink()
+    {
+        $newObjectStorage = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
+        self::assertEquals(
+            $newObjectStorage,
+            $this->subject->getLinks()
+        );
+    }
+
+    /**
+     * @test
+     */
+    public function setLinksForObjectStorageContainingLinkSetsLinks()
+    {
+        $link = new \CGB\Relax5core\Domain\Model\Link();
+        $objectStorageHoldingExactlyOneLinks = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
+        $objectStorageHoldingExactlyOneLinks->attach($link);
+        $this->subject->setLinks($objectStorageHoldingExactlyOneLinks);
+
+        self::assertAttributeEquals(
+            $objectStorageHoldingExactlyOneLinks,
+            'links',
+            $this->subject
+        );
+    }
+
+    /**
+     * @test
+     */
+    public function addLinkToObjectStorageHoldingLinks()
+    {
+        $link = new \CGB\Relax5core\Domain\Model\Link();
+        $linksObjectStorageMock = $this->getMockBuilder(\TYPO3\CMS\Extbase\Persistence\ObjectStorage::class)
+            ->setMethods(['attach'])
+            ->disableOriginalConstructor()
+            ->getMock();
+
+        $linksObjectStorageMock->expects(self::once())->method('attach')->with(self::equalTo($link));
+        $this->inject($this->subject, 'links', $linksObjectStorageMock);
+
+        $this->subject->addLink($link);
+    }
+
+    /**
+     * @test
+     */
+    public function removeLinkFromObjectStorageHoldingLinks()
+    {
+        $link = new \CGB\Relax5core\Domain\Model\Link();
+        $linksObjectStorageMock = $this->getMockBuilder(\TYPO3\CMS\Extbase\Persistence\ObjectStorage::class)
+            ->setMethods(['detach'])
+            ->disableOriginalConstructor()
+            ->getMock();
+
+        $linksObjectStorageMock->expects(self::once())->method('detach')->with(self::equalTo($link));
+        $this->inject($this->subject, 'links', $linksObjectStorageMock);
+
+        $this->subject->removeLink($link);
+    }
+
+    /**
+     * @test
+     */
+    public function getAppointmentsReturnsInitialValueForAppointment()
+    {
+        $newObjectStorage = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
+        self::assertEquals(
+            $newObjectStorage,
+            $this->subject->getAppointments()
+        );
+    }
+
+    /**
+     * @test
+     */
+    public function setAppointmentsForObjectStorageContainingAppointmentSetsAppointments()
+    {
+        $appointment = new \CGB\Relax5core\Domain\Model\Appointment();
+        $objectStorageHoldingExactlyOneAppointments = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
+        $objectStorageHoldingExactlyOneAppointments->attach($appointment);
+        $this->subject->setAppointments($objectStorageHoldingExactlyOneAppointments);
+
+        self::assertAttributeEquals(
+            $objectStorageHoldingExactlyOneAppointments,
+            'appointments',
+            $this->subject
+        );
+    }
+
+    /**
+     * @test
+     */
+    public function addAppointmentToObjectStorageHoldingAppointments()
+    {
+        $appointment = new \CGB\Relax5core\Domain\Model\Appointment();
+        $appointmentsObjectStorageMock = $this->getMockBuilder(\TYPO3\CMS\Extbase\Persistence\ObjectStorage::class)
+            ->setMethods(['attach'])
+            ->disableOriginalConstructor()
+            ->getMock();
+
+        $appointmentsObjectStorageMock->expects(self::once())->method('attach')->with(self::equalTo($appointment));
+        $this->inject($this->subject, 'appointments', $appointmentsObjectStorageMock);
+
+        $this->subject->addAppointment($appointment);
+    }
+
+    /**
+     * @test
+     */
+    public function removeAppointmentFromObjectStorageHoldingAppointments()
+    {
+        $appointment = new \CGB\Relax5core\Domain\Model\Appointment();
+        $appointmentsObjectStorageMock = $this->getMockBuilder(\TYPO3\CMS\Extbase\Persistence\ObjectStorage::class)
+            ->setMethods(['detach'])
+            ->disableOriginalConstructor()
+            ->getMock();
+
+        $appointmentsObjectStorageMock->expects(self::once())->method('detach')->with(self::equalTo($appointment));
+        $this->inject($this->subject, 'appointments', $appointmentsObjectStorageMock);
+
+        $this->subject->removeAppointment($appointment);
     }
 
     /**
@@ -639,7 +830,6 @@ class CompanyTest extends \TYPO3\CMS\Core\Tests\UnitTestCase
             $newObjectStorage,
             $this->subject->getCategories()
         );
-
     }
 
     /**
@@ -657,7 +847,6 @@ class CompanyTest extends \TYPO3\CMS\Core\Tests\UnitTestCase
             'categories',
             $this->subject
         );
-
     }
 
     /**
@@ -692,118 +881,5 @@ class CompanyTest extends \TYPO3\CMS\Core\Tests\UnitTestCase
         $this->inject($this->subject, 'categories', $categoriesObjectStorageMock);
 
         $this->subject->removeCategory($category);
-
-    }
-
-    /**
-     * @test
-     */
-    public function getRelationsReturnsInitialValueForCompanyRelation()
-    {
-        self::assertEquals(
-            null,
-            $this->subject->getRelations()
-        );
-
-    }
-
-    /**
-     * @test
-     */
-    public function setRelationsForCompanyRelationSetsRelations()
-    {
-        $relationsFixture = new \CGB\Relax5core\Domain\Model\CompanyRelation();
-        $this->subject->setRelations($relationsFixture);
-
-        self::assertAttributeEquals(
-            $relationsFixture,
-            'relations',
-            $this->subject
-        );
-
-    }
-
-    /**
-     * @test
-     */
-    public function getStatusReturnsInitialValueForStatus()
-    {
-        self::assertEquals(
-            null,
-            $this->subject->getStatus()
-        );
-
-    }
-
-    /**
-     * @test
-     */
-    public function setStatusForStatusSetsStatus()
-    {
-        $statusFixture = new \CGB\Relax5core\Domain\Model\Status();
-        $this->subject->setStatus($statusFixture);
-
-        self::assertAttributeEquals(
-            $statusFixture,
-            'status',
-            $this->subject
-        );
-
-    }
-
-    /**
-     * @test
-     */
-    public function getOwnerReturnsInitialValueForOwner()
-    {
-        self::assertEquals(
-            null,
-            $this->subject->getOwner()
-        );
-
-    }
-
-    /**
-     * @test
-     */
-    public function setOwnerForOwnerSetsOwner()
-    {
-        $ownerFixture = new \CGB\Relax5core\Domain\Model\Owner();
-        $this->subject->setOwner($ownerFixture);
-
-        self::assertAttributeEquals(
-            $ownerFixture,
-            'owner',
-            $this->subject
-        );
-
-    }
-
-    /**
-     * @test
-     */
-    public function getUsergroupReturnsInitialValueForUsergroup()
-    {
-        self::assertEquals(
-            null,
-            $this->subject->getUsergroup()
-        );
-
-    }
-
-    /**
-     * @test
-     */
-    public function setUsergroupForUsergroupSetsUsergroup()
-    {
-        $usergroupFixture = new \CGB\Relax5core\Domain\Model\Usergroup();
-        $this->subject->setUsergroup($usergroupFixture);
-
-        self::assertAttributeEquals(
-            $usergroupFixture,
-            'usergroup',
-            $this->subject
-        );
-
     }
 }

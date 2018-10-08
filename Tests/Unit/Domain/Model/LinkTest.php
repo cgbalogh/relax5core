@@ -33,7 +33,6 @@ class LinkTest extends \TYPO3\CMS\Core\Tests\UnitTestCase
             '',
             $this->subject->getDivision()
         );
-
     }
 
     /**
@@ -48,7 +47,6 @@ class LinkTest extends \TYPO3\CMS\Core\Tests\UnitTestCase
             'division',
             $this->subject
         );
-
     }
 
     /**
@@ -60,7 +58,6 @@ class LinkTest extends \TYPO3\CMS\Core\Tests\UnitTestCase
             '',
             $this->subject->getRole()
         );
-
     }
 
     /**
@@ -75,7 +72,6 @@ class LinkTest extends \TYPO3\CMS\Core\Tests\UnitTestCase
             'role',
             $this->subject
         );
-
     }
 
     /**
@@ -87,7 +83,6 @@ class LinkTest extends \TYPO3\CMS\Core\Tests\UnitTestCase
             '',
             $this->subject->getRoleTitle()
         );
-
     }
 
     /**
@@ -102,7 +97,6 @@ class LinkTest extends \TYPO3\CMS\Core\Tests\UnitTestCase
             'roleTitle',
             $this->subject
         );
-
     }
 
     /**
@@ -114,7 +108,6 @@ class LinkTest extends \TYPO3\CMS\Core\Tests\UnitTestCase
             '',
             $this->subject->getSalutation()
         );
-
     }
 
     /**
@@ -129,7 +122,6 @@ class LinkTest extends \TYPO3\CMS\Core\Tests\UnitTestCase
             'salutation',
             $this->subject
         );
-
     }
 
     /**
@@ -141,7 +133,6 @@ class LinkTest extends \TYPO3\CMS\Core\Tests\UnitTestCase
             false,
             $this->subject->getAllowMail()
         );
-
     }
 
     /**
@@ -156,7 +147,6 @@ class LinkTest extends \TYPO3\CMS\Core\Tests\UnitTestCase
             'allowMail',
             $this->subject
         );
-
     }
 
     /**
@@ -168,7 +158,6 @@ class LinkTest extends \TYPO3\CMS\Core\Tests\UnitTestCase
             '',
             $this->subject->getAddressLabel()
         );
-
     }
 
     /**
@@ -183,48 +172,31 @@ class LinkTest extends \TYPO3\CMS\Core\Tests\UnitTestCase
             'addressLabel',
             $this->subject
         );
-
     }
 
     /**
      * @test
      */
-    public function getPermissionsReturnsInitialValueForInt()
-    {
-    }
-
-    /**
-     * @test
-     */
-    public function setPermissionsForIntSetsPermissions()
-    {
-    }
-
-    /**
-     * @test
-     */
-    public function getPersonSortingReturnsInitialValueForString()
+    public function getPersonSortingReturnsInitialValueForInt()
     {
         self::assertSame(
-            '',
+            0,
             $this->subject->getPersonSorting()
         );
-
     }
 
     /**
      * @test
      */
-    public function setPersonSortingForStringSetsPersonSorting()
+    public function setPersonSortingForIntSetsPersonSorting()
     {
-        $this->subject->setPersonSorting('Conceived at T3CON10');
+        $this->subject->setPersonSorting(12);
 
         self::assertAttributeEquals(
-            'Conceived at T3CON10',
+            12,
             'personSorting',
             $this->subject
         );
-
     }
 
     /**
@@ -232,6 +204,10 @@ class LinkTest extends \TYPO3\CMS\Core\Tests\UnitTestCase
      */
     public function getCompanySortingReturnsInitialValueForInt()
     {
+        self::assertSame(
+            0,
+            $this->subject->getCompanySorting()
+        );
     }
 
     /**
@@ -239,6 +215,13 @@ class LinkTest extends \TYPO3\CMS\Core\Tests\UnitTestCase
      */
     public function setCompanySortingForIntSetsCompanySorting()
     {
+        $this->subject->setCompanySorting(12);
+
+        self::assertAttributeEquals(
+            12,
+            'companySorting',
+            $this->subject
+        );
     }
 
     /**
@@ -246,6 +229,10 @@ class LinkTest extends \TYPO3\CMS\Core\Tests\UnitTestCase
      */
     public function getPersonPriorityReturnsInitialValueForInt()
     {
+        self::assertSame(
+            0,
+            $this->subject->getPersonPriority()
+        );
     }
 
     /**
@@ -253,33 +240,38 @@ class LinkTest extends \TYPO3\CMS\Core\Tests\UnitTestCase
      */
     public function setPersonPriorityForIntSetsPersonPriority()
     {
-    }
-
-    /**
-     * @test
-     */
-    public function getCompanyPriorityReturnsInitialValueForString()
-    {
-        self::assertSame(
-            '',
-            $this->subject->getCompanyPriority()
-        );
-
-    }
-
-    /**
-     * @test
-     */
-    public function setCompanyPriorityForStringSetsCompanyPriority()
-    {
-        $this->subject->setCompanyPriority('Conceived at T3CON10');
+        $this->subject->setPersonPriority(12);
 
         self::assertAttributeEquals(
-            'Conceived at T3CON10',
+            12,
+            'personPriority',
+            $this->subject
+        );
+    }
+
+    /**
+     * @test
+     */
+    public function getCompanyPriorityReturnsInitialValueForInt()
+    {
+        self::assertSame(
+            0,
+            $this->subject->getCompanyPriority()
+        );
+    }
+
+    /**
+     * @test
+     */
+    public function setCompanyPriorityForIntSetsCompanyPriority()
+    {
+        $this->subject->setCompanyPriority(12);
+
+        self::assertAttributeEquals(
+            12,
             'companyPriority',
             $this->subject
         );
-
     }
 
     /**
@@ -291,7 +283,6 @@ class LinkTest extends \TYPO3\CMS\Core\Tests\UnitTestCase
             '',
             $this->subject->getDescription()
         );
-
     }
 
     /**
@@ -306,7 +297,71 @@ class LinkTest extends \TYPO3\CMS\Core\Tests\UnitTestCase
             'description',
             $this->subject
         );
+    }
 
+    /**
+     * @test
+     */
+    public function getPermissionsReturnsInitialValueForInt()
+    {
+        self::assertSame(
+            0,
+            $this->subject->getPermissions()
+        );
+    }
+
+    /**
+     * @test
+     */
+    public function setPermissionsForIntSetsPermissions()
+    {
+        $this->subject->setPermissions(12);
+
+        self::assertAttributeEquals(
+            12,
+            'permissions',
+            $this->subject
+        );
+    }
+
+    /**
+     * @test
+     */
+    public function getOwnerReturnsInitialValueForOwner()
+    {
+        self::assertEquals(
+            null,
+            $this->subject->getOwner()
+        );
+    }
+
+    /**
+     * @test
+     */
+    public function setOwnerForOwnerSetsOwner()
+    {
+        $ownerFixture = new \CGB\Relax5core\Domain\Model\Owner();
+        $this->subject->setOwner($ownerFixture);
+
+        self::assertAttributeEquals(
+            $ownerFixture,
+            'owner',
+            $this->subject
+        );
+    }
+
+    /**
+     * @test
+     */
+    public function getUsergroupReturnsInitialValueForFrontendUserGroup()
+    {
+    }
+
+    /**
+     * @test
+     */
+    public function setUsergroupForFrontendUserGroupSetsUsergroup()
+    {
     }
 
     /**
@@ -319,7 +374,6 @@ class LinkTest extends \TYPO3\CMS\Core\Tests\UnitTestCase
             $newObjectStorage,
             $this->subject->getAddresses()
         );
-
     }
 
     /**
@@ -337,7 +391,6 @@ class LinkTest extends \TYPO3\CMS\Core\Tests\UnitTestCase
             'addresses',
             $this->subject
         );
-
     }
 
     /**
@@ -372,7 +425,6 @@ class LinkTest extends \TYPO3\CMS\Core\Tests\UnitTestCase
         $this->inject($this->subject, 'addresses', $addressesObjectStorageMock);
 
         $this->subject->removeAddress($address);
-
     }
 
     /**
@@ -385,7 +437,6 @@ class LinkTest extends \TYPO3\CMS\Core\Tests\UnitTestCase
             $newObjectStorage,
             $this->subject->getContacts()
         );
-
     }
 
     /**
@@ -403,7 +454,6 @@ class LinkTest extends \TYPO3\CMS\Core\Tests\UnitTestCase
             'contacts',
             $this->subject
         );
-
     }
 
     /**
@@ -438,7 +488,6 @@ class LinkTest extends \TYPO3\CMS\Core\Tests\UnitTestCase
         $this->inject($this->subject, 'contacts', $contactsObjectStorageMock);
 
         $this->subject->removeContact($contact);
-
     }
 
     /**
@@ -451,7 +500,6 @@ class LinkTest extends \TYPO3\CMS\Core\Tests\UnitTestCase
             $newObjectStorage,
             $this->subject->getCategories()
         );
-
     }
 
     /**
@@ -469,7 +517,6 @@ class LinkTest extends \TYPO3\CMS\Core\Tests\UnitTestCase
             'categories',
             $this->subject
         );
-
     }
 
     /**
@@ -504,118 +551,5 @@ class LinkTest extends \TYPO3\CMS\Core\Tests\UnitTestCase
         $this->inject($this->subject, 'categories', $categoriesObjectStorageMock);
 
         $this->subject->removeCategory($category);
-
-    }
-
-    /**
-     * @test
-     */
-    public function getPersonReturnsInitialValueForPerson()
-    {
-        self::assertEquals(
-            null,
-            $this->subject->getPerson()
-        );
-
-    }
-
-    /**
-     * @test
-     */
-    public function setPersonForPersonSetsPerson()
-    {
-        $personFixture = new \CGB\Relax5core\Domain\Model\Person();
-        $this->subject->setPerson($personFixture);
-
-        self::assertAttributeEquals(
-            $personFixture,
-            'person',
-            $this->subject
-        );
-
-    }
-
-    /**
-     * @test
-     */
-    public function getCompanyReturnsInitialValueForCompany()
-    {
-        self::assertEquals(
-            null,
-            $this->subject->getCompany()
-        );
-
-    }
-
-    /**
-     * @test
-     */
-    public function setCompanyForCompanySetsCompany()
-    {
-        $companyFixture = new \CGB\Relax5core\Domain\Model\Company();
-        $this->subject->setCompany($companyFixture);
-
-        self::assertAttributeEquals(
-            $companyFixture,
-            'company',
-            $this->subject
-        );
-
-    }
-
-    /**
-     * @test
-     */
-    public function getOwnerReturnsInitialValueForOwner()
-    {
-        self::assertEquals(
-            null,
-            $this->subject->getOwner()
-        );
-
-    }
-
-    /**
-     * @test
-     */
-    public function setOwnerForOwnerSetsOwner()
-    {
-        $ownerFixture = new \CGB\Relax5core\Domain\Model\Owner();
-        $this->subject->setOwner($ownerFixture);
-
-        self::assertAttributeEquals(
-            $ownerFixture,
-            'owner',
-            $this->subject
-        );
-
-    }
-
-    /**
-     * @test
-     */
-    public function getUsergroupReturnsInitialValueForUsergroup()
-    {
-        self::assertEquals(
-            null,
-            $this->subject->getUsergroup()
-        );
-
-    }
-
-    /**
-     * @test
-     */
-    public function setUsergroupForUsergroupSetsUsergroup()
-    {
-        $usergroupFixture = new \CGB\Relax5core\Domain\Model\Usergroup();
-        $this->subject->setUsergroup($usergroupFixture);
-
-        self::assertAttributeEquals(
-            $usergroupFixture,
-            'usergroup',
-            $this->subject
-        );
-
     }
 }

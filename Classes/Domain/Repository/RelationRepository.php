@@ -15,7 +15,7 @@ namespace CGB\Relax5core\Domain\Repository;
 /**
  * The repository for Relations
  */
-class RelationRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
+class RelationRepository extends \CGB\Fechangelog\Persistence\Repository
 {
     /**
      * @var array

@@ -33,7 +33,6 @@ class AddressCatalogueTest extends \TYPO3\CMS\Core\Tests\UnitTestCase
             '',
             $this->subject->getCountryCode()
         );
-
     }
 
     /**
@@ -48,7 +47,81 @@ class AddressCatalogueTest extends \TYPO3\CMS\Core\Tests\UnitTestCase
             'countryCode',
             $this->subject
         );
+    }
 
+    /**
+     * @test
+     */
+    public function getStreetCodeReturnsInitialValueForString()
+    {
+        self::assertSame(
+            '',
+            $this->subject->getStreetCode()
+        );
+    }
+
+    /**
+     * @test
+     */
+    public function setStreetCodeForStringSetsStreetCode()
+    {
+        $this->subject->setStreetCode('Conceived at T3CON10');
+
+        self::assertAttributeEquals(
+            'Conceived at T3CON10',
+            'streetCode',
+            $this->subject
+        );
+    }
+
+    /**
+     * @test
+     */
+    public function getCommunityCodeReturnsInitialValueForString()
+    {
+        self::assertSame(
+            '',
+            $this->subject->getCommunityCode()
+        );
+    }
+
+    /**
+     * @test
+     */
+    public function setCommunityCodeForStringSetsCommunityCode()
+    {
+        $this->subject->setCommunityCode('Conceived at T3CON10');
+
+        self::assertAttributeEquals(
+            'Conceived at T3CON10',
+            'communityCode',
+            $this->subject
+        );
+    }
+
+    /**
+     * @test
+     */
+    public function getCommunityNameReturnsInitialValueForString()
+    {
+        self::assertSame(
+            '',
+            $this->subject->getCommunityName()
+        );
+    }
+
+    /**
+     * @test
+     */
+    public function setCommunityNameForStringSetsCommunityName()
+    {
+        $this->subject->setCommunityName('Conceived at T3CON10');
+
+        self::assertAttributeEquals(
+            'Conceived at T3CON10',
+            'communityName',
+            $this->subject
+        );
     }
 
     /**
@@ -60,7 +133,6 @@ class AddressCatalogueTest extends \TYPO3\CMS\Core\Tests\UnitTestCase
             '',
             $this->subject->getAddress()
         );
-
     }
 
     /**
@@ -75,7 +147,6 @@ class AddressCatalogueTest extends \TYPO3\CMS\Core\Tests\UnitTestCase
             'address',
             $this->subject
         );
-
     }
 
     /**
@@ -87,7 +158,6 @@ class AddressCatalogueTest extends \TYPO3\CMS\Core\Tests\UnitTestCase
             '',
             $this->subject->getZip()
         );
-
     }
 
     /**
@@ -102,7 +172,6 @@ class AddressCatalogueTest extends \TYPO3\CMS\Core\Tests\UnitTestCase
             'zip',
             $this->subject
         );
-
     }
 
     /**
@@ -114,7 +183,6 @@ class AddressCatalogueTest extends \TYPO3\CMS\Core\Tests\UnitTestCase
             '',
             $this->subject->getState()
         );
-
     }
 
     /**
@@ -129,7 +197,6 @@ class AddressCatalogueTest extends \TYPO3\CMS\Core\Tests\UnitTestCase
             'state',
             $this->subject
         );
-
     }
 
     /**
@@ -141,7 +208,6 @@ class AddressCatalogueTest extends \TYPO3\CMS\Core\Tests\UnitTestCase
             false,
             $this->subject->getVerified()
         );
-
     }
 
     /**
@@ -156,6 +222,5 @@ class AddressCatalogueTest extends \TYPO3\CMS\Core\Tests\UnitTestCase
             'verified',
             $this->subject
         );
-
     }
 }

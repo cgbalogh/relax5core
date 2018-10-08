@@ -166,7 +166,9 @@ class PersonController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControlle
             'ownerSelect' => array_merge([0 => ''], $this->ownerRepository->findAll()->toArray()),
             'usergroupSelect' => array_merge([0 => ''], $this->usergroupRepository->findAll()->toArray()),
             'pluginName' => $pluginName,
-            'createAction' => $pluginName == 'Core' ? '' : $pluginName
+            'createAction' => $pluginName == 'Core' ? '' : $pluginName,
+            'addInfo' => $this->addInfoService->loadAddInfo($this->objectManager->get(\CGB\Relax5core\Domain\Model\Person::class)),
+
         ]);
     }
 
@@ -194,9 +196,13 @@ class PersonController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControlle
             $newPerson->removeRelation($newPerson->getRelations()->toArray()[0]);
         }
         $this->personRepository->add($newPerson);
+        
         // since persisiting will be before redirecting, we need to do it the hard way here
         $persistenceManager = $this->objectManager->get('TYPO3\\CMS\\Extbase\\Persistence\\Generic\\PersistenceManager');
         $persistenceManager->persistAll();
+        
+        $this->addInfoService->storeAddInfo($newPerson, $this->request);        
+
         $message = \TYPO3\CMS\Extbase\Utility\LocalizationUtility::translate('tx_relax5core_domain_model_person.record_created', 'relax5core');
         $this->addFlashMessage(sprintf($message, $newPerson->getUid()), '', \TYPO3\CMS\Core\Messaging\AbstractMessage::INFO);
         // maybe, there is a better way. For the moment the new relation will be duplicated and x-linked manually
@@ -326,7 +332,7 @@ class PersonController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControlle
      * @return void
      */
     public function showAction(
-        \CGB\Relax5core\Domain\Model\Person $person,
+        \CGB\Relax5core\Domain\Model\Person $person = null,
         \CGB\Relax5core\Domain\Model\Link $link = null)
     {
         $args = $this->request->getArguments();

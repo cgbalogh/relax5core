@@ -81,7 +81,7 @@
       >
         <f:for each="{item.links}" as="linkitem">
           <div id="link_{linkitem.uid}" uid="{linkitem.uid}">
-            <f:render partial="Link/ShowOneLink" arguments="{item:item, link:linkitem, focus:focus}" />
+            <f:render partial="Link/ShowOneLink" arguments="{item:item, link:linkitem, focus:focus, settings:settings}" />
           </div>
         </f:for>
       </div>

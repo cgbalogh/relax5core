@@ -28,7 +28,7 @@
         
       <f:if condition="{link.uid}">
         <!-- {f:uri.action(pageUid: settings.companyShowPid, extensionName: 'Relax5core', pluginName: 'Company', controller: 'Company', action: 'show', arguments: {company:company, link:link})} -->
-        <a class="rlx5-changefocus" href="{f:uri.action(pageUid: settings.companyShowPid, extensionName: 'Relax5core', pluginName: 'Company', controller: 'Company', action: 'show', arguments: {company:company, link:link})}">
+        <a class="rlx5-changefocus" href="{f:uri.action(pageUid: settings.companyShowPid, extensionName: 'Relax5core', pluginName: 'Core', controller: 'Company', action: 'show', arguments: {company:company, link:link})}">
           <f:translate key="LLL:EXT:relax5core/Resources/Private/Language/locallang_fe.xlf:tx_relax5core_general.change_focus_to_company" />
           <b>{company.shortName}</b>
         </a>

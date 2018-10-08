@@ -56,7 +56,7 @@ class ContactController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControll
      * @inject
      */
     protected $linkRepository = null;
-    
+
     /**
      * addInfoServiceService
      *
@@ -91,7 +91,7 @@ class ContactController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControll
         $parentScope = ['person' => 4, 'company' => 5, 'link' => 6];
         $this->view->assignMultiple([
             $itemtype => $item,
-            'typeSelect' => array_merge([0 => ''], $this->typeRepository->findByScope($parentScope[$itemtype])->toArray()),
+            'typeSelect' => array_merge([0 => ''], $this->typeRepository->findByScope($parentScope[$itemtype])->toArray())
         ]);
     }
 
@@ -104,11 +104,11 @@ class ContactController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControll
         $propertyMappingConfiguration = $this->arguments->getArgument('newContact')->getPropertyMappingConfiguration();
         $propertyMappingConfiguration->skipProperties('countrycode', 'areacode', 'number', 'extension');
     }
-    
+
     /**
      * action create
      *
-     * @param \CGB\Relax5core\Domain\Model\Address $newContact
+     * @param \CGB\Relax5core\Domain\Model\Contact $newContact
      * @param \CGB\Relax5core\Domain\Model\Person $person
      * @param \CGB\Relax5core\Domain\Model\Link $link
      * @param \CGB\Relax5core\Domain\Model\Company $company
@@ -124,9 +124,8 @@ class ContactController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControll
         $rawArgs = $this->request->getArgument('newContact');
         if ($rawArgs['number']) {
             $extDelimiter = $rawArgs['extension'] ? '-' : '';
-            $newContact->setContact("+{$rawArgs['countrycode']}({$rawArgs['areacode']}){$rawArgs['number']}$extDelimiter{$rawArgs['extension']}");
+            $newContact->setContact("+{$rawArgs['countrycode']}({$rawArgs['areacode']}){$rawArgs['number']}{$extDelimiter}{$rawArgs['extension']}");
         }
-        
         if ($person) {
             $person->addContact($newContact);
             $this->personRepository->update($person);
@@ -178,7 +177,7 @@ class ContactController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControll
         $rawArgs = $this->request->getArgument('contact');
         if ($rawArgs['number']) {
             $extDelimiter = $rawArgs['extension'] ? '-' : '';
-            $contact->setContact("+{$rawArgs['countrycode']}({$rawArgs['areacode']}){$rawArgs['number']}$extDelimiter{$rawArgs['extension']}");
+            $contact->setContact("+{$rawArgs['countrycode']}({$rawArgs['areacode']}){$rawArgs['number']}{$extDelimiter}{$rawArgs['extension']}");
         }
         $this->contactRepository->update($contact);
         $result = \CGB\Relax5core\Service\DivService::objectToArray($contact, 'contact,description', "contact_{$contact->getUid()}_");
@@ -207,22 +206,21 @@ class ContactController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControll
         $result['actions']['fadeOut'] = '#contact_' . $contact->getUid();
         return json_encode($result);
     }
-    
+
     /**
      * action resort
      *
      * @param string $uidlist
      * @return void
      */
-    public function resortAction($uidlist='')
+    public function resortAction($uidlist = '')
     {
         $uidListArray = \TYPO3\CMS\Core\Utility\GeneralUtility::intExplode(',', $uidlist);
-        foreach($uidListArray as $key => $uid) {
+        foreach ($uidListArray as $key => $uid) {
             $contact = $this->contactRepository->findByUid($uid);
             $contact->setSorting($key + 1);
             $this->contactRepository->update($contact);
         }
-        return json_encode(['success'=>'ok','whoami' => 'contact/resort']);
+        return json_encode(['success' => 'ok', 'whoami' => 'contact/resort']);
     }
-    
 }

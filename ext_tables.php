@@ -8,8 +8,24 @@ call_user_func(
         \TYPO3\CMS\Extbase\Utility\ExtensionUtility::registerPlugin(
             'CGB.Relax5core',
             'Core',
-            'Core'
+            'Relax5core: Core'
         );
+
+        \TYPO3\CMS\Extbase\Utility\ExtensionUtility::registerPlugin(
+            'CGB.Relax5core',
+            'Ownerprefs',
+            'Relax5core: Owner/User Prefs'
+        );
+
+        \TYPO3\CMS\Extbase\Utility\ExtensionUtility::registerPlugin(
+            'CGB.Relax5core',
+            'Aux',
+            'Relax5core: Relation Create Form'
+        );
+
+        $pluginSignature = str_replace('_', '', 'relax5core') . '_aux';
+        $GLOBALS['TCA']['tt_content']['types']['list']['subtypes_addlist'][$pluginSignature] = 'pi_flexform';
+        \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addPiFlexFormValue($pluginSignature, 'FILE:EXT:relax5core/Configuration/FlexForms/flexform_aux.xml');
 
         \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addStaticFile('relax5core', 'Configuration/TypoScript', 'relax5core');
 
@@ -61,25 +77,8 @@ call_user_func(
         \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addLLrefForTCAdescr('tx_relax5core_domain_model_relation', 'EXT:relax5core/Resources/Private/Language/locallang_csh_tx_relax5core_domain_model_relation.xlf');
         \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::allowTableOnStandardPages('tx_relax5core_domain_model_relation');
 
-        \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::makeCategorizable(
-            'relax5core',
-            'tx_relax5core_domain_model_person'
-        );
-
-        \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::makeCategorizable(
-            'relax5core',
-            'tx_relax5core_domain_model_address'
-        );
-
-        \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::makeCategorizable(
-            'relax5core',
-            'tx_relax5core_domain_model_company'
-        );
-
-        \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::makeCategorizable(
-            'relax5core',
-            'tx_relax5core_domain_model_link'
-        );
+        \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addLLrefForTCAdescr('tx_relax5core_domain_model_category', 'EXT:relax5core/Resources/Private/Language/locallang_csh_tx_relax5core_domain_model_category.xlf');
+        \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::allowTableOnStandardPages('tx_relax5core_domain_model_category');
 
     }
 );

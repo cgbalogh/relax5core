@@ -44,13 +44,20 @@
       </label>
     </span>
 
-    <r5f:form.textfield id="lastName" property="lastName" class="rlx5-20" validatorContext="CreatePerson" />
+    <r5f:form.textfield 
+      id="lastName" 
+      property="lastName" 
+      class="rlx5-20" 
+      validatorContext="CreatePerson" 
+      placeholder="{f:translate(key:'tx_relax5core_domain_model_person.last_name')}"
+    />
 
     <r5f:form.textfield 
       id="firstName" 
       property="firstName" 
       class="rlx5-20" 
       validatorContext="CreatePerson" 
+      placeholder="{f:translate(key:'tx_relax5core_domain_model_person.first_name')}"
       additionalAttributes="{
         data-autocomplete: 1, 
         data-autocomplete-id:'firstName'
@@ -62,7 +69,13 @@
       }"
     />
 
-    <r5f:form.textfield id="middleName" property="middleName" class="rlx5-20" validatorContext="CreatePerson" /><br />
+    <r5f:form.textfield 
+      id="middleName" 
+      property="middleName" 
+      class="rlx5-20" 
+      validatorContext="CreatePerson" 
+      placeholder="{f:translate(key:'tx_relax5core_domain_model_person.middle_name')}"
+    /><br />
 
     <span class="rlx5-span-as-label" class="rlx5-min">
       <label for="title">
@@ -74,8 +87,21 @@
       </label>
     </span>
 
-    <r5f:form.textfield id="title" property="title" class="rlx5-30" validatorContext="CreatePerson" />
-    <r5f:form.textfield id="salutation" property="salutation" class="rlx5-30" validatorContext="CreatePerson" /><br />
+    <r5f:form.textfield 
+      id="title" 
+      property="title" 
+      class="rlx5-30" 
+      validatorContext="CreatePerson" 
+      placeholder="{f:translate(key:'tx_relax5core_domain_model_person.title')}"
+    />
+    
+    <r5f:form.textfield 
+      id="salutation" 
+      property="salutation" 
+      class="rlx5-30" 
+      validatorContext="CreatePerson" 
+      placeholder="{f:translate(key:'tx_relax5core_domain_model_person.salutation')}"
+    /><br />
 
     <label for="gender">
         <f:translate key="tx_relax5core_domain_model_person.gender" />
@@ -113,9 +139,27 @@
         </label>
       </span>
 
-      <r5f:form.textfield id="relationLastName" property="relations.0.targetPerson.lastName" class="rlx5-20" validatorContext="CreatePerson" />
-      <r5f:form.textfield id="relationFirstName" property="relations.0.targetPerson.firstName" class="rlx5-20" validatorContext="CreatePerson" />
-      <r5f:form.textfield id="relationMiddleName" property="relations.0.targetPerson.middleName" class="rlx5-20" validatorContext="CreatePerson" /><br />
+      <r5f:form.textfield 
+        id="relationLastName" 
+        property="relations.0.targetPerson.lastName" 
+        class="rlx5-20" 
+        validatorContext="CreatePerson" 
+        placeholder="{f:translate(key:'tx_relax5core_domain_model_relation')}: {f:translate(key:'tx_relax5core_domain_model_person.last_name')}"
+      />
+      <r5f:form.textfield 
+        id="relationFirstName" 
+        property="relations.0.targetPerson.firstName" 
+        class="rlx5-20" 
+        validatorContext="CreatePerson" 
+        placeholder="{f:translate(key:'tx_relax5core_domain_model_relation')}: {f:translate(key:'tx_relax5core_domain_model_person.first_name')}"        
+      />
+      <r5f:form.textfield 
+        id="relationMiddleName" 
+        property="relations.0.targetPerson.middleName" 
+        class="rlx5-20" 
+        validatorContext="CreatePerson" 
+        placeholder="{f:translate(key:'tx_relax5core_domain_model_relation')}: {f:translate(key:'tx_relax5core_domain_model_person.middle_name')}"
+      /><br />
 
       <span class="rlx5-span-as-label" class="rlx5-min">
         <label for="title">
@@ -127,8 +171,18 @@
         </label>
       </span>
 
-      <r5f:form.textfield property="relations.0.targetPerson.title" class="rlx5-30" validatorContext="CreatePerson" />
-      <r5f:form.textfield property="relations.0.targetPerson.salutation" class="rlx5-30" validatorContext="CreatePerson" /><br />
+      <r5f:form.textfield 
+        property="relations.0.targetPerson.title" 
+        class="rlx5-30" 
+        validatorContext="CreatePerson" 
+        placeholder="{f:translate(key:'tx_relax5core_domain_model_relation')}: {f:translate(key:'tx_relax5core_domain_model_person.title')}"
+      />
+      <r5f:form.textfield 
+        property="relations.0.targetPerson.salutation" 
+        class="rlx5-30" 
+        validatorContext="CreatePerson" 
+        placeholder="{f:translate(key:'tx_relax5core_domain_model_relation')}: {f:translate(key:'tx_relax5core_domain_model_person.salutation')}"
+      /><br />
 
       <label for="relationGender">
           <f:translate key="tx_relax5core_domain_model_person.gender" />
@@ -171,9 +225,28 @@
         </label>
       </span>
 
-      <r5f:form.textfield property="relations.0.targetPerson.contacts.0.countrycode" id="countrycodeRelation" class="rlx5-10" validatorContext="CreatePerson" value="43"/>	
-      <r5f:form.textfield property="relations.0.targetPerson.contacts.0.areacode" id="areacodeRelation" class="rlx5-10" validatorContext="CreatePerson"/>	
-      <r5f:form.textfield property="relations.0.targetPerson.contacts.0.number" id="numberPhoneRelation" class="rlx5-25" validatorContext="CreatePerson"/>	
+      <r5f:form.textfield 
+        property="relations.0.targetPerson.contacts.0.countrycode" 
+        id="countrycodeRelation" 
+        class="rlx5-10" 
+        validatorContext="CreatePerson" 
+        placeholder="{f:translate(key:'tx_relax5core_domain_model_relation')}: {f:translate(key:'tx_relax5core_domain_model_contact.countrycode')}"
+        value="43"
+      />
+      <r5f:form.textfield 
+        property="relations.0.targetPerson.contacts.0.areacode" 
+        id="areacodeRelation" 
+        class="rlx5-10" 
+        validatorContext="CreatePerson"
+        placeholder="{f:translate(key:'tx_relax5core_domain_model_relation')}: {f:translate(key:'tx_relax5core_domain_model_contact.areacode')}"
+      />	
+      <r5f:form.textfield 
+        property="relations.0.targetPerson.contacts.0.number" 
+        id="numberPhoneRelation" 
+        class="rlx5-25" 
+        validatorContext="CreatePerson"
+        placeholder="{f:translate(key:'tx_relax5core_domain_model_relation')}: {f:translate(key:'tx_relax5core_domain_model_contact.contact')}"
+      />	
       <f:comment></f:comment>
       <r5f:form.textfield property="relations.0.targetPerson.contacts.0.extension" id="extensionRelation" style="width: 70px;" validatorContext="CreatePerson"/>	
 
@@ -185,7 +258,12 @@
       <label for="emailRelation">
         <f:translate key="tx_relax5core_domain_model_contact.type.3" />
       </label>
-      <r5f:form.textfield property="relations.0.targetPerson.contacts.1.contact" id="emailRelation" validatorContext="CreatePerson" /><br />
+      <r5f:form.textfield 
+        property="relations.0.targetPerson.contacts.1.contact" 
+        id="emailRelation" 
+        validatorContext="CreatePerson" 
+        placeholder="{f:translate(key:'tx_relax5core_domain_model_relation')}: {f:translate(key:'tx_relax5core_domain_model_contact.type.3')}"
+      /><br />
       <f:form.hidden property="relations.0.targetPerson.contacts.1.type" value="14" />
 
 
@@ -211,6 +289,7 @@
         id="country" 
         class="rlx5-10 geocode-on-blur" 
         validatorContext="CreatePerson" 
+        placeholder="{f:translate(key:'tx_relax5core_domain_model_address.country')}"
         value="A" 
         additionalAttributes="{
           data-autocomplete-id:'country'
@@ -222,6 +301,7 @@
         id="zip" 
         class="rlx5-10 geocode-on-blur" 
         validatorContext="CreatePerson" 
+        placeholder="{f:translate(key:'tx_relax5core_domain_model_address.zip')}"
         additionalAttributes="{
           data-autocomplete: 1, 
           data-autocomplete-id: 'zip',
@@ -239,6 +319,7 @@
         id="city" 
         class="rlx5-40 geocode-on-blur" 
         validatorContext="CreatePerson" 
+        placeholder="{f:translate(key:'tx_relax5core_domain_model_address.city')}"
         additionalAttributes="{
           data-autocomplete: 1, 
           data-autocomplete-id: 'city',
@@ -273,6 +354,7 @@
         id="address" 
         class="rlx5-40 geocode-on-blur" 
         validatorContext="CreatePerson" 
+        placeholder="{f:translate(key:'tx_relax5core_domain_model_address.address')}"
         additionalAttributes="{
           data-autocomplete: 1, 
           data-autocomplete-id:'address'
@@ -285,8 +367,20 @@
         }"
       />
 
-      <r5f:form.textfield property="addresses.0.number" id="number" class="rlx5-10 geocode-on-blur" validatorContext="CreatePerson" />
-      <r5f:form.textfield property="addresses.0.numberAdditions" id="numberAdditions" class="rlx5-10" validatorContext="CreatePerson" /><br />
+      <r5f:form.textfield 
+        property="addresses.0.number" 
+        id="number" 
+        class="rlx5-10 geocode-on-blur" 
+        validatorContext="CreatePerson" 
+        placeholder="{f:translate(key:'tx_relax5core_domain_model_address.number')}"
+      />
+      <r5f:form.textfield 
+        property="addresses.0.numberAdditions" 
+        id="numberAdditions" 
+        class="rlx5-10" 
+        validatorContext="CreatePerson" 
+        placeholder="{f:translate(key:'tx_relax5core_domain_model_address.number_additions')}"
+      /><br />
 
       <f:form.hidden property="addresses.0.allowMail" value="1" />	
       <f:form.hidden property="addresses.0.lat" value="1" id="lat" />	
@@ -314,11 +408,36 @@
       </label>
     </span>
 
-    <r5f:form.textfield property="contacts.0.countrycode" id="countrycode" class="rlx5-10" validatorContext="CreatePerson" value="43"/>	
-    <r5f:form.textfield property="contacts.0.areacode" id="areacode" class="rlx5-10" validatorContext="CreatePerson"/>	
-    <r5f:form.textfield property="contacts.0.number" id="numberPhone" class="rlx5-25" validatorContext="CreatePerson"/>	
+    <r5f:form.textfield 
+      property="contacts.0.countrycode" 
+      id="countrycode" 
+      class="rlx5-10" 
+      validatorContext="CreatePerson" 
+      placeholder="{f:translate(key:'tx_relax5core_domain_model_contact.countrycode')}"
+      value="43"
+    />	
+    <r5f:form.textfield 
+      property="contacts.0.areacode" 
+      id="areacode" 
+      class="rlx5-10" 
+      validatorContext="CreatePerson"
+      placeholder="{f:translate(key:'tx_relax5core_domain_model_contact.areacode')}"
+    />	
+    <r5f:form.textfield 
+      property="contacts.0.number" 
+      id="numberPhone" 
+      class="rlx5-25" 
+      validatorContext="CreatePerson"
+      placeholder="{f:translate(key:'tx_relax5core_domain_model_contact.number')}"
+    />	
     <f:comment></f:comment>
-    <r5f:form.textfield property="contacts.0.extension" id="extension" style="width: 70px;" validatorContext="CreatePerson"/>	
+    <r5f:form.textfield 
+      property="contacts.0.extension" 
+      id="extension" 
+      style="width: 70px;" 
+      validatorContext="CreatePerson"
+      placeholder="{f:translate(key:'tx_relax5core_domain_model_contact.extension')}"
+    />	
 
     <br />
 
@@ -328,7 +447,12 @@
     <label for="email">
       <f:translate key="tx_relax5core_domain_model_contact.type.3" />
     </label>
-    <r5f:form.textfield property="contacts.1.contact" id="email" validatorContext="CreatePerson" /><br />
+    <r5f:form.textfield 
+      property="contacts.1.contact" 
+      id="email" 
+      validatorContext="CreatePerson" 
+      placeholder="{f:translate(key:'tx_relax5core_domain_model_contact.type.3')}"
+    /><br />
     <f:form.hidden property="contacts.1.type" value="14" />
 
     <label for="maritalState">
@@ -402,6 +526,10 @@
       />
     </span>
 
+    <span class="rlx5-core_person-addinfo">
+        <f:render partial="AddInfo" arguments="{addInfo:addInfo}" optional="TRUE"/>
+    </span>
+    
     <span class="_loadDetails" loaddetails="{h:uri.ajaxAction(extensionName: 'Relax5core', pluginName: 'Core', controller: 'Source', action: 'loadDetails')}"></span>
 
     <!-- works only within modal dialog window -->

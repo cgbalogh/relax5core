@@ -33,7 +33,6 @@ class StatusTest extends \TYPO3\CMS\Core\Tests\UnitTestCase
             '',
             $this->subject->getName()
         );
-
     }
 
     /**
@@ -48,6 +47,5 @@ class StatusTest extends \TYPO3\CMS\Core\Tests\UnitTestCase
             'name',
             $this->subject
         );
-
     }
 }

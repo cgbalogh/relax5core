@@ -13,12 +13,12 @@
   <div class="">
     <f:switch expression="{focus}">
       <f:case value="person">
-        <a href="{f:uri.action(extensionName: 'Relax5core', controller: 'Person', action: 'show', arguments: {person:link.person, link:link})}">
+        <a href="{f:uri.action(pageUid:settings.personShowPid, extensionName: 'Relax5core', controller: 'Person', action: 'show', arguments: {person:link.person, link:link})}">
           {linktext}  
         </a>
       </f:case>
       <f:case value="company">
-        <a href="{f:uri.action(extensionName: 'Relax5core', controller: 'Company', action: 'show', arguments: {company:link.company, link:link})}">
+        <a href="{f:uri.action(pageUid:settings.companyShowPid, extensionName: 'Relax5core', controller: 'Company', action: 'show', arguments: {company:link.company, link:link})}">
           {linktext} 
         </a>
       </f:case>

@@ -15,12 +15,13 @@ namespace CGB\Relax5core\Domain\Model;
 /**
  * Status
  */
-class Status extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
+class Status extends \TYPO3\CMS\Extbase\DomainObject\AbstractValueObject
 {
     /**
-     * name
+     * Name
      *
      * @var string
+     * @validate NotEmpty
      */
     protected $name = '';
 

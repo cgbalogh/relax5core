@@ -174,7 +174,9 @@
 
   <div class="rlx5-divider"></div>
 
-  <f:render partial="AddInfo" arguments="{addInfo:addInfo}" optional="TRUE"/>
+  <span class="rlx5-core_person-addinfo">
+      <f:render partial="AddInfo" arguments="{addInfo:addInfo}" optional="TRUE"/>
+  </span>
   
   <span class="_loadDetails" loaddetails="{h:uri.ajaxAction(extensionName: 'Relax5core', pluginName: 'Core', controller: 'Source', action: 'loadDetails')}"></span>
 

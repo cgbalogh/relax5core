@@ -54,6 +54,20 @@ class PersonControllerTest extends \TYPO3\CMS\Core\Tests\UnitTestCase
     /**
      * @test
      */
+    public function showActionAssignsTheGivenPersonToView()
+    {
+        $person = new \CGB\Relax5core\Domain\Model\Person();
+
+        $view = $this->getMockBuilder(\TYPO3\CMS\Extbase\Mvc\View\ViewInterface::class)->getMock();
+        $this->inject($this->subject, 'view', $view);
+        $view->expects(self::once())->method('assign')->with('person', $person);
+
+        $this->subject->showAction($person);
+    }
+
+    /**
+     * @test
+     */
     public function createActionAddsTheGivenPersonToPersonRepository()
     {
         $person = new \CGB\Relax5core\Domain\Model\Person();
@@ -117,5 +131,23 @@ class PersonControllerTest extends \TYPO3\CMS\Core\Tests\UnitTestCase
         $this->inject($this->subject, 'personRepository', $personRepository);
 
         $this->subject->deleteAction($person);
+    }
+
+    /**
+     * @test
+     */
+    public function createActionAddsTheGivenPersonToPersonRepository()
+    {
+        $person = new \CGB\Relax5core\Domain\Model\Person();
+
+        $personRepository = $this->getMockBuilder(\CGB\Relax5core\Domain\Repository\PersonRepository::class)
+            ->setMethods(['add'])
+            ->disableOriginalConstructor()
+            ->getMock();
+
+        $personRepository->expects(self::once())->method('add')->with($person);
+        $this->inject($this->subject, 'personRepository', $personRepository);
+
+        $this->subject->createAction($person);
     }
 }

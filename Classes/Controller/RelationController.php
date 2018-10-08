@@ -55,14 +55,25 @@ class RelationController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControl
         if ($xLink = $relation->getXLink()) {
             \CGB\Relax5core\Service\DivService::load($xLink);
             // TODO: maybe thios should be made generic as well to be able to refine/redefine person relationbships
-            $xLink->setType( $relation->getType() * ( (($relation->getType() == 2) || ($relation->getType() == 4)) ? -1 : 1 ) );
-            $xLink->setDescription( $relation->getDescription());
-            $xLink->setPrint( $relation->getPrint());
-            $xLink->setShare( $relation->getShare());
+            $xLink->setType($relation->getType() * ($relation->getType() == 2 || $relation->getType() == 4 ? -1 : 1));
+            $xLink->setDescription($relation->getDescription());
+            $xLink->setPrint($relation->getPrint());
+            $xLink->setShare($relation->getShare());
             $this->relationRepository->update($xLink);
         }
         $result = \CGB\Relax5core\Service\DivService::objectToArray($relation, 'type,description', "relation_{$relation->getUid()}_");
         $result['success'] = 'ok';
         return json_encode($result);
+    }
+
+    /**
+     * action list
+     *
+     * @return void
+     */
+    public function listAction()
+    {
+        $relations = $this->relationRepository->findAll();
+        $this->view->assign('relations', $relations);
     }
 }
